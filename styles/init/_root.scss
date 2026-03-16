@@ -1,0 +1,81 @@
+:root {
+    font-size: 1rem;
+
+    // Borders & Radius
+    --btnRadius: 0.15rem;
+    --borderRadius: 0.875rem;
+
+    // Animations
+    --ease: all 0.25s ease;
+    --cubic: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    // Header
+    --headerHeight: 5.5rem;
+    --mobileHeaderHeight: 5rem;
+    --adminBarHeight: 2rem;
+
+    // Layout
+    --smallScreenMaxWidth: 90%;
+    --largeScreenMaxWidth: 1400px;
+
+    // App Colors
+    --primary: #0096FA;
+    --primaryRgb: 0, 150, 250;
+    --secondary: #001AF8;
+    --secondaryRgb: 0, 26, 248;
+    --accent: #FF6BD4;
+    --accentRgb: 255, 107, 212;
+    --light: #ffffff;
+    --lightRgb: 255, 255, 255;
+    --lightAlt: #f1f5f7;
+    --lightAltRgb: 241, 245, 247;
+    --dark: #0d1117;
+    --darkRgb: 13, 17, 23;
+    --darkAlt: #161b22;
+    --darkAltRgb: 22, 27, 34;
+    --gradient: linear-gradient(to right, var(--primary), var(--accent), var(--secondary));
+}
+
+@mixin darkMode() {
+    --background: #0d1117;
+    --backgroundAlt: #161b22;
+    --heading: #ffffff;
+    --text: #8b949e;
+    --border: #21262d;
+}
+
+@mixin lightMode() {
+    --background: #ffffff;
+    --backgroundAlt: #f1f5f7;
+    --heading: #0e131a;
+    --text: #1e242e;
+    --border: #e5e7eb;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        & {
+            @include darkMode();
+        }
+    }
+}
+
+[data-theme="dark"] {
+    & {
+        @include darkMode();
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        & {
+            @include lightMode();
+        }
+    }
+}
+
+[data-theme="light"] {
+    & {
+        @include lightMode();
+    }
+}

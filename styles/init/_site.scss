@@ -1,0 +1,95 @@
+// Gradient Animation
+
+.gradientAnimation {
+    background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientAnimation 7.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+    @keyframes gradientAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+}
+
+// Circle Link
+.circleLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--backgroundAlt);
+    color: var(--accent);
+    position: relative;
+    overflow: hidden;
+    transition: var(--cubic);
+
+    @media (width >=1024px) {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .iconAnimation {
+        position: absolute;
+        z-index: 2;
+        inset: 0;
+        margin: auto;
+        width: 50%;
+        height: 50%;
+        transition: var(--cubic);
+
+        &.iconTwo {
+            opacity: 0;
+            transform: translate(-100%, 100%);
+        }
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        scale: 0;
+        background: var(--accent);
+        transition: var(--cubic);
+    }
+
+    &:hover {
+        color: var(--backgroundAlt);
+
+        &::before {
+            scale: 1;
+        }
+
+        .iconAnimation {
+            &.iconOne {
+                transform: translate(100%, -100%);
+                opacity: 0;
+            }
+
+            &.iconTwo {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+
+        }
+    }
+}

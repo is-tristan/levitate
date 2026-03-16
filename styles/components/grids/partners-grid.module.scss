@@ -1,0 +1,20 @@
+.partnersGrid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 02rem;
+    width: 100%;
+
+    .partnersGridItem {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex: 1 0 calc(33.33% - 2rem);
+
+        @media (width >=768px) {
+            flex: 1 0 calc(25% - 2rem);
+        }
+    }
+}

@@ -1,0 +1,24 @@
+.banner {
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100vh - var(--headerHeight));
+
+    .bannerContainer {
+        position: relative;
+        z-index: 1;
+    }
+
+    p {
+        @media (width >=1280px) {
+            font-size: 1.3rem;
+        }
+    }
+
+    .bannerMask {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+    }
+}

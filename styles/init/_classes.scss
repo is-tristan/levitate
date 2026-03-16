@@ -1,0 +1,57 @@
+// Hidden Classes
+.hidden {
+    display: none !important;
+}
+
+.hidden-s {
+    @media (width <768px) {
+        display: none !important;
+    }
+}
+
+.hidden-m {
+    @media (width <1200px) {
+        display: none !important;
+    }
+}
+
+.hidden-l {
+    @media (width >=1200px) {
+        display: none !important;
+    }
+}
+
+.hidden-xl {
+    @media (width >=1512px) {
+        display: none !important;
+    }
+}
+
+// Has Radius
+.hasRadius {
+    border-radius: 1rem;
+
+    @media (width >=1024px) {
+        border-radius: 2rem;
+    }
+}
+
+// Has Link
+.hasLink a {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+// Has Full Stop
+.hasFullStop {
+
+    h1,
+    h2,
+    h3 {
+        &::after {
+            content: '.';
+            color: var(--primary);
+        }
+    }
+}

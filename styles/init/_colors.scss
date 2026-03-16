@@ -1,0 +1,53 @@
+// Colors
+.colorPrimary {
+    color: var(--primary);
+}
+
+.colorSecondary {
+    color: var(--secondary);
+}
+
+.colorAccent {
+    color: var(--accent);
+}
+
+.colorDark {
+    color: var(--dark);
+}
+
+.colorLight {
+    color: var(--light);
+}
+
+.colorLightAlt {
+    color: var(--lightAlt);
+}
+
+// Backgrounds
+.bgPrimary {
+    background-color: var(--primary);
+}
+
+.bgSecondary {
+    background-color: var(--secondary);
+}
+
+.bgAccent {
+    background-color: var(--accent);
+}
+
+.bgDark {
+    background-color: var(--dark);
+}
+
+.bgDarkAlt {
+    background-color: var(--darkAlt);
+}
+
+.bgLight {
+    background-color: var(--light);
+}
+
+.bgLightAlt {
+    background-color: var(--lightAlt);
+}

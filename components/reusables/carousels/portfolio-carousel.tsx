@@ -1,0 +1,242 @@
+"use client";
+
+import { Suspense, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css/core";
+import type { Splide as SplideInstance, SlideComponent } from "@splidejs/splide";
+
+import { websites } from "@/data/websites";
+import { arrowUpRight, arrowRight } from "@/data/icons";
+
+import styles from "@/styles/components/carousels/portfolio-carousel.module.scss";
+
+type WebsiteCarouselProps = {
+    heading: string;
+    description?: string | null;
+    link: string;
+}
+
+const options = {
+    type: "loop",
+    perPage: 1,
+    perMove: 1,
+    gap: "1rem",
+    arrows: false,
+    wheel: true,
+    releaseWheel: true,
+    wheelMinThreshold: 0.25,
+    wheelSleep: 500,
+    easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+    padding: {
+        right: "33.33%",
+    },
+    breakpoints: {
+        1279: {
+            padding: {
+                left: "5%",
+                right: "5%",
+            },
+        },
+    },
+};
+
+export default function WebsiteCarousel({
+    heading,
+    description,
+    link
+}: WebsiteCarouselProps) {
+
+    const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+    const [isMobile, setIsMobile] = useState(false);
+    const [activeSlideIndex, setActiveSlideIndex] = useState<number | null>(null);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 1024);
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!isMobile) {
+            setActiveSlideIndex(null);
+            videoRefs.current.forEach(video => {
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            });
+        }
+    }, [isMobile]);
+
+    const playVideoAt = (index: number) => {
+        const video = videoRefs.current[index];
+        if (video) {
+            video.currentTime = 0;
+            void video.play();
+        }
+    };
+
+    const getVideoIndex = (index: number, slideIndex: number) => {
+        return slideIndex > -1 ? slideIndex : index;
+    };
+
+    const pauseVideoAt = (index: number) => {
+        const video = videoRefs.current[index];
+        if (video) {
+            video.pause();
+            video.currentTime = 0;
+        }
+    };
+
+    const handleVideoHover = (index: number) => {
+        if (isMobile) {
+            return;
+        }
+        playVideoAt(index);
+    };
+
+    const handleVideoLeave = (index: number) => {
+        if (isMobile) {
+            return;
+        }
+        pauseVideoAt(index);
+    };
+
+    return (
+
+        <section className={`row ${styles.websiteCarousel}`}>
+
+            <div className={`container noPaddingBottom ${styles.headingContainer}`}>
+
+                <div className={`heading hasFullStop ${styles.heading}`}>
+
+                    <h2 dangerouslySetInnerHTML={{ __html: heading }}></h2>
+
+                    {description && (<p dangerouslySetInnerHTML={{ __html: description }}></p>)}
+
+                </div>
+
+                <div className={`hidden-s hidden-m ${styles.link}`}>
+
+                    <Link href={link} className="circleLink" aria-label="View all websites">
+
+                        <span className="iconAnimation iconOne" dangerouslySetInnerHTML={{ __html: arrowUpRight }} />
+
+                        <span className="iconAnimation iconTwo" dangerouslySetInnerHTML={{ __html: arrowUpRight }} />
+
+                    </Link>
+
+                </div>
+
+            </div>
+
+            <div className={`container noPaddingTop ${styles.carouselContainer}`}>
+
+                <Splide
+                    className={`hasPagination paginationFlexStart splideTrackNoOverflow`}
+                    options={options}
+                    onMounted={(splide: SplideInstance) => {
+                        if (!isMobile) {
+                            return;
+                        }
+                        splide.Components.Slides.get(true).forEach(slide => {
+                            if (slide.slide.classList.contains("is-active")) {
+                                const videoIndex = getVideoIndex(slide.index, slide.slideIndex);
+                                setActiveSlideIndex(videoIndex);
+                                playVideoAt(videoIndex);
+                            }
+                        });
+                    }}
+                    onActive={(_: SplideInstance, slide: SlideComponent) => {
+                        if (!isMobile) {
+                            return;
+                        }
+                        const videoIndex = getVideoIndex(slide.index, slide.slideIndex);
+                        setActiveSlideIndex(videoIndex);
+                        playVideoAt(videoIndex);
+                    }}
+                    onInactive={(_: SplideInstance, slide: SlideComponent) => {
+                        if (!isMobile) {
+                            return;
+                        }
+                        const videoIndex = getVideoIndex(slide.index, slide.slideIndex);
+                        if (activeSlideIndex === videoIndex) {
+                            setActiveSlideIndex(null);
+                        }
+                        pauseVideoAt(videoIndex);
+                    }}
+                >
+
+                    {websites.map((website, index) => (
+
+                        <SplideSlide
+                            key={index}
+                            onMouseEnter={() => handleVideoHover(index)}
+                            onMouseLeave={() => handleVideoLeave(index)}
+                        >
+
+                            <div
+                                className={`${styles.carouselItem} ${isMobile && activeSlideIndex === index ? styles.slideActive : ""}`}
+                                aria-label={website.name}
+                            >
+
+                                {website.video ? (
+
+                                    <Suspense fallback={"Loading Video..."}>
+
+                                        <video
+                                            ref={element => {
+                                                videoRefs.current[index] = element;
+                                            }}
+                                            src={website.video}
+                                            muted
+                                            loop
+                                            playsInline
+                                            className={styles.carouselVideo}
+                                            preload="none"
+                                            poster={website.poster}
+                                        />
+
+                                    </Suspense>
+
+                                ) : (
+
+                                    <Image src={website.poster} alt={website.name} fill sizes="100%" className={styles.carouselImage} />
+
+                                )}
+
+                                <div className={styles.carouselContent}>
+
+                                    <h3><a href={website.url} target="_blank" rel="noopener noreferrer">{website.name}<span className="colorAccent">.</span></a></h3>
+
+                                    <a href={website.url} className={styles.carouselTextLink} aria-label="View website" target="_blank" rel="noopener noreferrer">View Website <span className={styles.icon} dangerouslySetInnerHTML={{ __html: arrowRight }} /></a>
+
+                                </div>
+
+                                <a href={website.url} className={styles.itemLink} aria-label="View website" target="_blank" rel="noopener noreferrer"></a>
+
+                            </div>
+
+                        </SplideSlide>
+
+                    ))}
+
+
+                </Splide>
+
+            </div>
+
+        </section>
+
+    )
+}

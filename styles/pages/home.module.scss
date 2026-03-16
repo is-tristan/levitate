@@ -1,0 +1,125 @@
+.banner {
+    position: relative;
+    border-radius: 0 0 1.5rem 1.5rem;
+    // width: calc(100% - 1rem);
+    // margin: 1rem auto auto;
+
+    @media (width >=1024px) {
+        border-radius: 0 0 3rem 3rem;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: var(--mobileHeaderHeight);
+        background: linear-gradient(to bottom, rgba(var(--darkRgb), 1), transparent);
+
+        @media (width >=1024px) {
+            height: var(--headerHeight);
+        }
+    }
+
+    h1 {
+        max-width: 55rem;
+    }
+
+    p {
+        max-width: 55rem;
+    }
+
+    .bannerGradient {
+        position: absolute;
+        opacity: 0.85;
+        z-index: -1;
+        inset: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        cursor: none;
+        pointer-events: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -ms-user-drag: none;
+
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            inset: 0;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(0.25rem);
+        }
+    }
+
+    .reviewLogos {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .reviewLogo {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 0.25rem;
+        padding: 0.33rem;
+        background: rgba(var(--lightRgb), 0.05);
+        border-radius: 0.5rem;
+        border: 1px solid rgba(var(--lightRgb), 0.1);
+        transition: var(--cubic);
+
+        @media (width >=576px) {
+            padding: 0.66rem;
+            gap: 0.33rem;
+        }
+
+        @media (width >=1200px) {
+            padding: 0.875rem;
+            gap: 0.5rem;
+        }
+
+        @media all {
+            font-size: 0.75rem;
+        }
+
+        .reviewLogoHeader {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+
+            .reviewLogoIcon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 1.5rem;
+                height: 1.5rem;
+                flex-shrink: 0;
+
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        &:hover {
+            background: rgba(var(--lightRgb), 0.15);
+            scale: 1.025;
+        }
+    }
+}

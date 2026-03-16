@@ -1,0 +1,210 @@
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-prophet), ui-sans-serif, sans-serif;
+    color: var(--heading);
+    line-height: 115%;
+    margin: 0;
+    padding: 0;
+    text-wrap: pretty;
+    letter-spacing: -0.015em;
+
+    @media (width >=768px) and (width <1024px) {
+        text-align: center;
+    }
+
+    @media (width >=1024px) {
+        letter-spacing: -0.03em;
+    }
+}
+
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: 95%;
+}
+
+h2 {
+    font-size: clamp(1.85rem, 3.75vw, 3.75rem);
+    letter-spacing: -0.0125em;
+    line-height: 102.5%;
+
+    @media (width >=1024px) {
+        letter-spacing: -0.02em;
+    }
+}
+
+h3 {
+    font-size: clamp(1.25rem, 2.5vw, 2.5rem);
+    letter-spacing: -0.015em;
+}
+
+h4 {
+    font-size: clamp(1.1rem, 1.25vw, 1.25rem);
+}
+
+h5 {
+    font-size: clamp(1rem, 1.15vw, 1.15rem);
+}
+
+h6 {
+    font-size: clamp(0.875rem, 1vw, 1rem);
+}
+
+/*
+* =============================================
+* Text, lists, inputs, links
+* ============================================= 
+*/
+
+small,
+p,
+ul,
+ol {
+    font-size: clamp(0.85rem, 0.9vw, 0.9rem);
+    line-height: 175%;
+    font-weight: 500;
+    text-wrap: pretty;
+    text-align: left;
+    letter-spacing: -0.01em;
+
+    @media (width >=768px) and (width <1024px) {
+        text-align: center;
+    }
+
+    @media (width >=1024px) {
+        letter-spacing: -0.02em;
+    }
+}
+
+small {
+    font-family: var(--text);
+    text-transform: none;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 0;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    a {
+        padding-bottom: 0.125rem;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: -0.125rem;
+            left: 0;
+            width: 100%;
+            height: 1.5px;
+            background: var(--primary);
+            transition: var(--ease);
+        }
+
+        &:hover {
+            &::before {
+                left: unset;
+                right: 0;
+                width: 0;
+            }
+        }
+    }
+}
+
+ul {
+    margin: 0;
+}
+
+// Eyebrows
+.eyebrow {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.33rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    font-weight: 700;
+    font-family: var(--eyebrow);
+    text-transform: uppercase;
+
+    @media (width >=768px) {
+        justify-content: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    @media (width >=1024px) {
+        justify-content: flex-start;
+    }
+
+    .eyebrowMark {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1rem;
+        height: 1rem;
+
+        @media (width >=768px) {
+            width: 1.125rem;
+            height: 1.125rem;
+        }
+
+        @media (width >=1024px) {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .filled {
+        display: flex;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        width: max-content;
+        border-radius: 1rem;
+        background: var(--light);
+        color: var(--primary);
+        padding: 0.33rem 0.66rem;
+
+        @media (width >=768px) {
+            padding: 0.4rem 0.875rem;
+        }
+
+        @media (width >=1024px) {
+            padding: 0.66rem 1rem;
+        }
+
+        &.primary {
+            background: var(--primary);
+            color: var(--light);
+        }
+
+        &.secondary {
+            background: var(--secondary);
+            color: var(--light);
+        }
+
+        &.dark {
+            background: var(--dark);
+            color: var(--light);
+        }
+    }
+
+    &.light {
+        color: var(--light);
+    }
+}

@@ -1,0 +1,71 @@
+@use "../../init/mixins" as *;
+
+
+// Buttons Container
+.buttons {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.75rem;
+
+    @media (width >=768px) {
+        gap: 1rem;
+    }
+
+    &.centered {
+        justify-content: center;
+    }
+
+    @media (width >=768px) and (width <1024px) {
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (width >=1024px) {
+        flex-flow: row nowrap !important;
+    }
+
+    .btn {
+        width: max-content;
+    }
+}
+
+// Button Styling
+.btn {
+    @include btn();
+
+    &.primary {
+        color: var(--light);
+
+        &::before {
+            background: var(--primary);
+            color: var(--light);
+        }
+
+        &::after {
+            background-image: url("data:image/svg+xml,%3Csvg width='256' height='64' viewBox='0 0 256 64' fill='var(--dark)' xmlns='http://www.w3.org/2000/svg'%3E%3Crect y='2' width='256' height='3'%3E%3C/rect%3E%3Crect y='12' width='256' height='3'%3E%3C/rect%3E%3Crect width='256' height='1'%3E%3C/rect%3E%3Crect y='7' width='256' height='1'%3E%3C/rect%3E%3Crect y='16' width='256' height='1'%3E%3C/rect%3E%3Crect y='38' width='256' height='1'%3E%3C/rect%3E%3Crect y='44' width='256' height='1'%3E%3C/rect%3E%3Crect y='50' width='256' height='1'%3E%3C/rect%3E%3Crect y='58' width='256' height='2'%3E%3C/rect%3E%3Crect y='62' width='256' height='2'%3E%3C/rect%3E%3Crect y='52' width='256' height='2'%3E%3C/rect%3E%3Crect y='55' width='256' height='2'%3E%3C/rect%3E%3Crect y='32' width='256' height='1'%3E%3C/rect%3E%3Crect y='25' width='256' height='2'%3E%3C/rect%3E%3Crect y='40' width='256' height='3'%3E%3C/rect%3E%3Crect y='46' width='256' height='3'%3E%3C/rect%3E%3Crect y='28' width='256' height='3'%3E%3C/rect%3E%3Crect y='34' width='256' height='3'%3E%3C/rect%3E%3Crect y='9' width='256' height='2'%3E%3C/rect%3E%3Crect y='18' width='256' height='3'%3E%3C/rect%3E%3Cpath d='M0 22H256V24H0V22Z'%3E%3C/path%3E%3C/svg%3E");
+        }
+    }
+
+    &.secondary {
+        color: var(--background);
+
+        &::before {
+            background: var(--heading);
+        }
+
+        &::after {
+            background-image: url("data:image/svg+xml,%3Csvg width='256' height='64' viewBox='0 0 256 64' fill='var(--accent)' xmlns='http://www.w3.org/2000/svg'%3E%3Crect y='2' width='256' height='3'%3E%3C/rect%3E%3Crect y='12' width='256' height='3'%3E%3C/rect%3E%3Crect width='256' height='1'%3E%3C/rect%3E%3Crect y='7' width='256' height='1'%3E%3C/rect%3E%3Crect y='16' width='256' height='1'%3E%3C/rect%3E%3Crect y='38' width='256' height='1'%3E%3C/rect%3E%3Crect y='44' width='256' height='1'%3E%3C/rect%3E%3Crect y='50' width='256' height='1'%3E%3C/rect%3E%3Crect y='58' width='256' height='2'%3E%3C/rect%3E%3Crect y='62' width='256' height='2'%3E%3C/rect%3E%3Crect y='52' width='256' height='2'%3E%3C/rect%3E%3Crect y='55' width='256' height='2'%3E%3C/rect%3E%3Crect y='32' width='256' height='1'%3E%3C/rect%3E%3Crect y='25' width='256' height='2'%3E%3C/rect%3E%3Crect y='40' width='256' height='3'%3E%3C/rect%3E%3Crect y='46' width='256' height='3'%3E%3C/rect%3E%3Crect y='28' width='256' height='3'%3E%3C/rect%3E%3Crect y='34' width='256' height='3'%3E%3C/rect%3E%3Crect y='9' width='256' height='2'%3E%3C/rect%3E%3Crect y='18' width='256' height='3'%3E%3C/rect%3E%3Cpath d='M0 22H256V24H0V22Z'%3E%3C/path%3E%3C/svg%3E");
+        }
+
+        .icon {
+            color: var(--accent);
+        }
+
+        &:hover {
+            .icon {
+                transform: translateX(0.15rem);
+            }
+        }
+
+    }
+}

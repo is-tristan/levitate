@@ -1,0 +1,124 @@
+.headingContainer {
+    @media (width >=1024px) {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .heading {
+        max-width: 50rem;
+    }
+
+}
+
+.carouselContainer {
+    @media (width >=1024px) {
+        padding-right: 0;
+    }
+}
+
+.carouselItem {
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+    gap: 1rem;
+    aspect-ratio: 1/1;
+    border-radius: var(--borderRadius);
+    overflow: hidden;
+
+    @media (width >=768px) {
+        aspect-ratio: 16/9;
+    }
+
+    .carouselImage {
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .carouselVideo {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .carouselContent {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-end;
+        gap: 0.25rem;
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem;
+        position: relative;
+        z-index: 1;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(1rem);
+        transition: var(--cubic);
+
+        @media (width >=768px) {
+            padding: 2rem;
+        }
+
+        @media (width >=1024px) {
+            padding: 3rem;
+        }
+    }
+
+    .carouselTextLink {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+
+        .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 0.875rem;
+            height: 0.875rem;
+            color: var(--accent);
+        }
+    }
+
+    .itemLink {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        margin: auto;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                cursor: url("/icons/carousel-cursor.svg"), auto;
+            }
+        }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover .carouselContent {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    }
+
+    @media (hover: none) {
+        .slideActive {
+            .carouselContent {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+    }
+}

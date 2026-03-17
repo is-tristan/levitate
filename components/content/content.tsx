@@ -8,6 +8,7 @@ import { easeInOut, motion } from "motion/react";
 type HeadingProps = {
     type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     heading: string;
+    eyebrow?: string;
     description?: string;
     className?: string;
     layout?: "default" | "centered";
@@ -18,6 +19,7 @@ type HeadingProps = {
 export default function Heading({
     type = "h2",
     heading,
+    eyebrow,
     description,
     className,
     layout = "default",
@@ -47,7 +49,7 @@ export default function Heading({
             amount: 0.2
         },
         transition: {
-            duration: 0.5,
+            duration: 0.8,
             ease: easeInOut
         }
     };
@@ -55,6 +57,15 @@ export default function Heading({
     return (
 
         <div className="content">
+
+            {eyebrow && (
+                <motion.span
+                    {...fadeInUp}
+                    className="eyebrow"
+                >
+                    {eyebrow}
+                </motion.span>
+            )}
 
             <motion.div
                 {...fadeInUp}

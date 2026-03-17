@@ -6,21 +6,32 @@ import { easeInOut, motion } from "motion/react";
 // Styles
 import styles from "@/styles/components/items/review-items.module.scss";
 
-export default function ReviewItems() {
-    const reviewItems = [
-        {
-            ariaLabel: "Facebook Reviews",
-            icon: facebookLogo
-        },
-        {
-            ariaLabel: "Google Reviews",
-            icon: googleLogoMark
-        }
-    ];
+// Types
+type ReviewItemsProps = {
+    layout?: "default" | "inline";
+    className?: string;
+}
+
+// Data
+const reviewItems = [
+    {
+        ariaLabel: "Facebook Reviews",
+        icon: facebookLogo
+    },
+    {
+        ariaLabel: "Google Reviews",
+        icon: googleLogoMark
+    }
+];
+
+export default function ReviewItems({
+    layout = "default",
+    className,
+}: ReviewItemsProps) {
 
     return (
 
-        <div className={styles.reviewLogos}>
+        <div className={`${styles.reviewLogos} ${layout === "inline" ? styles.inline : undefined} ${className || undefined}`}>
 
             {reviewItems.map((item, index) => (
                 <motion.a
@@ -57,7 +68,7 @@ export default function ReviewItems() {
 
                     </div>
 
-                    <span><strong>5.0</strong> Based on <strong className="colorPrimary">114+</strong>reviews</span>
+                    <span><strong>5.0</strong> Based on <strong className="colorPrimary">114+</strong> reviews</span>
 
                 </motion.a>
             ))}

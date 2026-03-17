@@ -14,7 +14,7 @@ type bannerProps = {
 
 export default function Banner({ heading, description, image, className, layout = "default" }: bannerProps) {
 
-    <section className={`row ${styles.banner} ${className}`}>
+    <section id="banner" className={`row ${styles.banner} ${className}`}>
 
         <div className={`container ${layout === "centered" ? "centered" : "dualCols"} ${styles.container}`}>
 

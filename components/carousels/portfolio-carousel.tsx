@@ -123,7 +123,7 @@ export default function WebsiteCarousel({
 
         <section className={`row ${styles.websiteCarousel}`}>
 
-            <div className={`container noPaddingBottom ${styles.headingContainer}`}>
+            <div className={`container centered noPaddingBottom ${styles.headingContainer}`}>
 
                 <Content
                     type="h2"
@@ -132,18 +132,6 @@ export default function WebsiteCarousel({
                     description={description || undefined}
                     className={styles.heading}
                 />
-
-                <div className={`hidden-s hidden-m ${styles.link}`}>
-
-                    <Link href={link} className="circleLink" aria-label="View all websites">
-
-                        <span className="iconAnimation iconOne" dangerouslySetInnerHTML={{ __html: arrowUpRight }} />
-
-                        <span className="iconAnimation iconTwo" dangerouslySetInnerHTML={{ __html: arrowUpRight }} />
-
-                    </Link>
-
-                </div>
 
             </div>
 

@@ -85,3 +85,17 @@
         }
     }
 }
+
+@mixin blurredShape($background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary))) {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 20rem;
+    height: 20rem;
+    background: $background;
+    border-radius: 50%;
+    filter: blur(10rem);
+}

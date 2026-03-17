@@ -1,0 +1,123 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+
+import { testimonials } from "@/data/testimonials";
+
+import Content from "@/components/content/content";
+import ReviewItems from "@/components/items/review-items";
+import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
+
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css/core";
+import type { Splide as SplideInstance } from "@splidejs/splide";
+
+import styles from "@/styles/components/carousels/testimonials-carousel.module.scss";
+
+import { quoteIcon } from "@/data/icons";
+
+// Splide Options
+const testimonialsOptions = {
+    rewind: true,
+    rewindByDrag: true,
+    arrows: false,
+    pagination: false,
+    perPage: 1,
+    perMove: 1,
+    gap: "0",
+    easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+    autoplay: true,
+    interval: 7500
+}
+
+export default function TestimonialsCarousel() {
+    const [progressWidth, setProgressWidth] = useState("0%");
+
+    const updateProgress = (splide: SplideInstance) => {
+        const progress = ((splide.index + 1) / testimonials.length) * 100;
+        setProgressWidth(`${progress}%`);
+    };
+
+    return (
+
+        <section id="testimonials" className="row testimonials">
+
+            <div className={`container noPaddingBottom ${styles.headingContainer}`}>
+
+                <Content
+                    type="h2"
+                    heading="We've got over <span class='gradientAnimation'>150+ 5 star reviews</span> on all platforms"
+                    hasFullStop={true}
+                    className={styles.heading}
+                />
+
+                <ViewportBreakpoint mode="desktop">
+
+                    <ReviewItems layout="inline" />
+
+                </ViewportBreakpoint>
+
+            </div>
+
+            <div className={`container noPaddingTop ${styles.testimonialsContainer}`}>
+
+                <Splide
+                    options={testimonialsOptions}
+                    onMounted={updateProgress}
+                    onMoved={updateProgress}
+                >
+
+                    {testimonials.map((testimonial, index) => (
+
+                        <SplideSlide key={index}>
+
+                            <div className={styles.testimonial}>
+
+                                <div className={styles.testimonialImage}>
+
+                                    <Image src={testimonial.image} alt={testimonial.name} width={576} height={576} sizes="100%" loading="lazy" style={{ objectFit: "cover", objectPosition: "center top" }} />
+
+                                </div>
+
+                                <div className={styles.testimonialContent}>
+
+                                    <p>{testimonial.quote}</p>
+
+                                    <div className={styles.testimonialMeta}>
+
+                                        <div className={styles.testimonialMetaIcon} dangerouslySetInnerHTML={{ __html: quoteIcon }}></div>
+
+                                        <div className={styles.testimonialMetaContent}>
+
+                                            <h3 className={`colorPrimary`}>{testimonial.name}</h3>
+
+                                            <span>{testimonial.position}</span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </SplideSlide>
+
+                    ))}
+
+                </Splide>
+
+                <div className={styles.testimonialsProgress}>
+
+                    <div className={styles.testimonialsProgressBar} style={{ width: progressWidth }}></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    )
+
+}

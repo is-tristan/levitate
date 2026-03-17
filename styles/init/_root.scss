@@ -37,13 +37,13 @@
 }
 
 @mixin darkMode() {
-    --background: #0d1117;
-    --backgroundRgb: 13, 17, 23;
-    --backgroundAlt: #161b22;
-    --backgroundAltRgb: 22, 27, 34;
+    --background: #0e121a;
+    --backgroundRgb: 14, 18, 26;
+    --backgroundAlt: #1b2430;
+    --backgroundAltRgb: 27, 36, 48;
     --heading: #ffffff;
     --text: #8b949e;
-    --border: #21262d;
+    --border: #272e38;
 }
 
 @mixin lightMode() {

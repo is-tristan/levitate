@@ -25,8 +25,55 @@ const DmSans = LocalFont({
 
 // Metadata
 export const metadata: Metadata = {
-  title: "Levitate",
-  description: "We help ambitious brands explore their full digital potential through award-winning, handcrafted websites that blend creativity, strategy, and performance.",
+  title: {
+    default: "Levitate | Bespoke Websites That Get Results",
+    template: "%s | Levitate"
+  },
+  description: "Levitate crafts bespoke websites, branding, SEO, and digital experiences that help ambitious brands grow through strategy, creativity, and performance.",
+  keywords: [
+    "Levitate",
+    "web design",
+    "web development",
+    "branding",
+    "SEO",
+    "digital agency",
+    "bespoke websites",
+    "Cardiff web design",
+    "creative agency"
+  ],
+  applicationName: "Levitate",
+  category: "business",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    }
+  },
+  openGraph: {
+    title: "Levitate | Bespoke Websites That Get Results",
+    description: "Levitate crafts bespoke websites, branding, SEO, and digital experiences that help ambitious brands grow through strategy, creativity, and performance.",
+    type: "website",
+    siteName: "Levitate",
+    images: [
+      {
+        url: "/seo-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Levitate SEO preview image"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Levitate | Bespoke Websites That Get Results",
+    description: "Levitate crafts bespoke websites, branding, SEO, and digital experiences that help ambitious brands grow through strategy, creativity, and performance.",
+    images: ["/seo-image.png"]
+  }
 };
 
 export default function RootLayout({

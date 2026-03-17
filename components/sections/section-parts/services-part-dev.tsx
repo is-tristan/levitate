@@ -59,11 +59,11 @@ export default function ServicesPartDevelopment() {
         offset: ["start end", "end start"]
     });
 
-    const imageOneY = useTransform(scrollYProgress, [0, 1], [-128, 0]);
-    const imageTwoY = useTransform(scrollYProgress, [0, 0.8], [-96, 0]);
-    const imageThreeY = useTransform(scrollYProgress, [0, 0.6], [-64, 0]);
-    const imageFourY = useTransform(scrollYProgress, [0, 0.4], [-32, 0]);
-    const imageFiveY = useTransform(scrollYProgress, [0, 0.2], [0, 0]);
+    const imageOneY = useTransform(scrollYProgress, [0, 0.5, 1], [-128, 0, 0]);
+    const imageTwoY = useTransform(scrollYProgress, [0, 0.5, 1], [-96, 0, 0]);
+    const imageThreeY = useTransform(scrollYProgress, [0, 0.5, 1], [-64, 0, 0]);
+    const imageFourY = useTransform(scrollYProgress, [0, 0.5, 1], [-32, 0, 0]);
+    const imageFiveY = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 0]);
     const imageYValues = [imageOneY, imageTwoY, imageThreeY, imageFourY, imageFiveY];
     const fadeInUp = {
         initial: {
@@ -86,11 +86,12 @@ export default function ServicesPartDevelopment() {
 
     return (
 
-        <div className="container dualCols" data-name="web-development" aria-label="Web Development">
+        <div className={`container dualCols ${styles.devContainer}`} data-name="web-development" aria-label="Web Development">
 
             <div className="contentCol">
 
                 <Content
+                    eyebrow="Web Development"
                     type="h2"
                     heading="Web design that <span class='gradientAnimation'>inspires confidence</span>"
                     hasFullStop={true}
@@ -124,8 +125,8 @@ export default function ServicesPartDevelopment() {
 
                 <Buttons
                     animationDelay={0.4}
-                    labelOne="Send us your brief"
-                    urlOne="/contact"
+                    labelOne="Learn More"
+                    urlOne="/services/web-development"
                     btnOneClassName="primary"
                 />
 

@@ -1,5 +1,7 @@
-// Next
+"use client";
+
 import Image from "next/image";
+import { easeInOut, motion } from "motion/react";
 
 // Data
 import { partnerLogos } from "@/data/partner-logos";
@@ -30,13 +32,33 @@ export default function PartnersGrid({
 
                 <div className={styles.partnersGrid}>
 
-                    {partnerLogos.map((partner) => (
+                    {partnerLogos.map((partner, index) => (
 
-                        <div className={styles.partnersGridItem} key={partner.name}>
+                        <motion.div
+                            initial={{
+                                opacity: 0,
+                                y: 32
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0
+                            }}
+                            viewport={{
+                                once: true,
+                                amount: 0.2
+                            }}
+                            transition={{
+                                duration: 0.5,
+                                delay: index * 0.08,
+                                ease: easeInOut
+                            }}
+                            className={styles.partnersGridItem}
+                            key={partner.name}
+                        >
 
                             <Image src={partner.imageLight} alt={partner.name} width={128} height={80} style={{ objectFit: "contain" }} />
 
-                        </div>
+                        </motion.div>
 
                     ))}
 

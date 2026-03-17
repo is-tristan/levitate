@@ -1,38 +1,45 @@
 "use client";
 
+// React
 import { Suspense, useEffect, useRef, useState } from "react";
+
+// Next
 import Image from "next/image";
 import Link from "next/link";
 
+// Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/core";
 import type { Splide as SplideInstance, SlideComponent } from "@splidejs/splide";
 
+// Imports
+import Content from "@/components/content/content";
 import { websites } from "@/data/websites";
 import { arrowUpRight, arrowRight } from "@/data/icons";
 
+// Styles
 import styles from "@/styles/components/carousels/portfolio-carousel.module.scss";
 
+// Types
 type WebsiteCarouselProps = {
     heading: string;
     description?: string | null;
     link: string;
 }
 
+// Splide Options
 const options = {
     type: "loop",
     perPage: 1,
     perMove: 1,
     gap: "1rem",
     arrows: false,
-    wheel: true,
-    releaseWheel: true,
-    wheelMinThreshold: 0.25,
-    wheelSleep: 500,
     easing: "cubic-bezier(0.4, 0, 0.2, 1)",
     padding: {
         right: "33.33%",
     },
+    autoplay: true,
+    interval: 5000,
     breakpoints: {
         1279: {
             padding: {
@@ -118,13 +125,13 @@ export default function WebsiteCarousel({
 
             <div className={`container noPaddingBottom ${styles.headingContainer}`}>
 
-                <div className={`heading hasFullStop ${styles.heading}`}>
-
-                    <h2 dangerouslySetInnerHTML={{ __html: heading }}></h2>
-
-                    {description && (<p dangerouslySetInnerHTML={{ __html: description }}></p>)}
-
-                </div>
+                <Content
+                    type="h2"
+                    heading={heading}
+                    hasFullStop={true}
+                    description={description || undefined}
+                    className={styles.heading}
+                />
 
                 <div className={`hidden-s hidden-m ${styles.link}`}>
 

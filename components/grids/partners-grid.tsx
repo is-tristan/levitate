@@ -7,13 +7,20 @@ import { partnerLogos } from "@/data/partner-logos";
 // Styles
 import styles from "@/styles/components/grids/partners-grid.module.scss";
 
-export default function PartnersGrid() {
+// Types
+type PartnersGridProps = {
+    containerClassName?: string;
+}
+
+export default function PartnersGrid({
+    containerClassName,
+}: PartnersGridProps) {
 
     return (
 
         <section className="row">
 
-            <div className="container noPaddingTop">
+            <div className={`container ${containerClassName || undefined}`}>
 
                 <div className="heading centered hasFullStop">
 
@@ -27,7 +34,7 @@ export default function PartnersGrid() {
 
                         <div className={styles.partnersGridItem} key={partner.name}>
 
-                            <Image src={partner.imageLight} alt={partner.name} width={128} height={80} style={{objectFit: "contain"}} />
+                            <Image src={partner.imageLight} alt={partner.name} width={128} height={80} style={{ objectFit: "contain" }} />
 
                         </div>
 

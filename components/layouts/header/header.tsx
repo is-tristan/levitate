@@ -1,5 +1,8 @@
 "use client";
 
+// React
+import { useState, useEffect } from "react";
+
 // Next
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -19,9 +22,23 @@ export default function Header() {
         return pathname.startsWith(url);
     }
 
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const scrollListener = () => {
+            if (window.scrollY > 100) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        }
+        window.addEventListener("scroll", scrollListener);
+        return () => window.removeEventListener("scroll", scrollListener);
+    }, []);
+
     return (
 
-        <header id="header" className={styles.header}>
+        <header id="header" className={`${styles.header} ${scrolled ? styles.scrolled : undefined}`}>
 
             <div className={`container ${styles.headerContainer}`}>
 

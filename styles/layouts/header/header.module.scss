@@ -9,6 +9,19 @@
     position: fixed;
     z-index: 555;
     margin: auto;
+    border-radius: 0 0 var(--borderRadius) var(--borderRadius);
+    transition: var(--cubic);
+
+    &.scrolled {
+        backdrop-filter: blur(1rem);
+        background: rgba(var(--backgroundRgb), 0.15);
+
+        .logoText {
+            transform: translateX(-1rem);
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
 }
 
 .headerContainer {
@@ -55,32 +68,36 @@
             width: 100%;
             height: 100%;
         }
+    }
 
-        .logoMark,
-        .logoText {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: var(--cubic);
+
+    .logoMark,
+    .logoText {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: var(--cubic);
+    }
+
+    .logoMark {
+        width: 2rem;
+        height: 2rem;
+
+        @media (width >=768px) {
+            width: 2.25rem;
+            height: 2.25rem;
         }
+    }
 
-        .logoMark {
-            width: 2rem;
-            height: 2rem;
+    .logoText {
+        width: auto;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        height: 1rem;
 
-            @media (width >=768px) {
-                width: 2.75rem;
-                height: 2.75rem;
-            }
-        }
-
-        .logoText {
-            width: auto;
-            height: 1rem;
-
-            @media (width >=768px) {
-                height: 1.5rem;
-            }
+        @media (width >=768px) {
+            height: 1.25rem;
         }
     }
 }
@@ -157,7 +174,7 @@
         transform: translateY(-1rem);
         border-radius: var(--borderRadius);
         border: 1px solid var(--border);
-        background: var(--backgroundAlt);
+        background: rgba(var(--backgroundAltRgb), 0.95);
         transition: var(--cubic);
 
         .subMenuItem {
@@ -166,13 +183,40 @@
             gap: 1rem;
             padding: 0.5rem;
             border-radius: var(--borderRadius);
+            position: relative;
             transition: var(--cubic);
 
+            &::before {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                width: 0;
+                height: 100%;
+                border-radius: var(--borderRadius);
+                background: var(--border);
+                transition: var(--cubic);
+            }
+
             &:hover {
-                background: var(--background);
+                &::before {
+                    width: 100%;
+                    right: unset;
+                    left: 0;
+                }
 
                 .subMenuItemIcon {
-                    background: var(--primary);
+                    &::before {
+                        opacity: 1;
+                        scale: 1;
+                    }
+
+                    svg {
+                        scale: 1.1;
+                    }
                 }
             }
         }
@@ -182,14 +226,32 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 2rem;
-            height: 2rem;
-            border-radius: var(--borderRadius);
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
             background: var(--background);
             color: var(--light);
+            position: relative;
             transition: var(--cubic);
 
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                margin: auto;
+                width: 100%;
+                height: 100%;
+                border-radius: var(--borderRadius);
+                background: var(--secondary);
+                opacity: 0;
+                scale: 0;
+                transition: var(--cubic);
+            }
+
             svg {
+                transition: var(--cubic);
+                position: relative;
+                z-index: 1;
                 width: 50%;
                 height: 50%;
             }

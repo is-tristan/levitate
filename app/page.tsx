@@ -1,7 +1,8 @@
 // Components
 import HomeBanner from "@/components/pages/home/banner/home-banner";
-import PortfolioCarousel from "@/components/reusables/carousels/portfolio-carousel";
-import PartnersGrid from "@/components/reusables/grids/partners-grid";
+import PortfolioCarousel from "@/components/carousels/portfolio-carousel";
+import PartnersGrid from "@/components/grids/partners-grid";
+import ServicesSectionTabs from "@/components/sections/services-section-tabs";
 
 export default function Home() {
   return (
@@ -14,7 +15,8 @@ export default function Home() {
         heading="We have built over <span class='gradientAnimation'>600+ websites</span>, here are our best"
         link="/portfolio"
       />
-      <PartnersGrid />
+      <PartnersGrid containerClassName="noPaddingTop noPaddingBottom" />
+      <ServicesSectionTabs />
     </>
   );
 }

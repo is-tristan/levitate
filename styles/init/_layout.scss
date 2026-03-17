@@ -119,17 +119,6 @@
             }
         }
 
-        .contentCol {
-            display: flex;
-            flex-flow: column wrap;
-            justify-content: center;
-            gap: 1.5rem;
-
-            @media (width >=1024px) {
-                gap: 2rem;
-            }
-        }
-
         &.rowReverse {
             flex-direction: column;
 
@@ -186,6 +175,19 @@
             max-width: 100%;
         }
     }
+
+    // Content Column
+    .contentCol {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        gap: 1.5rem;
+
+        @media (width >=1024px) {
+            gap: 2rem;
+        }
+    }
+
 }
 
 // Heading container

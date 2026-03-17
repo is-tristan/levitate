@@ -1,31 +1,11 @@
 "use client";
 
-// React
 import { useEffect, useRef } from "react";
-
-// Next
 import Link from "next/link";
-
-// Imports
+import { easeInOut, motion } from "motion/react";
 import { PowerGlitch, PowerGlitchOptions } from "powerglitch";
 import { arrowRight } from "@/data/icons";
-
-export type ButtonsProps = {
-    buttonContainerClassName?: string;
-    buttonAlignment?: "default" | "centered";
-    btnOneClassName?: string;
-    btnTwoClassName?: string;
-    labelOne: string;
-    labelTwo?: string;
-    iconOne?: string;
-    iconTwo?: string;
-    urlOne?: string;
-    urlTwo?: string;
-    targetOne?: "_blank" | "_self" | "_parent" | "_top";
-    targetTwo?: "_blank" | "_self" | "_parent" | "_top";
-    relOne?: string;
-    relTwo?: string;
-}
+import { ButtonsProps } from "@/types/buttons";
 
 const glitchOptions: PowerGlitchOptions = {
     playMode: "hover",
@@ -57,6 +37,7 @@ const glitchOptions: PowerGlitchOptions = {
     pulse: false
 };
 export default function Buttons({
+    animationDelay = 0,
     buttonContainerClassName,
     buttonAlignment,
     btnOneClassName,
@@ -71,8 +52,26 @@ export default function Buttons({
     targetTwo,
     relOne,
     relTwo }: ButtonsProps) {
-
     const containerRef = useRef<HTMLDivElement | null>(null);
+    const fadeInUp = {
+        initial: {
+            opacity: 0,
+            y: 32
+        },
+        whileInView: {
+            opacity: 1,
+            y: 0
+        },
+        viewport: {
+            once: true,
+            amount: 0.2
+        },
+        transition: {
+            duration: 0.5,
+            delay: animationDelay,
+            ease: easeInOut
+        }
+    };
 
     useEffect(() => {
         if (!containerRef.current) {
@@ -88,7 +87,11 @@ export default function Buttons({
 
     return (
 
-        <div ref={containerRef} className={`buttons ${buttonContainerClassName || undefined} ${buttonAlignment === "centered" ? "centered" : undefined}`}>
+        <motion.div
+            {...fadeInUp}
+            ref={containerRef}
+            className={`buttons ${buttonContainerClassName || undefined} ${buttonAlignment === "centered" ? "centered" : undefined}`}
+        >
 
             <Link href={urlOne || "#"} target={targetOne || "_self"} rel={relOne || undefined} className={`btn ${btnOneClassName || undefined} `}>
 
@@ -117,7 +120,7 @@ export default function Buttons({
                 </Link>
             )}
 
-        </div>
+        </motion.div>
 
     )
 

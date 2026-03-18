@@ -1,0 +1,36 @@
+.socialItems {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+
+    @media (width >=768px) {
+        gap: 0.875rem;
+    }
+
+    .socialItem {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1.5rem;
+        height: 1.5rem;
+        flex-shrink: 0;
+        transition: var(--ease);
+
+        @media (width >=1024px) {
+            width: 1.75rem;
+            height: 1.75rem;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        &:hover {
+            scale: 1.05;
+            color: var(--heading);
+        }
+    }
+}

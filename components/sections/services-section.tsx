@@ -1,12 +1,18 @@
 "use client";
 
+// GSAP
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// React
 import { useLayoutEffect, useRef } from "react";
+
+// Imports
 import ServicesPartBranding from "@/components/sections/section-parts/services/services-part-branding";
 import ServicesPartDevelopment from "@/components/sections/section-parts/services/services-part-dev";
 import ServicesPartSEO from "@/components/sections/section-parts/services/services-part-seo";
 
+// Styles
 import styles from "@/styles/components/sections/services-section.module.scss";
 
 export default function ServicesSection() {
@@ -38,7 +44,6 @@ export default function ServicesSection() {
         matchMedia.add("(min-width: 1024px)", () => {
             panels.forEach((panel, index) => {
                 const nextPanel = panels[index + 1];
-
                 ScrollTrigger.create({
                     trigger: panel,
                     start: () => `top top+=${getHeaderOffset()}`,

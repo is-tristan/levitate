@@ -11,7 +11,6 @@ h6 {
     margin: 0;
     padding: 0;
     text-wrap: pretty;
-    letter-spacing: -0.015em;
 
     @media (width >=768px) and (width <1024px) {
         text-align: center;
@@ -29,8 +28,8 @@ h1 {
 }
 
 h2 {
-    font-size: clamp(1.85rem, 4vw, 3.25rem);
-    letter-spacing: -0.0125em;
+    font-size: clamp(1.75rem, 4vw, 3.25rem);
+    letter-spacing: -0.0075em;
     line-height: 102.5%;
 
     @media (width >=1024px) {
@@ -40,7 +39,6 @@ h2 {
 
 h3 {
     font-size: clamp(1.25rem, 2.5vw, 2.5rem);
-    letter-spacing: -0.015em;
 }
 
 h4 {

@@ -14,11 +14,13 @@
             gap: 0.5rem;
             position: unset;
             margin: 3rem auto 0;
+            padding-right: 0;
+            padding-left: 0;
 
             button {
                 width: 1.5rem;
-                height: 1.5rem;
-                border-radius: 5rem;
+                height: 0.4rem;
+                border-radius: 1px;
                 background: transparent;
                 border: 1.5px solid var(--text);
                 opacity: 1;
@@ -51,7 +53,6 @@
                         left: 0;
                         right: unset;
                         width: 100%;
-                        border-radius: 5rem;
                     }
                 }
             }
@@ -69,27 +70,30 @@
     }
 
     &.hasArrows {
+
         .splide__arrow {
             display: none;
             justify-content: center;
             align-items: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
             width: 3.5rem;
             height: 3.5rem;
-            background: var(--secondary);
-            border: 2px solid var(--secondary);
             border-radius: 50%;
-            opacity: 1 !important;
-            box-shadow: 0 0.25rem 1rem rgba(var(--darkRgb), 0.1);
-            border: 1px solid rgba(var(--darkRgb), 0.15);
-            transition: var(--ease);
-            z-index: 100;
+            background: rgba(var(--lightRgb), 0.75);
+            backdrop-filter: blur(0.5rem);
+            border: 1px solid var(--border);
+            transition: var(--cubic);
+            z-index: 10;
+            cursor: pointer;
 
             @media (width >=1024px) {
                 display: flex;
             }
 
-            @media (width >=1600px) {
-                display: flex;
+            @media (width >=1512px) {
                 width: 4rem;
                 height: 4rem;
             }
@@ -105,28 +109,29 @@
                 margin: auto;
                 width: 50%;
                 height: 50%;
-                background: url("/wp-content/themes/vite/static/icons/arrow-right-light.svg");
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>');
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
-                opacity: 0.75;
-                transition: var(--ease);
+                transition: var(--cubic);
             }
 
             &:hover {
+                background: rgba(var(--lightRgb), 0.9);
+
                 &::after {
                     opacity: 1;
                 }
             }
 
             &.splide__arrow--prev {
-                left: 2.5%;
-                transform: scale(-1) translateY(50%) translateX(50%);
+                left: 0;
+                transform: scale(-1);
             }
 
             &.splide__arrow--next {
-                right: 2.5%;
-                transform: translateY(-50%) translateX(50%);
+                right: 0;
+                transform: none;
             }
         }
     }

@@ -1,0 +1,200 @@
+// Mobile Nav Toggle Container
+.navToggleContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+// Mobile Nav Toggle
+.navToggle {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 3rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    .navLine {
+        width: 100%;
+        height: 1.25px;
+        background: var(--light);
+        transition: var(--ease);
+    }
+}
+
+.mobileMenu {
+    display: flex;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    right: -125%;
+    bottom: 0;
+    height: 100vh;
+    width: 100%;
+    max-width: 95%;
+    padding: 3rem;
+    backdrop-filter: blur(4rem);
+    background: rgba(var(--lightRgb), 0.075);
+    border-radius: var(--borderRadius) 0 0 var(--borderRadius);
+    transition: var(--cubic);
+    overflow-y: auto;
+
+    @media (width >=768px) {
+        max-width: 50%;
+    }
+
+    * {
+        width: 100%;
+    }
+}
+
+.mobileMenuContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mobileMenuHeader {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .mobileMenuLogo {
+        width: 7.5rem;
+        height: auto;
+    }
+
+    .mobileMenuClose {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        background: transparent;
+        color: var(--text);
+        border: none;
+        cursor: pointer;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.mobileNavMenu {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2rem;
+    font-size: 1rem;
+    width: 100%;
+    height: max-content;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .navItem {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1rem;
+        width: 100%;
+        cursor: pointer;
+        transition: var(--cubic);
+
+        &.currentUrl {
+            color: var(--heading);
+        }
+    }
+
+    .navItemLabel {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        transition: var(--cubic);
+
+        &:focus-within,
+        &:hover {
+            color: var(--heading);
+        }
+
+        span {
+            width: max-content;
+        }
+    }
+
+    .subMenu {
+        display: none;
+        flex-flow: column nowrap;
+        gap: 1rem;
+        padding: 0.5rem 0;
+
+        &.subMenuActive {
+            display: flex;
+        }
+    }
+
+    .subMenuItem {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 1rem;
+        padding: 0.66rem;
+        border-radius: var(--borderRadius);
+
+        &.currentUrl,
+        &:hover {
+            background: rgba(var(--lightRgb), 0.075);
+        }
+
+        .subMenuItemIcon {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 2rem;
+            height: 2rem;
+            background: var(--background);
+            border-radius: var(--borderRadius);
+
+            svg {
+                width: 50%;
+                height: 50%;
+            }
+        }
+
+        .subMenuItemContent {
+            display: flex;
+            flex-flow: column nowrap;
+            gap: 0.33rem;
+
+            .subMenuItemLabel {
+                font-size: 0.875rem;
+                font-weight: 700;
+                color: var(--heading);
+            }
+        }
+    }
+}
+
+.mobileMenuFooter {
+    padding-top: 2rem;
+}
+
+.mobileMenuActive {
+    right: 0;
+}

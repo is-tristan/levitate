@@ -5,6 +5,7 @@ import LocalFont from "next/font/local";
 // Imports
 import "@/styles/main.scss";
 import Header from "@/components/layouts/header/header";
+import Footer from "@/components/layouts/footer/footer";
 
 // Utils
 import SmoothScroll from "@/utils/animation/smooth-scroll";
@@ -99,6 +100,8 @@ export default function RootLayout({
             {children}
 
           </div>
+
+          <Footer />
 
         </main>
 

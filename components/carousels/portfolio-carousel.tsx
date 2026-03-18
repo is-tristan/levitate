@@ -32,10 +32,15 @@ const options = {
     perPage: 1,
     perMove: 1,
     gap: "1rem",
-    arrows: false,
+    arrows: true,
+    pagination: false,
+    wheel: true,
+    wheelSleep: 500,
+    releaseWheel: true,
     easing: "cubic-bezier(0.4, 0, 0.2, 1)",
     padding: {
-        right: "33.33%",
+        right: "7.5%",
+        left: "7.5%",
     },
     autoplay: true,
     interval: 5000,
@@ -137,7 +142,7 @@ export default function WebsiteCarousel({
             <div className={`container noPaddingTop ${styles.carouselContainer}`}>
 
                 <Splide
-                    className={`hasPagination paginationFlexStart splideTrackNoOverflow`}
+                    className={`hasArrows splideTrackNoOverflow`}
                     options={options}
                     onMounted={(splide: SplideInstance) => {
                         if (!isMobile) {
@@ -205,7 +210,7 @@ export default function WebsiteCarousel({
 
                                 ) : (
 
-                                    <Image src={website.poster} alt={website.name} fill sizes="100%" className={styles.carouselImage} />
+                                    <Image src={website.poster} alt={website.name} fill sizes="100%" className={styles.carouselImage} loading="lazy" />
 
                                 )}
 

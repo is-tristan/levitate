@@ -1,20 +1,16 @@
 "use client";
 
-// Data
+import { useEffect, useState } from "react";
 import { logos } from "@/data/logos";
 
-// Next
 import Image from "next/image";
 
-// Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
+import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import "@splidejs/react-splide/css/core";
 
-// Styles
 import styles from "@/styles/components/carousels/logo-carousel.module.scss";
 
-// Options
 const options = {
     type: "loop",
     perPage: 5,
@@ -41,9 +37,28 @@ const options = {
         pauseOnHover: false,
         pauseOnFocus: false,
     },
-}
+};
+
+const shuffleLogos = (items: typeof logos) => {
+    const shuffledItems = [...items];
+
+    for (let index = shuffledItems.length - 1; index > 0; index -= 1) {
+        const randomIndex = Math.floor(Math.random() * (index + 1));
+
+        [shuffledItems[index], shuffledItems[randomIndex]] = [shuffledItems[randomIndex], shuffledItems[index]];
+    }
+
+    return shuffledItems;
+};
 
 export default function LogoCarousel() {
+    const [topLogos, setTopLogos] = useState(logos);
+    const [bottomLogos, setBottomLogos] = useState(logos);
+
+    useEffect(() => {
+        setTopLogos(shuffleLogos(logos));
+        setBottomLogos(shuffleLogos(logos));
+    }, []);
 
     return (
 
@@ -68,7 +83,7 @@ export default function LogoCarousel() {
                         extensions={{ AutoScroll }}
                         className={styles.splide}
                     >
-                        {logos.map((logo) => (
+                        {topLogos.map((logo) => (
 
                             <SplideSlide className={styles.logoItem} key={logo.name}>
 
@@ -85,7 +100,7 @@ export default function LogoCarousel() {
                         extensions={{ AutoScroll }}
                         className={styles.splide}
                     >
-                        {logos.map((logo) => (
+                        {bottomLogos.map((logo) => (
 
                             <SplideSlide className={styles.logoItem} key={logo.name}>
 
@@ -103,6 +118,6 @@ export default function LogoCarousel() {
 
         </section>
 
-    )
+    );
 
 }

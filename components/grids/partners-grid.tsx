@@ -56,7 +56,7 @@ export default function PartnersGrid({
                             key={partner.name}
                         >
 
-                            <Image src={partner.imageLight} alt={partner.name} width={128} height={64} style={{ objectFit: "contain" }} />
+                            <Image src={partner.imageLight} alt={partner.name} width={128} height={64} style={{ objectFit: "contain" }} loading="lazy" />
 
                         </motion.div>
 

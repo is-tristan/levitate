@@ -176,7 +176,7 @@ export default function ServicesPartSEO() {
                             className={styles.logo}
                         >
 
-                            <Image src={logo.image} alt={logo.alt} width={128} height={80} style={{ objectFit: "contain" }} />
+                            <Image src={logo.image} alt={logo.alt} width={128} height={80} style={{ objectFit: "contain" }} loading="lazy" />
 
                         </motion.a>
 

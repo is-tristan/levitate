@@ -10,6 +10,7 @@ type HeadingProps = {
     heading: string;
     eyebrow?: string;
     description?: string;
+    containerClassName?: string;
     className?: string;
     layout?: "default" | "centered";
     hasFullStop?: boolean;
@@ -21,6 +22,7 @@ export default function Heading({
     heading,
     eyebrow,
     description,
+    containerClassName,
     className,
     layout = "default",
     hasFullStop = false,
@@ -56,7 +58,7 @@ export default function Heading({
 
     return (
 
-        <div className="content">
+        <div className={`content ${containerClassName || undefined}`}>
 
             {eyebrow && (
                 <motion.span

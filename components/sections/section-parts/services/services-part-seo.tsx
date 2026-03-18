@@ -7,7 +7,7 @@ import { easeInOut, motion, useScroll, useTransform } from "motion/react";
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
 
-import styles from "@/styles/components/sections/services-section-tabs.module.scss";
+import styles from "@/styles/components/sections/services-section.module.scss";
 
 
 // Logos
@@ -80,53 +80,9 @@ export default function ServicesPartSEO() {
 
     return (
 
-        <div className={`container dualCols rowReverse noPaddingTop noPaddingBottom ${styles.seoContainer}`} data-name="search-marketing" aria-label="Search Marketing">
+        <div className={`container dualCols ${styles.seoContainer}`} data-name="search-marketing" aria-label="Search Marketing">
 
-            <div className="contentCol">
-
-                <Content
-                    eyebrow="Search Marketing"
-                    type="h2"
-                    heading="Search marketing that <span class='gradientAnimation'>delivers results</span>"
-                    hasFullStop={true}
-                    description="We help ambitious businesses rise to the top of search results with data-led SEO and Google Ads management. From keyword strategy to campaign optimisation, our approach drives consistent leads, measurable growth, and long-term online performance."
-                />
-
-                <div className={styles.logos}>
-
-                    {logos.map((logo, index) => (
-
-                        <motion.a
-                            {...fadeInUp}
-                            transition={{
-                                ...fadeInUp.transition,
-                                delay: 0.3 + index * 0.1
-                            }}
-                            href={logo.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            key={logo.alt}
-                            className={styles.logo}
-                        >
-
-                            <Image src={logo.image} alt={logo.alt} width={128} height={80} style={{ objectFit: "contain" }} />
-
-                        </motion.a>
-
-                    ))}
-
-                </div>
-
-                <Buttons
-                    animationDelay={0.4}
-                    labelOne="Learn More"
-                    urlOne="/services/search-marketing"
-                    btnOneClassName="primary"
-                />
-
-            </div>
-
-            <div className={`imageCol hasRadius ${styles.seoImageCol}`}>
+            <div className={`imageCol aspectRatio1x1 hasRadius ${styles.seoImageCol}`}>
                 <motion.div
                     ref={graphRef}
                     className={styles.seoGraph}
@@ -189,6 +145,52 @@ export default function ServicesPartSEO() {
                         <span>Nov</span>
                     </div>
                 </motion.div>
+
+                <div className={styles.backgroundImage} aria-hidden="true"></div>
+            </div>
+
+            <div className="contentCol">
+
+                <Content
+                    eyebrow="Search Marketing"
+                    type="h2"
+                    heading="Search marketing that <span class='gradientAnimation'>delivers results</span>"
+                    hasFullStop={true}
+                    description="We help ambitious businesses rise to the top of search results with data-led SEO and Google Ads management. From keyword strategy to campaign optimisation, our approach drives consistent leads, measurable growth, and long-term online performance."
+                />
+
+                <div className={styles.logos}>
+
+                    {logos.map((logo, index) => (
+
+                        <motion.a
+                            {...fadeInUp}
+                            transition={{
+                                ...fadeInUp.transition,
+                                delay: 0.3 + index * 0.1
+                            }}
+                            href={logo.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            key={logo.alt}
+                            className={styles.logo}
+                        >
+
+                            <Image src={logo.image} alt={logo.alt} width={128} height={80} style={{ objectFit: "contain" }} />
+
+                        </motion.a>
+
+                    ))}
+
+                </div>
+
+                <Buttons
+                    animationDelay={0.4}
+                    labelOne="Learn More"
+                    urlOne="/services/search-marketing"
+                    btnOneClassName="primary"
+                />
+
             </div>
 
         </div>

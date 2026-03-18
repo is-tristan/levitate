@@ -1,21 +1,34 @@
 "use client";
 
+// Next
 import Image from "next/image";
+
+// React
 import { useState } from "react";
 
+// Data
 import { testimonials } from "@/data/testimonials";
 
+// Imports
 import Content from "@/components/content/content";
 import ReviewItems from "@/components/items/review-items";
 import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
+// Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/core";
 import type { Splide as SplideInstance } from "@splidejs/splide";
 
+// Styles
 import styles from "@/styles/components/carousels/testimonials-carousel.module.scss";
 
+// Icons
 import { quoteIcon } from "@/data/icons";
+
+// Types
+type TestimonialsCarouselProps = {
+    containerClassName?: string;
+}
 
 // Splide Options
 const testimonialsOptions = {
@@ -31,7 +44,9 @@ const testimonialsOptions = {
     interval: 7500
 }
 
-export default function TestimonialsCarousel() {
+export default function TestimonialsCarousel({
+    containerClassName,
+}: TestimonialsCarouselProps) {
     const [progressWidth, setProgressWidth] = useState("0%");
 
     const updateProgress = (splide: SplideInstance) => {
@@ -43,7 +58,7 @@ export default function TestimonialsCarousel() {
 
         <section id="testimonials" className="row testimonials">
 
-            <div className={`container noPaddingBottom ${styles.headingContainer}`}>
+            <div className={`container ${containerClassName || undefined} ${styles.headingContainer}`}>
 
                 <Content
                     type="h2"

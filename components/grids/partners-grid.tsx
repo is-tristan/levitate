@@ -20,13 +20,13 @@ export default function PartnersGrid({
 
     return (
 
-        <section className="row">
+        <section id="partners" className="row">
 
             <div className={`container ${containerClassName || undefined}`}>
 
                 <div className="heading centered hasFullStop">
 
-                    <h3 className={styles.heading}>Partnered and <strong className="gradientAnimation">certified</strong> by world-leading digital platforms</h3>
+                    <h3 className={styles.heading} style={{fontSize: "1.25rem", fontFamily: "var(--font-dm-sans)", fontWeight: "700"}}>Partnered and <strong className="gradientAnimation">certified</strong> by world-leading digital platforms</h3>
 
                 </div>
 
@@ -56,7 +56,7 @@ export default function PartnersGrid({
                             key={partner.name}
                         >
 
-                            <Image src={partner.imageLight} alt={partner.name} width={128} height={80} style={{ objectFit: "contain" }} />
+                            <Image src={partner.imageLight} alt={partner.name} width={128} height={64} style={{ objectFit: "contain" }} />
 
                         </motion.div>
 

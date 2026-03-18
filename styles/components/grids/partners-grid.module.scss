@@ -3,7 +3,7 @@
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    gap: 02rem;
+    gap: 1.5rem 2rem;
     width: 100%;
 
     .partnersGridItem {
@@ -11,10 +11,15 @@
         justify-content: center;
         align-items: center;
         width: 100%;
-        flex: 1 0 calc(33.33% - 2rem);
+        flex: 0 0 calc(33.33% - 2rem);
 
         @media (width >=768px) {
-            flex: 1 0 calc(25% - 2rem);
+            flex: 0 0 calc(25% - 2rem);
+            padding: 1.5rem;
+        }
+
+        @media (width >=1024px) {
+            flex: 0 0 calc(20% - 2rem);
         }
     }
 }

@@ -7,7 +7,7 @@ import { easeInOut, motion, useScroll, useTransform } from "motion/react";
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
 
-import styles from "@/styles/components/sections/services-section-tabs.module.scss";
+import styles from "@/styles/components/sections/services-section.module.scss";
 
 // Logos
 const logos = [
@@ -74,7 +74,87 @@ export default function ServicesPartBranding() {
 
     return (
 
-        <div className={`container noPaddingBottom dualCols ${styles.brandingContainer}`} data-name="branding" aria-label="Branding">
+        <div className={`container dualCols rowReverse ${styles.brandingContainer}`} data-name="branding" aria-label="Branding">
+
+            <div className={`imageCol aspectRatio1x1 hasRadius ${styles.brandingImageCol}`}>
+
+                <div ref={brandingBoardRef} className={styles.brandingBoard}>
+
+                    <motion.div {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.1 }} className={`${styles.brandingCard} ${styles.brandMarkCard}`} style={{ y: brandMarkY }} >
+
+                        <span className={styles.brandingCardEyebrow}>Brand mark</span>
+
+                        <div className={styles.brandMark}>LV</div>
+
+                        <p>Minimal geometry with a confident, premium edge.</p>
+
+                    </motion.div>
+
+                    <motion.div {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.2 }} className={`${styles.brandingCard} ${styles.brandPaletteCard}`} style={{ y: paletteY }} >
+
+                        <span className={styles.brandingCardEyebrow}>Palette</span>
+
+                        <div className={styles.brandPalette}>
+
+                            {brandPalette.map((color) => (
+
+                                <div key={color.name} className={styles.brandPaletteSwatch}>
+
+                                    <span className={styles.brandPaletteColor} style={{ backgroundColor: color.value }}></span>
+
+                                    <div>
+
+                                        <strong>{color.name}</strong>
+
+                                        <span>{color.value}</span>
+
+                                    </div>
+
+                                </div>
+
+                            ))}
+
+                        </div>
+
+                    </motion.div>
+
+                    <motion.div {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.3 }} className={`${styles.brandingCard} ${styles.brandTypeCard}`} style={{ y: typeY }} >
+
+                        <span className={styles.brandingCardEyebrow}>Typography</span>
+
+                        <div className={styles.brandTypeSpecimen}>Aa</div>
+
+                        <div className={styles.brandTypeMeta}>
+
+                            <strong>Sora</strong>
+
+                            <span>Bold, modern, high-clarity display system.</span>
+
+                        </div>
+
+                    </motion.div>
+
+                    <motion.div {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.4 }} className={`${styles.brandingCard} ${styles.brandVoiceCard}`} style={{ y: voiceY }} >
+
+                        <span className={styles.brandingCardEyebrow}>Tone of voice</span>
+
+                        <ul className={styles.brandVoiceList}>
+
+                            <li>Clear</li>
+
+                            <li>Distinct</li>
+
+                            <li>Trustworthy</li>
+
+                        </ul>
+
+                    </motion.div>
+
+                </div>
+
+                <div className={styles.backgroundImage} aria-hidden="true"></div>
+
+            </div>
 
             <div className="contentCol">
 
@@ -118,87 +198,6 @@ export default function ServicesPartBranding() {
                     btnOneClassName="primary"
                 />
 
-            </div>
-
-            <div className={`imageCol hasRadius ${styles.brandingImageCol}`}>
-                <div ref={brandingBoardRef} className={styles.brandingBoard}>
-                    <motion.div
-                        {...fadeInUp}
-                        transition={{
-                            ...fadeInUp.transition,
-                            delay: 0.1
-                        }}
-                        className={`${styles.brandingCard} ${styles.brandMarkCard}`}
-                        style={{ y: brandMarkY }}
-                    >
-                        <span className={styles.brandingCardEyebrow}>Brand mark</span>
-
-                        <div className={styles.brandMark}>LV</div>
-
-                        <p>Minimal geometry with a confident, premium edge.</p>
-                    </motion.div>
-
-                    <motion.div
-                        {...fadeInUp}
-                        transition={{
-                            ...fadeInUp.transition,
-                            delay: 0.2
-                        }}
-                        className={`${styles.brandingCard} ${styles.brandPaletteCard}`}
-                        style={{ y: paletteY }}
-                    >
-                        <span className={styles.brandingCardEyebrow}>Palette</span>
-
-                        <div className={styles.brandPalette}>
-                            {brandPalette.map((color) => (
-                                <div key={color.name} className={styles.brandPaletteSwatch}>
-                                    <span className={styles.brandPaletteColor} style={{ backgroundColor: color.value }}></span>
-                                    <div>
-                                        <strong>{color.name}</strong>
-                                        <span>{color.value}</span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        {...fadeInUp}
-                        transition={{
-                            ...fadeInUp.transition,
-                            delay: 0.3
-                        }}
-                        className={`${styles.brandingCard} ${styles.brandTypeCard}`}
-                        style={{ y: typeY }}
-                    >
-                        <span className={styles.brandingCardEyebrow}>Typography</span>
-
-                        <div className={styles.brandTypeSpecimen}>Aa</div>
-
-                        <div className={styles.brandTypeMeta}>
-                            <strong>Sora</strong>
-                            <span>Bold, modern, high-clarity display system.</span>
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        {...fadeInUp}
-                        transition={{
-                            ...fadeInUp.transition,
-                            delay: 0.4
-                        }}
-                        className={`${styles.brandingCard} ${styles.brandVoiceCard}`}
-                        style={{ y: voiceY }}
-                    >
-                        <span className={styles.brandingCardEyebrow}>Tone of voice</span>
-
-                        <ul className={styles.brandVoiceList}>
-                            <li>Clear</li>
-                            <li>Distinct</li>
-                            <li>Trustworthy</li>
-                        </ul>
-                    </motion.div>
-                </div>
             </div>
 
         </div>

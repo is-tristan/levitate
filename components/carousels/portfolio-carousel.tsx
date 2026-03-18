@@ -5,7 +5,6 @@ import { Suspense, useEffect, useRef, useState } from "react";
 
 // Next
 import Image from "next/image";
-import Link from "next/link";
 
 // Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -121,7 +120,7 @@ export default function WebsiteCarousel({
 
     return (
 
-        <section className={`row ${styles.websiteCarousel}`}>
+        <section id="portfolio" className="row">
 
             <div className={`container centered noPaddingBottom ${styles.headingContainer}`}>
 

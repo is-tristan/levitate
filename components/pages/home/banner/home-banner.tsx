@@ -20,7 +20,7 @@ export default function HomeBanner({
 
     return (
 
-        <section className={`row colorLight ${styles.banner} ${homeStyles.banner}`}>
+        <section id="banner" className={`row colorLight ${styles.banner} ${homeStyles.banner}`}>
 
             <div className={`container centered ${styles.bannerContainer}`}>
 

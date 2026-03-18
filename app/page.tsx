@@ -2,9 +2,10 @@
 import HomeBanner from "@/components/pages/home/banner/home-banner";
 import PortfolioCarousel from "@/components/carousels/portfolio-carousel";
 import PartnersGrid from "@/components/grids/partners-grid";
-import ServicesSectionTabs from "@/components/sections/services-section-tabs";
+import ServicesSectionTabs from "@/components/sections/services-section";
 import TestimonialsCarousel from "@/components/carousels/testimonials-carousel";
-import CTA from "@/components/sections/cta";
+import CTA from "@/components/sections/cta-section";
+import LogoCarousel from "@/components/carousels/logo-carousel";
 
 export default function Home() {
   return (
@@ -19,8 +20,9 @@ export default function Home() {
       />
       <PartnersGrid containerClassName="noPaddingTop noPaddingBottom" />
       <ServicesSectionTabs />
-      <TestimonialsCarousel />
+      <TestimonialsCarousel containerClassName="noPaddingTop noPaddingBottom" />
       <CTA heading="Creating a <span class='gradientAnimation'>digital impact worldwide</span>" description="We help brands explore their digital potential, through award winning, hand crafted websites." />
+      <LogoCarousel />
     </>
   );
 }

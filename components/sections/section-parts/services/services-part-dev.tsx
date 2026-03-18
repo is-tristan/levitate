@@ -7,7 +7,7 @@ import { easeInOut, motion, useScroll, useTransform } from "motion/react";
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
 
-import styles from "@/styles/components/sections/services-section-tabs.module.scss";
+import styles from "@/styles/components/sections/services-section.module.scss";
 
 // Development Services Images
 const serviceImages = [
@@ -59,11 +59,11 @@ export default function ServicesPartDevelopment() {
         offset: ["start end", "end start"]
     });
 
-    const imageOneY = useTransform(scrollYProgress, [0, 0.5, 1], [-128, 0, 0]);
-    const imageTwoY = useTransform(scrollYProgress, [0, 0.5, 1], [-96, 0, 0]);
-    const imageThreeY = useTransform(scrollYProgress, [0, 0.5, 1], [-64, 0, 0]);
-    const imageFourY = useTransform(scrollYProgress, [0, 0.5, 1], [-32, 0, 0]);
-    const imageFiveY = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 0]);
+    const imageOneY = useTransform(scrollYProgress, [0, 0.5, 1], [-270, 0, 0]);
+    const imageTwoY = useTransform(scrollYProgress, [0, 0.5, 1], [-216, 0, 0]);
+    const imageThreeY = useTransform(scrollYProgress, [0, 0.5, 1], [-162, 0, 0]);
+    const imageFourY = useTransform(scrollYProgress, [0, 0.5, 1], [-108, 0, 0]);
+    const imageFiveY = useTransform(scrollYProgress, [0, 0.5, 1], [-54, 0, 0]);
     const imageYValues = [imageOneY, imageTwoY, imageThreeY, imageFourY, imageFiveY];
     const fadeInUp = {
         initial: {
@@ -86,7 +86,38 @@ export default function ServicesPartDevelopment() {
 
     return (
 
-        <div className={`container dualCols ${styles.devContainer}`} data-name="web-development" aria-label="Web Development">
+        <div className={`container dualCols rowReverse ${styles.devContainer}`} data-name="web-development" aria-label="Web Development">
+
+            <div className={`imageCol aspectRatio1x1 hasRadius ${styles.devImageCol}`}>
+
+                <div ref={stackedImagesRef} className={styles.devStackedImages}>
+
+                    {serviceImages.map((image, index) => (
+
+                        <motion.div
+                            key={index}
+                            className={`${styles.devStackedImage} ${styles[`stackedImage-${index + 1}`]}`}
+                            style={{ y: imageYValues[index] }}
+                        >
+
+                            <Image
+                                src={image.image}
+                                alt={image.alt}
+                                fill
+                                sizes="100%"
+                                style={{ objectFit: "contain" }}
+                                priority={index === 0}
+                            />
+
+                        </motion.div>
+
+                    ))}
+
+                </div>
+
+                <div className={styles.backgroundImage} aria-hidden="true"></div>
+
+            </div>
 
             <div className="contentCol">
 
@@ -129,33 +160,6 @@ export default function ServicesPartDevelopment() {
                     urlOne="/services/web-development"
                     btnOneClassName="primary"
                 />
-
-            </div>
-
-            <div className={`imageCol hasRadius ${styles.devImageCol}`}>
-
-                <div ref={stackedImagesRef} className={styles.devStackedImages}>
-
-                    {serviceImages.map((image, index) => (
-
-                        <motion.div
-                            key={index}
-                            className={`${styles.devStackedImage} ${styles[`stackedImage-${index + 1}`]}`}
-                            style={{ y: imageYValues[index] }}
-                        >
-                            <Image
-                                src={image.image}
-                                alt={image.alt}
-                                fill
-                                sizes="100%"
-                                style={{ objectFit: "contain" }}
-                                priority={index === 0}
-                            />
-                        </motion.div>
-
-                    ))}
-
-                </div>
 
             </div>
 

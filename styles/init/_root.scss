@@ -42,7 +42,7 @@
     --backgroundAlt: #1b2430;
     --backgroundAltRgb: 27, 36, 48;
     --heading: #ffffff;
-    --text: #8b949e;
+    --text: #A6ADB5;
     --border: #272e38;
 }
 
@@ -73,7 +73,7 @@
 @media (prefers-color-scheme: light) {
     :root {
         & {
-            @include lightMode();
+            @include darkMode();
         }
     }
 }

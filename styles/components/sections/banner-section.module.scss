@@ -1,7 +1,11 @@
 .banner {
     position: relative;
     overflow: hidden;
-    min-height: calc(100vh - var(--headerHeight));
+    min-height: calc(60vh - var(--mobileHeaderHeight));
+
+    @media (width >=768px) {
+        min-height: calc(100vh - var(--headerHeight));
+    }
 
     .bannerContainer {
         position: relative;

@@ -1,6 +1,6 @@
 // Gradient Animation
 .gradientAnimation {
-    background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary));
+    background: linear-gradient(to right, var(--primary), var(--accent), #4154FF);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

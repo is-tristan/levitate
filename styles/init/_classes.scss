@@ -55,3 +55,16 @@
         }
     }
 }
+
+// Aspect Ratios
+.aspectRatio1x1 {
+    aspect-ratio: 1 / 1;
+}
+
+.aspectRatio4x3 {
+    aspect-ratio: 4 / 3;
+}
+
+.aspectRatio16x9 {
+    aspect-ratio: 16 / 9;
+}

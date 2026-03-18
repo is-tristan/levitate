@@ -1,11 +1,13 @@
 .banner {
     position: relative;
     border-radius: 0 0 1.5rem 1.5rem;
-    // width: calc(100% - 1rem);
-    // margin: 1rem auto auto;
+
+    @media (width >= 576px) {
+        border-radius: 0 0 3rem 3rem;
+    }
 
     @media (width >=1024px) {
-        border-radius: 0 0 3rem 3rem;
+        border-radius: 0 0 5rem 5rem;
     }
 
     &::before {

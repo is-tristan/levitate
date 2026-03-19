@@ -6,6 +6,7 @@ import { easeInOut, motion, useScroll, useTransform } from "motion/react";
 
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
+import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 import styles from "@/styles/components/sections/services-section.module.scss";
 
@@ -44,6 +45,7 @@ const brandPalette = [
 ]
 
 export default function ServicesPartBranding() {
+    const disableAnimation = useIsBelowBreakpoint();
     const brandingBoardRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: brandingBoardRef,
@@ -71,6 +73,7 @@ export default function ServicesPartBranding() {
             ease: easeInOut
         }
     };
+    const animationProps = disableAnimation ? {} : fadeInUp;
 
     return (
 
@@ -80,7 +83,7 @@ export default function ServicesPartBranding() {
 
                 <div ref={brandingBoardRef} className={styles.brandingBoard}>
 
-                    <motion.div {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.1 }} className={`${styles.brandingCard} ${styles.brandMarkCard}`} style={{ y: brandMarkY }} >
+                    <motion.div {...animationProps} transition={disableAnimation ? undefined : { ...fadeInUp.transition, delay: 0.1 }} className={`${styles.brandingCard} ${styles.brandMarkCard}`} style={disableAnimation ? undefined : { y: brandMarkY }} >
 
                         <span className={styles.brandingCardEyebrow}>Brand mark</span>
 
@@ -90,7 +93,7 @@ export default function ServicesPartBranding() {
 
                     </motion.div>
 
-                    <motion.div {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.2 }} className={`${styles.brandingCard} ${styles.brandPaletteCard}`} style={{ y: paletteY }} >
+                    <motion.div {...animationProps} transition={disableAnimation ? undefined : { ...fadeInUp.transition, delay: 0.2 }} className={`${styles.brandingCard} ${styles.brandPaletteCard}`} style={disableAnimation ? undefined : { y: paletteY }} >
 
                         <span className={styles.brandingCardEyebrow}>Palette</span>
 
@@ -118,7 +121,7 @@ export default function ServicesPartBranding() {
 
                     </motion.div>
 
-                    <motion.div {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.3 }} className={`${styles.brandingCard} ${styles.brandTypeCard}`} style={{ y: typeY }} >
+                    <motion.div {...animationProps} transition={disableAnimation ? undefined : { ...fadeInUp.transition, delay: 0.3 }} className={`${styles.brandingCard} ${styles.brandTypeCard}`} style={disableAnimation ? undefined : { y: typeY }} >
 
                         <span className={styles.brandingCardEyebrow}>Typography</span>
 
@@ -134,7 +137,7 @@ export default function ServicesPartBranding() {
 
                     </motion.div>
 
-                    <motion.div {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.4 }} className={`${styles.brandingCard} ${styles.brandVoiceCard}`} style={{ y: voiceY }} >
+                    <motion.div {...animationProps} transition={disableAnimation ? undefined : { ...fadeInUp.transition, delay: 0.4 }} className={`${styles.brandingCard} ${styles.brandVoiceCard}`} style={disableAnimation ? undefined : { y: voiceY }} >
 
                         <span className={styles.brandingCardEyebrow}>Tone of voice</span>
 
@@ -171,8 +174,8 @@ export default function ServicesPartBranding() {
                     {logos.map((logo, index) => (
 
                         <motion.a
-                            {...fadeInUp}
-                            transition={{
+                            {...animationProps}
+                            transition={disableAnimation ? undefined : {
                                 ...fadeInUp.transition,
                                 delay: 0.3 + index * 0.1
                             }}

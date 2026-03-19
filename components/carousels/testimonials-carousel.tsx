@@ -12,7 +12,7 @@ import { testimonials } from "@/data/testimonials";
 // Imports
 import Content from "@/components/content/content";
 import ReviewItems from "@/components/items/review-items";
-import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
+import { useDelayedViewportMount, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -36,21 +36,21 @@ const testimonialsOptions = {
     rewindByDrag: true,
     arrows: false,
     pagination: false,
-    wheel: true,
-    releaseWheel: true,
-    wheelSleep: 500,
     perPage: 1,
     perMove: 1,
     gap: "0",
     easing: "cubic-bezier(0.4, 0, 0.2, 1)",
     autoplay: true,
-    interval: 7500
+    interval: 6000,
+    pauseOnHover: false,
+    pauseOnFocus: false,
 }
 
 export default function TestimonialsCarousel({
     containerClassName,
 }: TestimonialsCarouselProps) {
-    const [progressWidth, setProgressWidth] = useState("0%");
+    const [progressWidth, setProgressWidth] = useState(`${100 / testimonials.length}%`);
+    const { isMounted, viewportRef } = useDelayedViewportMount<HTMLDivElement>();
 
     const updateProgress = (splide: SplideInstance) => {
         const progress = ((splide.index + 1) / testimonials.length) * 100;
@@ -78,39 +78,43 @@ export default function TestimonialsCarousel({
 
             </div>
 
-            <div className={`container noPaddingTop ${styles.testimonialsContainer}`}>
+            <div ref={viewportRef} className={`container noPaddingTop ${styles.testimonialsContainer}`}>
 
-                <Splide
-                    options={testimonialsOptions}
-                    onMounted={updateProgress}
-                    onMoved={updateProgress}
-                >
+                {isMounted ? (
+                    <Splide
+                        className={"hasArrows"}
+                        options={testimonialsOptions}
+                        onMounted={updateProgress}
+                        onMoved={updateProgress}
+                    >
 
-                    {testimonials.map((testimonial, index) => (
+                        {testimonials.map((testimonial, index) => (
 
-                        <SplideSlide key={index}>
+                            <SplideSlide key={index}>
 
-                            <div className={styles.testimonial}>
+                                <div className={styles.testimonial}>
 
-                                <div className={styles.testimonialImage}>
+                                    <div className={styles.testimonialImage}>
 
-                                    <Image src={testimonial.image} alt={testimonial.name} width={576} height={576} sizes="100%" loading="lazy" style={{ objectFit: "cover", objectPosition: "center top" }} />
+                                        <Image src={testimonial.image} alt={testimonial.name} width={576} height={576} sizes="100%" loading="lazy" style={{ objectFit: "cover", objectPosition: "center top" }} />
 
-                                </div>
+                                    </div>
 
-                                <div className={styles.testimonialContent}>
+                                    <div className={styles.testimonialContent}>
 
-                                    <p>{testimonial.quote}</p>
+                                        <p>{testimonial.quote}</p>
 
-                                    <div className={styles.testimonialMeta}>
+                                        <div className={styles.testimonialMeta}>
 
-                                        <div className={styles.testimonialMetaIcon} dangerouslySetInnerHTML={{ __html: quoteIcon }}></div>
+                                            <div className={styles.testimonialMetaIcon} dangerouslySetInnerHTML={{ __html: quoteIcon }}></div>
 
-                                        <div className={styles.testimonialMetaContent}>
+                                            <div className={styles.testimonialMetaContent}>
 
-                                            <h3 className={`colorPrimary`}>{testimonial.name}</h3>
+                                                <h3 className={`colorPrimary`}>{testimonial.name}</h3>
 
-                                            <span>{testimonial.position}</span>
+                                                <span>{testimonial.position}</span>
+
+                                            </div>
 
                                         </div>
 
@@ -118,13 +122,42 @@ export default function TestimonialsCarousel({
 
                                 </div>
 
+                            </SplideSlide>
+
+                        ))}
+
+                    </Splide>
+                ) : (
+                    <div className={styles.testimonial}>
+
+                        <div className={styles.testimonialImage}>
+
+                            <Image src={testimonials[0].image} alt={testimonials[0].name} width={576} height={576} sizes="100%" loading="lazy" style={{ objectFit: "cover", objectPosition: "center top" }} />
+
+                        </div>
+
+                        <div className={styles.testimonialContent}>
+
+                            <p>{testimonials[0].quote}</p>
+
+                            <div className={styles.testimonialMeta}>
+
+                                <div className={styles.testimonialMetaIcon} dangerouslySetInnerHTML={{ __html: quoteIcon }}></div>
+
+                                <div className={styles.testimonialMetaContent}>
+
+                                    <h3 className={`colorPrimary`}>{testimonials[0].name}</h3>
+
+                                    <span>{testimonials[0].position}</span>
+
+                                </div>
+
                             </div>
 
-                        </SplideSlide>
+                        </div>
 
-                    ))}
-
-                </Splide>
+                    </div>
+                )}
 
                 <div className={styles.testimonialsProgress}>
 

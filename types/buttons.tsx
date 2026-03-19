@@ -1,5 +1,6 @@
 export type ButtonsProps = {
     animationDelay?: number;
+    disableAnimation?: boolean;
     buttonContainerClassName?: string;
     buttonAlignment?: "default" | "centered";
     btnOneClassName?: string;

@@ -6,6 +6,7 @@ import { easeInOut, motion, useScroll, useTransform } from "motion/react";
 
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
+import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 import styles from "@/styles/components/sections/services-section.module.scss";
 
@@ -45,6 +46,7 @@ const graphLinePath = graphPoints
 const graphAreaPath = `${graphLinePath} L 492 248 L 32 248 Z`;
 
 export default function ServicesPartSEO() {
+    const disableAnimation = useIsBelowBreakpoint();
     const graphRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: graphRef,
@@ -77,6 +79,7 @@ export default function ServicesPartSEO() {
             ease: easeInOut
         }
     };
+    const animationProps = disableAnimation ? {} : fadeInUp;
 
     return (
 
@@ -86,7 +89,10 @@ export default function ServicesPartSEO() {
                 <motion.div
                     ref={graphRef}
                     className={styles.seoGraph}
-                    style={{
+                    style={disableAnimation ? {
+                        opacity: 1,
+                        y: 0
+                    } : {
                         opacity: graphOpacity,
                         y: graphY
                     }}
@@ -106,7 +112,9 @@ export default function ServicesPartSEO() {
                         <motion.path
                             d={graphAreaPath}
                             className={styles.seoGraphArea}
-                            style={{
+                            style={disableAnimation ? {
+                                opacity: 1
+                            } : {
                                 opacity: graphAreaOpacity
                             }}
                         />
@@ -114,7 +122,10 @@ export default function ServicesPartSEO() {
                         <motion.path
                             d={graphLinePath}
                             className={styles.seoGraphLine}
-                            style={{
+                            style={disableAnimation ? {
+                                pathLength: 1,
+                                opacity: 1
+                            } : {
                                 pathLength: graphLinePathLength,
                                 opacity: graphLineOpacity
                             }}
@@ -127,7 +138,11 @@ export default function ServicesPartSEO() {
                                 cy={point.y}
                                 r="7"
                                 className={styles.seoGraphPoint}
-                                style={{
+                                style={disableAnimation ? {
+                                    opacity: 1,
+                                    scale: 1,
+                                    transformOrigin: `${point.x}px ${point.y}px`
+                                } : {
                                     opacity: pointProgress[index].opacity,
                                     scale: pointProgress[index].scale,
                                     transformOrigin: `${point.x}px ${point.y}px`
@@ -164,8 +179,8 @@ export default function ServicesPartSEO() {
                     {logos.map((logo, index) => (
 
                         <motion.a
-                            {...fadeInUp}
-                            transition={{
+                            {...animationProps}
+                            transition={disableAnimation ? undefined : {
                                 ...fadeInUp.transition,
                                 delay: 0.3 + index * 0.1
                             }}

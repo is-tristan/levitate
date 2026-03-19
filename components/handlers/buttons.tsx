@@ -38,6 +38,7 @@ const glitchOptions: PowerGlitchOptions = {
 };
 export default function Buttons({
     animationDelay = 0,
+    disableAnimation = false,
     buttonContainerClassName,
     buttonAlignment,
     btnOneClassName,
@@ -74,7 +75,7 @@ export default function Buttons({
     };
 
     useEffect(() => {
-        if (!containerRef.current) {
+        if (!containerRef.current || disableAnimation) {
             return;
         }
 
@@ -83,12 +84,14 @@ export default function Buttons({
         buttons.forEach(button => {
             PowerGlitch.glitch(button as HTMLElement, glitchOptions);
         });
-    }, []);
+    }, [disableAnimation]);
+
+    const animationProps = disableAnimation ? {} : fadeInUp;
 
     return (
 
         <motion.div
-            {...fadeInUp}
+            {...animationProps}
             ref={containerRef}
             className={`buttons ${buttonContainerClassName || undefined} ${buttonAlignment === "centered" ? "centered" : undefined}`}
         >

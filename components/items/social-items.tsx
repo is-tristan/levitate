@@ -8,22 +8,17 @@ const socialItems = [
     {
         ariaLabel: "Follow us on Facebook",
         icon: facebookLogoAlt,
-        url: "https://www.facebook.com/your-page"
-    },
-    {
-        ariaLabel: "Follow us on X",
-        icon: xLogo,
-        url: "https://www.x.com/your-page"
+        url: "https://www.facebook.com/LevitateOnline"
     },
     {
         ariaLabel: "Follow us on Instagram",
         icon: instagramLogo,
-        url: "https://www.instagram.com/your-page"
+        url: "https://www.instagram.com/levitate.digital/"
     },
     {
         ariaLabel: "Follow us on LinkedIn",
         icon: linkedinLogo,
-        url: "https://www.linkedin.com/your-page"
+        url: "https://www.linkedin.com/company/levitatedigital"
     }
 ]
 

@@ -1,6 +1,9 @@
 "use client";
 
+// Next
 import Image from "next/image";
+
+// Motion
 import { easeInOut, motion } from "motion/react";
 
 // Data
@@ -8,6 +11,9 @@ import { partnerLogos } from "@/data/partner-logos";
 
 // Styles
 import styles from "@/styles/components/grids/partners-grid.module.scss";
+
+// Imports
+import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Types
 type PartnersGridProps = {
@@ -26,7 +32,7 @@ export default function PartnersGrid({
 
                 <div className="heading centered hasFullStop">
 
-                    <h3 className={styles.heading} style={{fontSize: "1.25rem", fontFamily: "var(--font-dm-sans)", fontWeight: "700"}}>Partnered and <strong className="gradientAnimation">certified</strong> by world-leading digital platforms</h3>
+                    <h3 className={styles.heading} style={{ fontSize: "1.25rem", fontFamily: "var(--font-dm-sans)", fontWeight: "700" }}>Partnered and <strong className="gradientAnimation">certified</strong> by world-leading digital platforms</h3>
 
                 </div>
 
@@ -56,7 +62,17 @@ export default function PartnersGrid({
                             key={partner.name}
                         >
 
-                            <Image src={partner.imageLight} alt={partner.name} width={128} height={64} style={{ objectFit: "contain" }} loading="lazy" />
+                            <ViewportBreakpoint mode="mobile">
+
+                                <Image src={partner.image} alt={partner.name} width={128} height={64} style={{ objectFit: "contain" }} loading="lazy" />
+
+                            </ViewportBreakpoint>
+
+                            <ViewportBreakpoint mode="desktop">
+
+                                <Image src={partner.image} alt={partner.name} width={256} height={64} style={{ objectFit: "contain" }} loading="lazy" />
+
+                            </ViewportBreakpoint>
 
                         </motion.div>
 

@@ -16,11 +16,17 @@ type ReviewItemsProps = {
 const reviewItems = [
     {
         ariaLabel: "Facebook Reviews",
-        icon: facebookLogo
+        icon: facebookLogo,
+        reviewCount: 110,
+        reviewRating: 5.0,
+        url: "https://www.facebook.com/LevitateOnline/reviews/",
     },
     {
         ariaLabel: "Google Reviews",
-        icon: googleLogoMark
+        icon: googleLogoMark,
+        reviewCount: 19,
+        reviewRating: 4.9,
+        url: "https://reviewthis.biz/levitate",
     }
 ];
 
@@ -36,7 +42,7 @@ export default function ReviewItems({
             {reviewItems.map((item, index) => (
                 <motion.a
                     key={item.ariaLabel}
-                    href="#"
+                    href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.reviewLogo}
@@ -68,9 +74,10 @@ export default function ReviewItems({
 
                     </div>
 
-                    <span><strong>5.0</strong> Based on <strong className="colorPrimary">114+</strong> reviews</span>
+                    <span><strong>{item.reviewRating}</strong> Based on <strong className="colorPrimary">{item.reviewCount}+</strong> reviews</span>
 
                 </motion.a>
+
             ))}
 
         </div>

@@ -14,6 +14,7 @@ type HeadingProps = {
     className?: string;
     layout?: "default" | "centered";
     hasFullStop?: boolean;
+    disableAnimation?: boolean;
 } & Pick<ButtonsProps, "btnOneClassName" | "btnTwoClassName" | "labelOne" | "labelTwo" | "urlOne" | "urlTwo" | "targetOne" | "targetTwo" | "relOne" | "relTwo">;
 
 
@@ -26,6 +27,7 @@ export default function Heading({
     className,
     layout = "default",
     hasFullStop = false,
+    disableAnimation = false,
     btnOneClassName,
     btnTwoClassName,
     labelOne,
@@ -55,6 +57,7 @@ export default function Heading({
             ease: easeInOut
         }
     };
+    const animationProps = disableAnimation ? {} : fadeInUp;
 
     return (
 
@@ -62,7 +65,7 @@ export default function Heading({
 
             {eyebrow && (
                 <motion.span
-                    {...fadeInUp}
+                    {...animationProps}
                     className="eyebrow"
                 >
                     {eyebrow}
@@ -70,7 +73,7 @@ export default function Heading({
             )}
 
             <motion.div
-                {...fadeInUp}
+                {...animationProps}
                 className={`heading ${className || undefined} ${layout === "centered" ? "centered" : undefined} ${hasFullStop ? "hasFullStop" : undefined}`}
             >
 
@@ -90,8 +93,8 @@ export default function Heading({
 
             {description && (
                 <motion.p
-                    {...fadeInUp}
-                    transition={{
+                    {...animationProps}
+                    transition={disableAnimation ? undefined : {
                         ...fadeInUp.transition,
                         delay: 0.2
                     }}
@@ -103,6 +106,7 @@ export default function Heading({
 
                 <Buttons
                     animationDelay={0.3}
+                    disableAnimation={disableAnimation}
                     btnOneClassName={btnOneClassName || undefined}
                     btnTwoClassName={btnTwoClassName || undefined}
                     labelOne={labelOne || undefined}

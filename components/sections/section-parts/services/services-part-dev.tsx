@@ -6,29 +6,30 @@ import { easeInOut, motion, useScroll, useTransform } from "motion/react";
 
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
+import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 import styles from "@/styles/components/sections/services-section.module.scss";
 
 // Development Services Images
 const serviceImages = [
     {
-        image: "/images/services/development/web-image-1.webp",
+        image: "/images/services/development/phone-1.webp",
         alt: "Web Development 1",
     },
     {
-        image: "/images/services/development/web-image-2.webp",
+        image: "/images/services/development/phone-2.webp",
         alt: "Web Development 2",
     },
     {
-        image: "/images/services/development/web-image-3.webp",
+        image: "/images/services/development/phone-3.webp",
         alt: "Web Development 3",
     },
     {
-        image: "/images/services/development/web-image-4.webp",
+        image: "/images/services/development/phone-4.webp",
         alt: "Web Development 4",
     },
     {
-        image: "/images/services/development/web-image-5.webp",
+        image: "/images/services/development/phone-5.webp",
         alt: "Web Development 5",
     },
 ]
@@ -53,6 +54,7 @@ const logos = [
 ]
 
 export default function ServicesPartDevelopment() {
+    const disableAnimation = useIsBelowBreakpoint();
     const stackedImagesRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: stackedImagesRef,
@@ -83,6 +85,7 @@ export default function ServicesPartDevelopment() {
             ease: easeInOut
         }
     };
+    const animationProps = disableAnimation ? {} : fadeInUp;
 
     return (
 
@@ -97,7 +100,7 @@ export default function ServicesPartDevelopment() {
                         <motion.div
                             key={index}
                             className={`${styles.devStackedImage} ${styles[`stackedImage-${index + 1}`]}`}
-                            style={{ y: imageYValues[index] }}
+                            style={disableAnimation ? undefined : { y: imageYValues[index] }}
                         >
 
                             <Image
@@ -134,8 +137,8 @@ export default function ServicesPartDevelopment() {
                     {logos.map((logo, index) => (
 
                         <motion.a
-                            {...fadeInUp}
-                            transition={{
+                            {...animationProps}
+                            transition={disableAnimation ? undefined : {
                                 ...fadeInUp.transition,
                                 delay: 0.3 + index * 0.1
                             }}

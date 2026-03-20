@@ -3,6 +3,7 @@
 // GSAP
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useMotionValue } from "motion/react";
 
 // React
 import { useLayoutEffect, useRef } from "react";
@@ -18,6 +19,7 @@ import styles from "@/styles/components/sections/services-section.module.scss";
 export default function ServicesSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const firstPanelProgress = useMotionValue(0);
 
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -42,6 +44,7 @@ export default function ServicesSection() {
         const matchMedia = gsap.matchMedia();
 
         matchMedia.add("(min-width: 1024px)", () => {
+            firstPanelProgress.set(0);
             panels.forEach((panel, index) => {
                 const nextPanel = panels[index + 1];
                 ScrollTrigger.create({
@@ -53,6 +56,7 @@ export default function ServicesSection() {
                     pinSpacing: false,
                     anticipatePin: 1,
                     invalidateOnRefresh: true,
+                    onUpdate: index === 0 ? (self) => firstPanelProgress.set(self.progress) : undefined,
                 });
             });
 
@@ -62,6 +66,7 @@ export default function ServicesSection() {
             window.addEventListener("load", refreshScrollTrigger);
 
             return () => {
+                firstPanelProgress.set(0);
                 window.clearTimeout(refreshTimeout);
                 window.removeEventListener("load", refreshScrollTrigger);
             };
@@ -82,7 +87,7 @@ export default function ServicesSection() {
 
             <div ref={setPanelRef(0)} className={styles.servicePanel} style={{ zIndex: 1 }}>
 
-                <ServicesPartDevelopment />
+                <ServicesPartDevelopment scrollProgress={firstPanelProgress} />
 
             </div>
 

@@ -1,5 +1,5 @@
 // Components
-import HomeBanner from "@/components/pages/home/banner/home-banner";
+import GradientBanner from "@/components/sections/gradient-banner";
 import PortfolioCarousel from "@/components/carousels/portfolio-carousel";
 import PartnersGrid from "@/components/grids/partners-grid";
 import ServicesSection from "@/components/sections/services-section";
@@ -13,7 +13,7 @@ export default function Home() {
 
     <>
 
-      <HomeBanner
+      <GradientBanner
         heading="Bespoke websites that <span class='gradientAnimation'>get results</span>"
         description="We help ambitious brands explore their full digital potential through award-winning, handcrafted websites that blend creativity, strategy, and performance."
       />

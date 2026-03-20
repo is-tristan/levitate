@@ -152,22 +152,42 @@
 
             &.stackedImage-1 {
                 z-index: 5;
+
+                @media (width < 1024px) {
+                    top: -10rem;
+                }
             }
 
             &.stackedImage-2 {
                 z-index: 4;
+
+                @media (width < 1024px) {
+                    top: -7rem;
+                }
             }
 
             &.stackedImage-3 {
                 z-index: 3;
+
+                @media (width < 1024px) {
+                    top: -4rem;
+                }
             }
 
             &.stackedImage-4 {
                 z-index: 2;
+
+                @media (width < 1024px) {
+                    top: -1rem;
+                }
             }
 
             &.stackedImage-5 {
                 z-index: 1;
+
+                @media (width < 1024px) {
+                    top: 3rem;
+                }
             }
         }
     }
@@ -311,15 +331,16 @@
     .brandingImageCol {
         display: flex;
         justify-content: center;
-        padding: 2rem;
         position: relative;
 
         @media (width >=768px) {
             align-items: center;
+            padding: 2rem;
         }
 
         @media (width <1024px) {
             overflow: hidden;
+            aspect-ratio: 1/1;
         }
 
         .backgroundImage {
@@ -330,8 +351,11 @@
     .brandingBoard {
         position: relative;
         width: 100%;
-        max-width: 42rem;
-        min-height: 32rem;
+
+        @media (width >=1024px) {
+            max-width: 42rem;
+            min-height: 32rem;
+        }
     }
 
     .brandingCard {
@@ -350,25 +374,32 @@
         @media (width >=768px) {
             padding: 1.5rem;
         }
-    }
 
-    .brandingCardEyebrow {
-        font-size: 0.75rem;
-        font-weight: 600;
-        line-height: 1;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: rgba(var(--lightRgb), 0.72);
+        .brandingCardEyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(var(--lightRgb), 0.72);
+        }
     }
 
     .brandMarkCard {
         top: 0;
-        left: -1.5rem;
+        left: 0;
         z-index: 4;
         width: min(100%, 18rem);
 
-        @media (width >=768px) {
-            left: 0;
+        @media (width < 480px) {
+            scale: 0.75;
+            left: -2.25rem;
+            top: -1.5rem;
+        }
+
+        @media (width < 1024px) {
+            opacity: 1 !important;
+            transform: unset !important;
         }
 
         p {
@@ -377,31 +408,39 @@
             line-height: 1.5;
             color: rgba(var(--lightRgb), 0.84);
         }
-    }
 
-    .brandMark {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 6.5rem;
-        height: 6.5rem;
-        border-radius: 1.5rem;
-        background: linear-gradient(135deg, rgba(249, 115, 22, 0.9), rgba(255, 255, 255, 0.14));
-        font-size: 2rem;
-        font-weight: 700;
-        line-height: 1;
-        letter-spacing: -0.08em;
-        box-shadow: 0 1rem 2.5rem rgba(249, 115, 22, 0.25);
+        .brandMark {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 6.5rem;
+            height: 6.5rem;
+            border-radius: 1.5rem;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.9), rgba(255, 255, 255, 0.14));
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.08em;
+            box-shadow: 0 1rem 2.5rem rgba(249, 115, 22, 0.25);
+        }
+
     }
 
     .brandPaletteCard {
         top: 5rem;
-        right: -1.5rem;
+        right: 0;
         z-index: 3;
         width: min(100%, 17rem);
 
-        @media (width >=768px) {
-            right: 0;
+        @media (width < 480px) {
+            scale: 0.75;
+            right: -2rem;
+            top: 0;
+            z-index: 4;
+        }
+
+        @media (width < 1024px) {
+            opacity: 1 !important;
         }
     }
 
@@ -443,14 +482,22 @@
     }
 
     .brandTypeCard {
-        bottom: 7.5rem;
-        left: -1.5rem;
+        bottom: 0;
+        left: 0;
         z-index: 2;
         width: min(100%, 15rem);
+        height: max-content;
 
-        @media (width >=768px) {
-            bottom: 0;
-            left: 2rem;
+        @media (width < 480px) {
+            top: 8.5rem;
+            left: -1.5rem;
+            scale: 0.6;
+            z-index: 2;
+        }
+
+        @media (width < 1024px) {
+            opacity: 1 !important;
+            transform: unset !important;
         }
     }
 
@@ -480,15 +527,29 @@
     }
 
     .brandVoiceCard {
-        display: none;
+        display: flex;
         right: 2rem;
         bottom: 2.5rem;
         z-index: 1;
         width: min(100%, 14rem);
+        height: max-content;
 
-        @media (width >=768px) {
-            display: flex;
+        @media (width < 480px) {
+            top: 10rem;
+            right: -2.5rem;
+            scale: 0.6;
+            z-index: 5;
         }
+
+        @media (width >=576px) and (width < 1024px) {
+            top: 0;
+            right: 0;
+        }
+
+        @media (width < 1024px) {
+            opacity: 1 !important;
+        }
+
     }
 
     .brandVoiceList {

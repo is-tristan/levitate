@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { easeInOut, motion, useScroll, useTransform } from "motion/react";
+import { easeInOut, motion, type MotionValue, useTransform } from "motion/react";
 
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
@@ -53,19 +52,18 @@ const logos = [
     },
 ]
 
-export default function ServicesPartDevelopment() {
-    const disableAnimation = useIsBelowBreakpoint();
-    const stackedImagesRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: stackedImagesRef,
-        offset: ["start end", "end start"]
-    });
+type ServicesPartDevelopmentProps = {
+    scrollProgress: MotionValue<number>;
+};
 
-    const imageOneY = useTransform(scrollYProgress, [0, 0.5, 1], [-270, 0, 0]);
-    const imageTwoY = useTransform(scrollYProgress, [0, 0.5, 1], [-216, 0, 0]);
-    const imageThreeY = useTransform(scrollYProgress, [0, 0.5, 1], [-162, 0, 0]);
-    const imageFourY = useTransform(scrollYProgress, [0, 0.5, 1], [-108, 0, 0]);
-    const imageFiveY = useTransform(scrollYProgress, [0, 0.5, 1], [-54, 0, 0]);
+export default function ServicesPartDevelopment({ scrollProgress }: ServicesPartDevelopmentProps) {
+    const disableAnimation = useIsBelowBreakpoint();
+
+    const imageOneY = useTransform(scrollProgress, [0, 0.14, 0.78], [0, 0, -360]);
+    const imageTwoY = useTransform(scrollProgress, [0, 0.14, 0.78], [0, 0, -288]);
+    const imageThreeY = useTransform(scrollProgress, [0, 0.14, 0.78], [0, 0, -216]);
+    const imageFourY = useTransform(scrollProgress, [0, 0.14, 0.78], [0, 0, -144]);
+    const imageFiveY = useTransform(scrollProgress, [0, 0.14, 0.78], [0, 0, -72]);
     const imageYValues = [imageOneY, imageTwoY, imageThreeY, imageFourY, imageFiveY];
     const fadeInUp = {
         initial: {
@@ -93,7 +91,7 @@ export default function ServicesPartDevelopment() {
 
             <div className={`imageCol aspectRatio1x1 hasRadius ${styles.devImageCol}`}>
 
-                <div ref={stackedImagesRef} className={styles.devStackedImages}>
+                <div className={styles.devStackedImages}>
 
                     {serviceImages.map((image, index) => (
 

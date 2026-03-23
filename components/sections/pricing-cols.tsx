@@ -63,7 +63,7 @@ export default async function PricingCols() {
 
     return (
 
-        <section className="row">
+        <section id="pricing" className="row">
 
             <div className="container noPaddingTop noPaddingBottom centered">
 

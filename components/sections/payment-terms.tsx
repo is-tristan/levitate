@@ -14,7 +14,7 @@ export default function PaymentTerms() {
 
     return (
 
-        <section className="row">
+        <section id="payment-terms" className="row">
 
             <div className="container centered noPaddingBottom">
 

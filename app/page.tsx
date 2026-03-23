@@ -20,11 +20,11 @@ export default function Home() {
 
       <PortfolioCarousel heading="We have built over <span class='gradientAnimation'>600+ websites</span>, here are our best" />
 
-      <PartnersGrid containerClassName="noPaddingTop noPaddingBottom" />
+      <PartnersGrid />
 
       <ServicesSection />
 
-      <TestimonialsCarousel containerClassName="noPaddingTop noPaddingBottom" />
+      <TestimonialsCarousel containerClassName="noPaddingBottom" />
 
       <CTA />
 

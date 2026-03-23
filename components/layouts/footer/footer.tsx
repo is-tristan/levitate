@@ -37,6 +37,8 @@ export default function Footer() {
 
                     </div>
 
+                    <p style={{maxWidth: "25rem"}}>Levitate is a web design agency based in Cardiff, Wales. We create beautiful, performance-driven websites that engage users and convert visitors into customers.</p>
+
                     <div className={styles.footerLogos}>
 
                         <a href="https://madeinbritain.com" target="_blank" rel="noopener noreferrer">

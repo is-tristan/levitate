@@ -1,0 +1,133 @@
+@use "../../init/mixins" as *;
+
+.form {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2rem;
+    width: 100%;
+    background: var(--backgroundAlt);
+    padding: 1.5rem;
+    border-radius: var(--borderRadius);
+    overflow: hidden;
+
+    @media (width >=768px) {
+        padding: 2rem;
+    }
+
+    @media (width >=1024px) {
+        padding: 3rem;
+    }
+}
+
+.formFields {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.formField {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+
+    &.formFieldHalf {
+        @media (width >=768px) {
+            flex: 0 0 calc(50% - 0.625rem);
+        }
+    }
+
+    &.formFieldCheckbox {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 0.5rem;
+
+        input {
+            width: auto;
+            height: auto;
+            padding: 0;
+            margin: 0;
+            border: none;
+            background: none;
+            border-radius: 0;
+            cursor: pointer;
+            transition: var(--ease);
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: underline;
+            transition: var(--ease);
+
+            &:hover {
+                color: var(--primary);
+            }
+        }
+    }
+
+    label {
+        font-family: var(--heading);
+        color: var(--text);
+        line-height: 1;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        padding: 0;
+        margin: 0;
+
+        @media (width >=1024px) {
+            font-size: 0.8rem;
+        }
+    }
+
+    input:not([type="checkbox"]),
+    textarea {
+        font-family: var(--text);
+        font-weight: 500;
+        color: var(--text);
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: calc(var(--borderRadius) / 2);
+        padding: 0.75rem 1rem;
+        min-height: 2.75rem;
+        width: 100%;
+        transition: var(--ease);
+
+        &:active,
+        &:focus {
+            border-color: var(--primary);
+        }
+    }
+
+    textarea {
+        min-height: 6rem;
+    }
+}
+
+.formFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+
+    button {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        z-index: 10;
+        inset: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+    }
+}

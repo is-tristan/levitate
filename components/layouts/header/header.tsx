@@ -80,7 +80,7 @@ export default function Header() {
 
                     <ViewportBreakpoint mode="desktop">
 
-                        <div className={styles.nav}>
+                        <div id="nav" className={styles.nav}>
 
                             {
                                 menuItems.map((item, index) => (
@@ -156,7 +156,7 @@ export default function Header() {
 
                     <ViewportBreakpoint mode="mobile">
 
-                        <NavToggle handleActive={handleMenuActive} handleClose={handleMenuClose} isActive={isMenuActive} />
+                        <NavToggle id="navToggle" handleActive={handleMenuActive} handleClose={handleMenuClose} isActive={isMenuActive} />
 
                     </ViewportBreakpoint>
 

@@ -3,9 +3,12 @@ import GradientBanner from "@/components/sections/gradient-banner";
 import PortfolioCarousel from "@/components/carousels/portfolio-carousel";
 import PartnersGrid from "@/components/grids/partners-grid";
 import ServicesSection from "@/components/sections/services-section";
+import PricingCols from "@/components/sections/pricing-cols";
+import PaymentTerms from "@/components/sections/payment-terms";
 import TestimonialsCarousel from "@/components/carousels/testimonials-carousel";
 import CTA from "@/components/sections/cta-section";
 import LogoCarousel from "@/components/carousels/logo-carousel";
+import ContactSection from "@/components/sections/contact-section";
 
 export default function GoogleAds() {
 
@@ -20,19 +23,23 @@ export default function GoogleAds() {
         urlTwo="#portfolio"
       />
 
-      <PortfolioCarousel
-        heading="We've powered over <span class='gradientAnimation'>600+ businesses</span> in South Wales"
-      />
+      <PortfolioCarousel heading="We've powered over <span class='gradientAnimation'>600+ businesses</span> in South Wales" />
 
-      <PartnersGrid containerClassName="noPaddingTop noPaddingBottom" />
+      <PartnersGrid />
 
-      <ServicesSection />
+      <ServicesSection hasCardiffOffice={true} />
 
-      <TestimonialsCarousel containerClassName="noPaddingTop noPaddingBottom" />
+      <PricingCols />
 
-      <CTA heading="Creating a <span class='gradientAnimation'>digital impact worldwide</span>" description="We help brands explore their digital potential, through award winning, hand crafted websites." />
+      <PaymentTerms />
+
+      <TestimonialsCarousel containerClassName="noPaddingBottom" />
+
+      <CTA />
 
       <LogoCarousel />
+
+      <ContactSection />
 
     </>
 

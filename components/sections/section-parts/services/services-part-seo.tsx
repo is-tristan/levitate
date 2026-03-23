@@ -159,16 +159,16 @@ export default function ServicesPartSEO() {
 
                 <motion.div
                     className={styles.logos}
-                    variants={disableAnimation ? undefined : logoVariants}
-                    initial={disableAnimation ? undefined : "hidden"}
-                    whileInView={disableAnimation ? undefined : "visible"}
-                    viewport={disableAnimation ? undefined : revealViewport}
+                    variants={logoVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={revealViewport}
                 >
 
                     {logos.map((logo) => (
 
                         <motion.a
-                            variants={disableAnimation ? undefined : revealItemVariants}
+                            variants={revealItemVariants}
                             href={logo.url}
                             target="_blank"
                             rel="noopener noreferrer"

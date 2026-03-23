@@ -13,8 +13,17 @@
     transition: var(--ease);
 
     &.scrolled {
-        backdrop-filter: blur(2rem);
-        background: rgba(var(--backgroundRgb), 0.25);
+        backdrop-filter: blur(0.5rem);
+        background: rgba(var(--backgroundRgb), 0.5);
+
+        .headerContainer {
+            height: calc(var(--mobileHeaderHeight) - 1rem);
+        }
+
+        @media (width >=1024px) {
+            backdrop-filter: blur(2rem);
+            background: rgba(var(--backgroundRgb), 0.25);
+        }
 
         .logoText {
             transform: translateX(-1rem);
@@ -35,9 +44,12 @@
     position: relative;
 
     @media all {
-        height: var(--headerHeight);
         padding-top: 0;
         padding-bottom: 0;
+    }
+
+    @media (width >=1024px) {
+        height: var(--headerHeight);
     }
 }
 

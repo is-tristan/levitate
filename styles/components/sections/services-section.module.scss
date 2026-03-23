@@ -2,7 +2,6 @@
 
 // Services Section
 .servicesSection {
-    position: relative;
 
     .servicePanel {
         position: relative;
@@ -17,7 +16,7 @@
 
     @media (width >=1024px) {
         .servicePanel {
-            min-height: calc(100svh - var(--headerHeight));
+            min-height: calc(100vh - var(--headerHeight));
             background: var(--background);
         }
     }
@@ -143,12 +142,21 @@
             overflow: hidden;
         }
 
+        @media (width < 1024px) {
+            opacity: 1 !important;
+        }
+
         .devStackedImage {
             position: absolute;
             inset: 0;
             margin: auto;
             width: calc(100% - 2rem);
             height: calc(100% - 2rem);
+
+            @media (width < 1024px) {
+                opacity: 1 !important;
+                transform: unset !important;
+            }
 
             &.stackedImage-1 {
                 z-index: 5;
@@ -162,7 +170,7 @@
                 z-index: 4;
 
                 @media (width < 1024px) {
-                    top: -7rem;
+                    top: -5rem;
                 }
             }
 
@@ -170,7 +178,7 @@
                 z-index: 3;
 
                 @media (width < 1024px) {
-                    top: -4rem;
+                    top: 0;
                 }
             }
 
@@ -178,7 +186,7 @@
                 z-index: 2;
 
                 @media (width < 1024px) {
-                    top: -1rem;
+                    top: 5rem;
                 }
             }
 
@@ -186,7 +194,7 @@
                 z-index: 1;
 
                 @media (width < 1024px) {
-                    top: 3rem;
+                    top: 10rem;
                 }
             }
         }
@@ -317,7 +325,8 @@
 }
 
 // Branding
-.brandingContainer {
+.brandingContainer,
+.cardiffContainer {
     position: relative;
 
     &::before {
@@ -327,6 +336,9 @@
             @include blurredShape(linear-gradient(to right, var(--primary), var(--accent)));
         }
     }
+}
+
+.brandingContainer {
 
     .brandingImageCol {
         display: flex;
@@ -568,6 +580,20 @@
             font-size: 0.8125rem;
             font-weight: 500;
             line-height: 1;
+        }
+    }
+}
+
+.cardiffContainer {
+    .reviewItems {
+        justify-content: flex-start;
+
+        @media (width >=768px) {
+            justify-content: center;
+        }
+
+        @media (width >=1024px) {
+            justify-content: flex-start;
         }
     }
 }

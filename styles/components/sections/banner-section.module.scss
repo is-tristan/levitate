@@ -13,6 +13,10 @@
     }
 
     p {
+        @media all {
+            text-wrap: balance;
+        }
+
         @media (width >=1280px) {
             font-size: 1.3rem;
         }

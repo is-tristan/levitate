@@ -12,11 +12,17 @@ import { useLayoutEffect, useRef } from "react";
 import ServicesPartBranding from "@/components/sections/section-parts/services/services-part-branding";
 import ServicesPartDevelopment from "@/components/sections/section-parts/services/services-part-dev";
 import ServicesPartSEO from "@/components/sections/section-parts/services/services-part-seo";
+import ServicesPartCardiff from "@/components/sections/section-parts/services/services-cardiff";
 
 // Styles
 import styles from "@/styles/components/sections/services-section.module.scss";
 
-export default function ServicesSection() {
+// Types
+interface ServicesSectionProps {
+    hasCardiffOffice?: boolean;
+}
+
+export default function ServicesSection({ hasCardiffOffice = false }: ServicesSectionProps) {
     const sectionRef = useRef<HTMLElement>(null);
     const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
     const firstPanelProgress = useMotionValue(0);
@@ -97,11 +103,25 @@ export default function ServicesSection() {
 
             </div>
 
-            <div ref={setPanelRef(2)} className={styles.servicePanel} style={{ zIndex: 3 }}>
+            {!hasCardiffOffice && (
 
-                <ServicesPartBranding />
+                <div ref={setPanelRef(2)} className={styles.servicePanel} style={{ zIndex: 3 }}>
 
-            </div>
+                    <ServicesPartBranding />
+
+                </div>
+
+            )}
+
+            {hasCardiffOffice && (
+
+                <div ref={setPanelRef(3)} className={styles.servicePanel} style={{ zIndex: 3 }}>
+
+                    <ServicesPartCardiff />
+
+                </div>
+
+            )}
 
         </section>
     );

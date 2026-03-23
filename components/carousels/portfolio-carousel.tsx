@@ -48,6 +48,11 @@ const options = {
                 right: "5%",
             },
         },
+        767: {
+            autoScroll: {
+                speed: 0.9,
+            },
+        }
     },
     autoScroll: {
         speed: 1,

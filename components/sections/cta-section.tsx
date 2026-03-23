@@ -38,7 +38,7 @@ const flags = [
 type CTAProps = {
     className?: string;
     eyebrow?: string;
-    heading: string;
+    heading?: string;
     description?: string;
     labelOne?: string;
     urlOne?: string;
@@ -48,7 +48,7 @@ type CTAProps = {
 
 export default function CTA({
     eyebrow = "",
-    heading = "Creating a digital impact worldwide.",
+    heading = "Creating a <span class='gradientAnimation'>digital impact worldwide</span>",
     description = "We help brands explore their digital potential, through award winning, hand crafted websites.",
     labelOne = "Get in touch",
     urlOne = "/contact",

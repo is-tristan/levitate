@@ -3,6 +3,10 @@
     overflow: hidden;
     min-height: 30rem;
 
+    @media (width >=1024px) {
+        min-height: 50rem;
+    }
+
     &::before,
     &::after {
         content: '';
@@ -64,7 +68,7 @@
         max-width: 20rem;
 
         @media (width >=1024px) {
-            max-width: 30rem;
+            max-width: 35rem;
         }
     }
 

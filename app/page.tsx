@@ -18,10 +18,7 @@ export default function Home() {
         description="We help ambitious brands explore their full digital potential through award-winning, handcrafted websites that blend creativity, strategy, and performance."
       />
 
-      <PortfolioCarousel
-        heading="We have built over <span class='gradientAnimation'>600+ websites</span>, here are our best"
-        link="/portfolio"
-      />
+      <PortfolioCarousel heading="We have built over <span class='gradientAnimation'>600+ websites</span>, here are our best" />
 
       <PartnersGrid containerClassName="noPaddingTop noPaddingBottom" />
 
@@ -29,7 +26,7 @@ export default function Home() {
 
       <TestimonialsCarousel containerClassName="noPaddingTop noPaddingBottom" />
 
-      <CTA heading="Creating a <span class='gradientAnimation'>digital impact worldwide</span>" description="We help brands explore their digital potential, through award winning, hand crafted websites." />
+      <CTA />
 
       <LogoCarousel />
 

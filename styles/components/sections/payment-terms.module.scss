@@ -1,0 +1,42 @@
+.paymentTerms {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.5rem;
+
+    @media (width >=1024px) {
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+}
+
+.paymentTerm {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    background: var(--backgroundAlt);
+    border: 1px solid var(--border);
+    border-radius: var(--borderRadius);
+    padding: 1.5rem;
+    width: 100%;
+    position: relative;
+
+    @media (width >=768px) {
+        padding: 2rem;
+    }
+
+    h3 {
+        @media (width >=768px) {
+            font-size: 1.5rem;
+        }
+    }
+
+    p {
+        @media all {
+            text-align: inherit;
+        }
+    }
+}

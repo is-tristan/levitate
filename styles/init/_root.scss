@@ -10,7 +10,7 @@
 
     // Header
     --headerHeight: 5.5rem;
-    --mobileHeaderHeight: 4rem;
+    --mobileHeaderHeight: 4.75rem;
     --adminBarHeight: 2rem;
 
     // Layout
@@ -33,6 +33,10 @@
     --darkAlt: #161b22;
     --darkAltRgb: 22, 27, 34;
     --gradient: linear-gradient(to right, var(--primary), var(--secondary));
+
+    // Fonts
+    --heading: var(--font-prophet);
+    --text: var(--font-dm-sans);
 }
 
 @mixin darkMode() {

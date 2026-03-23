@@ -11,34 +11,37 @@ h6 {
     margin: 0;
     padding: 0;
     text-wrap: balance;
+    font-weight: 500;
+    letter-spacing: -0.03em;
 
     @media (width >=768px) and (width <1024px) {
         text-align: center;
-    }
-
-    @media (width >=1024px) {
-        letter-spacing: -0.03em;
     }
 }
 
 
 h1 {
-    font-size: clamp(2.5rem, 6vw, 6rem);
-    line-height: 95%;
+    font-size: clamp(2.5rem, 7vw, 7rem);
+    line-height: 105%;
+    letter-spacing: -0.06em;
+    
+    @media (width >=768px) {
+        line-height: 95%;
+        letter-spacing: -0.07em;
+    }
 }
 
 h2 {
-    font-size: clamp(1.75rem, 4vw, 3.25rem);
-    letter-spacing: -0.0075em;
-    line-height: 102.5%;
+    font-size: clamp(2.25rem, 4vw, 4rem);
+    letter-spacing: -0.05em;
 
-    @media (width >=1024px) {
-        letter-spacing: -0.02em;
+    @media (width >=768px) {
+        line-height: 102.5%;
     }
 }
 
 h3 {
-    font-size: clamp(1.25rem, 2.5vw, 2.5rem);
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
 }
 
 h4 {

@@ -40,8 +40,7 @@
     width: 100%;
     max-width: 95%;
     padding: 3rem;
-    backdrop-filter: blur(4rem);
-    background: rgba(var(--lightRgb), 0.075);
+    background: rgba(var(--backgroundRgb), 0.975);
     border-radius: var(--borderRadius) 0 0 var(--borderRadius);
     transition: var(--ease);
     overflow-y: auto;

@@ -148,7 +148,7 @@ export default function Header() {
                         <Buttons
                             buttonContainerClassName={styles.actions}
                             labelOne="Send us your brief"
-                            urlOne="/contact"
+                            urlOne={process.env.NEXT_PUBLIC_DEVMODE === "true" ? "/contact" : "/web-design-in-cardiff#contact"}
                             btnOneClassName="primary headerBtn"
                         />
 

@@ -69,6 +69,7 @@ export default async function PricingCols() {
 
                 <Content
                     type="h2"
+                    eyebrow="Pricing"
                     heading="Unlike other agencies in Cardiff, <span class='gradientAnimation'>we're transparent with pricing</span>"
                     description="Choose an affordable plan that suits your needs, without hidden fees or surprises."
                     hasFullStop={true}

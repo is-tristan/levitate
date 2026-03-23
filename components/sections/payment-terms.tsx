@@ -20,6 +20,7 @@ export default function PaymentTerms() {
 
                 <Content
                     type="h2"
+                    eyebrow="Payment Plans"
                     heading="And we have <span class='gradientAnimation'>three</span> flexible payment plans"
                     description="Choose your way to pay, with a range of flexible options to suit your business needs."
                     hasFullStop={true}

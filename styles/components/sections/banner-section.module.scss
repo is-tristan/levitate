@@ -1,10 +1,11 @@
 .banner {
     position: relative;
     overflow: hidden;
-    min-height: clamp(37.5rem, 60vh, calc(60vh - var(--mobileHeaderHeight)));
+    padding-top: var(--mobileHeaderHeight);
 
     @media (width >=768px) {
         min-height: clamp(40rem, 100vh, calc(100vh - var(--headerHeight)));
+        padding-top: var(--headerHeight);
     }
 
     .bannerContainer {

@@ -115,14 +115,15 @@
             transform: translateY(0);
         }
     }
+}
 
-    @media (hover: none) {
-        .slideActive {
-            .carouselContent {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
+@media (hover: none) and (pointer: coarse) {
+    .slideActive {
+        .carouselContent {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            background: linear-gradient(to top, var(--background), transparent);
         }
     }
 }

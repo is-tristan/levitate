@@ -113,5 +113,11 @@
     height: 20rem;
     background: $background;
     border-radius: 50%;
-    filter: blur(10rem);
+    filter: blur(4rem);
+    opacity: 0.5;
+    
+    @media (width >=1024px) {
+        filter: blur(10rem);
+        opacity: 1;
+    }
 }

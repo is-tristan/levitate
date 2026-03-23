@@ -13,8 +13,7 @@
     transition: var(--ease);
 
     &.scrolled {
-        backdrop-filter: blur(0.5rem);
-        background: rgba(var(--backgroundRgb), 0.5);
+        background: rgba(var(--backgroundRgb), 0.85);
 
         .headerContainer {
             height: calc(var(--mobileHeaderHeight) - 1rem);

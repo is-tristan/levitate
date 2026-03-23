@@ -247,6 +247,12 @@
         backdrop-filter: blur(1rem);
         box-shadow: 0 1.5rem 4rem rgba(var(--darkRgb), 0.12);
 
+        @media (width <1024px) {
+            background: rgba(var(--darkRgb), 0.75);
+            backdrop-filter: none;
+            box-shadow: 0 0.75rem 2rem rgba(var(--darkRgb), 0.1);
+        }
+
         .seoGraphEyebrow {
             display: flex;
             justify-content: space-between;
@@ -297,6 +303,10 @@
             stroke-linecap: round;
             stroke-linejoin: round;
             filter: drop-shadow(0 0 1rem rgba(var(--accentRgb), 0.3));
+
+            @media (width <1024px) {
+                filter: none;
+            }
         }
 
         .seoGraphPoint {
@@ -382,6 +392,12 @@
         backdrop-filter: blur(1rem);
         box-shadow: 0 1.5rem 4rem rgba(var(--darkRgb), 0.16);
         color: var(--light);
+
+        @media (width <1024px) {
+            background: rgba(var(--darkRgb), 0.16);
+            backdrop-filter: none;
+            box-shadow: 0 0.75rem 2rem rgba(var(--darkRgb), 0.12);
+        }
 
         @media (width >=768px) {
             padding: 1.5rem;

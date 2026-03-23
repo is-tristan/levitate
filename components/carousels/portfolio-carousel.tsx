@@ -1,7 +1,7 @@
 "use client";
 
 // React
-import { Suspense, useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 // Next
 import Image from "next/image";
@@ -28,7 +28,7 @@ type WebsiteCarouselProps = {
 }
 
 // Splide Options
-const options = {
+const baseOptions = {
     type: "loop",
     perPage: 1,
     perMove: 1,
@@ -49,9 +49,8 @@ const options = {
             },
         },
         767: {
-            autoScroll: {
-                speed: 0.9,
-            },
+            autoplay: true,
+            interval: 4500,
         }
     },
     autoScroll: {
@@ -70,6 +69,16 @@ export default function WebsiteCarousel({
     const isMobile = useIsBelowBreakpoint();
     const [activeSlideIndex, setActiveSlideIndex] = useState<number | null>(null);
     const { isMounted, viewportRef } = useDelayedViewportMount<HTMLDivElement>();
+    const carouselOptions = useMemo(() => {
+        if (isMobile) {
+            return {
+                ...baseOptions,
+                autoScroll: undefined,
+            };
+        }
+
+        return baseOptions;
+    }, [isMobile]);
 
     useEffect(() => {
         if (!isMobile) {
@@ -152,8 +161,8 @@ export default function WebsiteCarousel({
                 {isMounted ? (
                     <Splide
                         className={`hasArrows splideTrackNoOverflow`}
-                        options={options}
-                        extensions={{ AutoScroll }}
+                        options={carouselOptions}
+                        extensions={isMobile ? undefined : { AutoScroll }}
                         onMounted={(splide: SplideInstance) => {
                             if (!isMobile) {
                                 return;
@@ -190,6 +199,7 @@ export default function WebsiteCarousel({
 
                             <SplideSlide
                                 key={index}
+                                className={isMobile && activeSlideIndex === index ? styles.slideActive : undefined}
                                 onMouseEnter={() => handleVideoHover(index)}
                                 onMouseLeave={() => handleVideoLeave(index)}
                             >
@@ -199,28 +209,30 @@ export default function WebsiteCarousel({
                                     aria-label={website.name}
                                 >
 
-                                    {website.video ? (
+                                    {website.video && (!isMobile || activeSlideIndex === index) ? (
 
-                                        <Suspense fallback={"Loading Video..."}>
-
-                                            <video
-                                                ref={element => {
-                                                    videoRefs.current[index] = element;
-                                                }}
-                                                src={website.video}
-                                                muted
-                                                loop
-                                                playsInline
-                                                className={styles.carouselVideo}
-                                                preload="none"
-                                                poster={website.poster}
-                                            />
-
-                                        </Suspense>
-
+                                        <video
+                                            ref={element => {
+                                                videoRefs.current[index] = element;
+                                            }}
+                                            src={website.video}
+                                            muted
+                                            loop
+                                            playsInline
+                                            className={styles.carouselVideo}
+                                            preload="none"
+                                            poster={website.poster}
+                                        />
                                     ) : (
 
-                                        <Image src={website.poster} alt={website.name} fill sizes="100%" className={styles.carouselImage} loading="lazy" />
+                                        <Image
+                                            src={website.poster}
+                                            alt={website.name}
+                                            fill
+                                            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 90vw, 85vw"
+                                            className={styles.carouselImage}
+                                            loading="lazy"
+                                        />
 
                                     )}
 
@@ -244,7 +256,14 @@ export default function WebsiteCarousel({
                 ) : (
                     <div className="splideTrackNoOverflow">
                         <div className={styles.carouselItem} aria-label={websites[0].name}>
-                            <Image src={websites[0].poster} alt={websites[0].name} fill sizes="100%" className={styles.carouselImage} loading="lazy" />
+                            <Image
+                                src={websites[0].poster}
+                                alt={websites[0].name}
+                                fill
+                                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 90vw, 85vw"
+                                className={styles.carouselImage}
+                                loading="lazy"
+                            />
 
                             <div className={styles.carouselContent}>
                                 <h3><a href={websites[0].url} target="_blank" rel="noopener noreferrer">{websites[0].name}<span className="colorAccent">.</span></a></h3>

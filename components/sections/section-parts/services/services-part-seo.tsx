@@ -187,7 +187,7 @@ export default function ServicesPartSEO() {
                 <Buttons
                     animationDelay={0.4}
                     labelOne="Learn More"
-                    urlOne="/services/search-marketing"
+                    urlOne={process.env.NEXT_PUBLIC_DEVMODE === "true" ? "/services/search-marketing" : "/web-design-in-cardiff#pricing"}
                     btnOneClassName="primary"
                 />
 

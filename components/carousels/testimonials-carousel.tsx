@@ -4,7 +4,7 @@
 import Image from "next/image";
 
 // React
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 // Data
 import { testimonials } from "@/data/testimonials";
@@ -12,7 +12,7 @@ import { testimonials } from "@/data/testimonials";
 // Imports
 import Content from "@/components/content/content";
 import ReviewItems from "@/components/items/review-items";
-import { useDelayedViewportMount, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
+import { useDelayedViewportMount, useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -31,7 +31,7 @@ type TestimonialsCarouselProps = {
 }
 
 // Splide Options
-const testimonialsOptions = {
+const baseTestimonialsOptions = {
     rewind: true,
     rewindByDrag: true,
     arrows: false,
@@ -50,7 +50,14 @@ export default function TestimonialsCarousel({
     containerClassName,
 }: TestimonialsCarouselProps) {
     const [progressWidth, setProgressWidth] = useState(`${100 / testimonials.length}%`);
+    const isMobile = useIsBelowBreakpoint();
     const { isMounted, viewportRef } = useDelayedViewportMount<HTMLDivElement>();
+    const testimonialsOptions = useMemo(() => {
+        return {
+            ...baseTestimonialsOptions,
+            autoplay: !isMobile,
+        };
+    }, [isMobile]);
 
     const updateProgress = (splide: SplideInstance) => {
         const progress = ((splide.index + 1) / testimonials.length) * 100;
@@ -96,7 +103,15 @@ export default function TestimonialsCarousel({
 
                                     <div className={styles.testimonialImage}>
 
-                                        <Image src={testimonial.image} alt={testimonial.name} width={576} height={576} sizes="100%" loading="lazy" style={{ objectFit: "cover", objectPosition: "center top" }} />
+                                        <Image
+                                            src={testimonial.image}
+                                            alt={testimonial.name}
+                                            width={576}
+                                            height={576}
+                                            sizes="(max-width: 1023px) 100vw, 50vw"
+                                            loading="lazy"
+                                            style={{ objectFit: "cover", objectPosition: "center top" }}
+                                        />
 
                                     </div>
 
@@ -132,7 +147,15 @@ export default function TestimonialsCarousel({
 
                         <div className={styles.testimonialImage}>
 
-                            <Image src={testimonials[0].image} alt={testimonials[0].name} width={576} height={576} sizes="100%" loading="lazy" style={{ objectFit: "cover", objectPosition: "center top" }} />
+                            <Image
+                                src={testimonials[0].image}
+                                alt={testimonials[0].name}
+                                width={576}
+                                height={576}
+                                sizes="(max-width: 1023px) 100vw, 50vw"
+                                loading="lazy"
+                                style={{ objectFit: "cover", objectPosition: "center top" }}
+                            />
 
                         </div>
 

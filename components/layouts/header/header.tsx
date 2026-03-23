@@ -47,15 +47,32 @@ export default function Header() {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
+        let animationFrameId: number | null = null;
+
+        const updateScrolled = () => {
+            const nextScrolled = window.scrollY > 100;
+            setScrolled(currentScrolled => currentScrolled === nextScrolled ? currentScrolled : nextScrolled);
+            animationFrameId = null;
+        };
+
         const scrollListener = () => {
-            if (window.scrollY > 100) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
+            if (animationFrameId !== null) {
+                return;
             }
-        }
-        window.addEventListener("scroll", scrollListener);
-        return () => window.removeEventListener("scroll", scrollListener);
+
+            animationFrameId = window.requestAnimationFrame(updateScrolled);
+        };
+
+        updateScrolled();
+        window.addEventListener("scroll", scrollListener, { passive: true });
+
+        return () => {
+            if (animationFrameId !== null) {
+                window.cancelAnimationFrame(animationFrameId);
+            }
+
+            window.removeEventListener("scroll", scrollListener);
+        };
     }, []);
 
     return (

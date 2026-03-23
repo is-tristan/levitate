@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { easeInOut, motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
+import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 import styles from "@/styles/components/sections/services-section.module.scss";
@@ -55,25 +56,8 @@ export default function ServicesPartBranding() {
     const paletteY = useTransform(scrollYProgress, [0, 0.5, 1], [48, 0, 0]);
     const typeY = useTransform(scrollYProgress, [0, 0.5, 1], [-32, 0, 0]);
     const voiceY = useTransform(scrollYProgress, [0, 0.5, 1], [40, 0, 0]);
-    const fadeInUp = {
-        initial: {
-            opacity: 0,
-            y: 32
-        },
-        whileInView: {
-            opacity: 1,
-            y: 0
-        },
-        viewport: {
-            once: true,
-            amount: 0.2
-        },
-        transition: {
-            duration: 0.5,
-            ease: easeInOut
-        }
-    };
-    const animationProps = disableAnimation ? {} : fadeInUp;
+    const containerVariants = getRevealContainerVariants();
+    const logoVariants = getRevealContainerVariants();
 
     return (
 
@@ -81,9 +65,16 @@ export default function ServicesPartBranding() {
 
             <div className={`imageCol aspectRatio1x1 hasRadius ${styles.brandingImageCol}`}>
 
-                <div ref={brandingBoardRef} className={styles.brandingBoard}>
+                <motion.div
+                    ref={brandingBoardRef}
+                    className={styles.brandingBoard}
+                    variants={disableAnimation ? undefined : containerVariants}
+                    initial={disableAnimation ? undefined : "hidden"}
+                    whileInView={disableAnimation ? undefined : "visible"}
+                    viewport={disableAnimation ? undefined : revealViewport}
+                >
 
-                    <motion.div {...animationProps} transition={disableAnimation ? undefined : { ...fadeInUp.transition, delay: 0.1 }} className={`${styles.brandingCard} ${styles.brandMarkCard}`} style={disableAnimation ? undefined : { y: brandMarkY }} >
+                    <motion.div variants={disableAnimation ? undefined : revealItemVariants} className={`${styles.brandingCard} ${styles.brandMarkCard}`} style={disableAnimation ? undefined : { y: brandMarkY }} >
 
                         <span className={styles.brandingCardEyebrow}>Brand mark</span>
 
@@ -93,7 +84,7 @@ export default function ServicesPartBranding() {
 
                     </motion.div>
 
-                    <motion.div {...animationProps} transition={disableAnimation ? undefined : { ...fadeInUp.transition, delay: 0.2 }} className={`${styles.brandingCard} ${styles.brandPaletteCard}`} style={disableAnimation ? undefined : { y: paletteY }} >
+                    <motion.div variants={disableAnimation ? undefined : revealItemVariants} className={`${styles.brandingCard} ${styles.brandPaletteCard}`} style={disableAnimation ? undefined : { y: paletteY }} >
 
                         <span className={styles.brandingCardEyebrow}>Palette</span>
 
@@ -121,7 +112,7 @@ export default function ServicesPartBranding() {
 
                     </motion.div>
 
-                    <motion.div {...animationProps} transition={disableAnimation ? undefined : { ...fadeInUp.transition, delay: 0.3 }} className={`${styles.brandingCard} ${styles.brandTypeCard}`} style={disableAnimation ? undefined : { y: typeY }} >
+                    <motion.div variants={disableAnimation ? undefined : revealItemVariants} className={`${styles.brandingCard} ${styles.brandTypeCard}`} style={disableAnimation ? undefined : { y: typeY }} >
 
                         <span className={styles.brandingCardEyebrow}>Typography</span>
 
@@ -137,7 +128,7 @@ export default function ServicesPartBranding() {
 
                     </motion.div>
 
-                    <motion.div {...animationProps} transition={disableAnimation ? undefined : { ...fadeInUp.transition, delay: 0.4 }} className={`${styles.brandingCard} ${styles.brandVoiceCard}`} style={disableAnimation ? undefined : { y: voiceY }} >
+                    <motion.div variants={disableAnimation ? undefined : revealItemVariants} className={`${styles.brandingCard} ${styles.brandVoiceCard}`} style={disableAnimation ? undefined : { y: voiceY }} >
 
                         <span className={styles.brandingCardEyebrow}>Tone of voice</span>
 
@@ -153,7 +144,7 @@ export default function ServicesPartBranding() {
 
                     </motion.div>
 
-                </div>
+                </motion.div>
 
                 <div className={styles.backgroundImage} aria-hidden="true"></div>
 
@@ -169,16 +160,18 @@ export default function ServicesPartBranding() {
                     description="Your brand deserves to stand out. Levitate's creative team crafts distinctive brand identities that capture your voice, values, and vision — from logo design to messaging and visuals that make a lasting impression."
                 />
 
-                <div className={styles.logos}>
+                <motion.div
+                    className={styles.logos}
+                    variants={disableAnimation ? undefined : logoVariants}
+                    initial={disableAnimation ? undefined : "hidden"}
+                    whileInView={disableAnimation ? undefined : "visible"}
+                    viewport={disableAnimation ? undefined : revealViewport}
+                >
 
-                    {logos.map((logo, index) => (
+                    {logos.map((logo) => (
 
                         <motion.a
-                            {...animationProps}
-                            transition={disableAnimation ? undefined : {
-                                ...fadeInUp.transition,
-                                delay: 0.3 + index * 0.1
-                            }}
+                            variants={disableAnimation ? undefined : revealItemVariants}
                             href={logo.url}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -192,7 +185,7 @@ export default function ServicesPartBranding() {
 
                     ))}
 
-                </div>
+                </motion.div>
 
                 <Buttons
                     animationDelay={0.4}

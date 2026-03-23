@@ -1,7 +1,8 @@
 "use client";
 
 import { facebookLogo, googleLogoMark, starIcons } from "@/data/icons";
-import { easeInOut, motion } from "motion/react";
+import { motion } from "motion/react";
+import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 
 // Styles
 import styles from "@/styles/components/items/review-items.module.scss";
@@ -34,12 +35,19 @@ export default function ReviewItems({
     layout = "default",
     className,
 }: ReviewItemsProps) {
+    const containerVariants = getRevealContainerVariants();
 
     return (
 
-        <div className={`${styles.reviewLogos} ${layout === "inline" ? styles.inline : undefined} ${className || undefined}`}>
+        <motion.div
+            className={`${styles.reviewLogos} ${layout === "inline" ? styles.inline : undefined} ${className || undefined}`}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={revealViewport}
+        >
 
-            {reviewItems.map((item, index) => (
+            {reviewItems.map((item) => (
                 <motion.a
                     key={item.ariaLabel}
                     href={item.url}
@@ -47,23 +55,7 @@ export default function ReviewItems({
                     rel="noopener noreferrer"
                     className={styles.reviewLogo}
                     aria-label={item.ariaLabel}
-                    initial={{
-                        opacity: 0,
-                        y: 32
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0
-                    }}
-                    viewport={{
-                        once: true,
-                        amount: 0.2
-                    }}
-                    transition={{
-                        duration: 0.5,
-                        ease: easeInOut,
-                        delay: index * 0.12
-                    }}
+                    variants={revealItemVariants}
                 >
 
                     <div className={styles.reviewLogoHeader}>
@@ -80,7 +72,7 @@ export default function ReviewItems({
 
             ))}
 
-        </div>
+        </motion.div>
 
     )
 

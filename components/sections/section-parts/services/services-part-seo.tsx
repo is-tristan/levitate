@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { easeInOut, motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
+import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 import styles from "@/styles/components/sections/services-section.module.scss";
@@ -47,6 +48,7 @@ const graphAreaPath = `${graphLinePath} L 492 248 L 32 248 Z`;
 
 export default function ServicesPartSEO() {
     const disableAnimation = useIsBelowBreakpoint();
+    const logoVariants = getRevealContainerVariants();
     const graphRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: graphRef,
@@ -61,25 +63,6 @@ export default function ServicesPartSEO() {
         opacity: useTransform(scrollYProgress, [0.3 + index * 0.07, 0.38 + index * 0.07], [0, 1]),
         scale: useTransform(scrollYProgress, [0.3 + index * 0.07, 0.38 + index * 0.07], [0, 1])
     }));
-    const fadeInUp = {
-        initial: {
-            opacity: 0,
-            y: 32
-        },
-        whileInView: {
-            opacity: 1,
-            y: 0
-        },
-        viewport: {
-            once: true,
-            amount: 0.2
-        },
-        transition: {
-            duration: 0.5,
-            ease: easeInOut
-        }
-    };
-    const animationProps = disableAnimation ? {} : fadeInUp;
 
     return (
 
@@ -174,16 +157,18 @@ export default function ServicesPartSEO() {
                     description="We help ambitious businesses rise to the top of search results with data-led SEO and Google Ads management. From keyword strategy to campaign optimisation, our approach drives consistent leads, measurable growth, and long-term online performance."
                 />
 
-                <div className={styles.logos}>
+                <motion.div
+                    className={styles.logos}
+                    variants={disableAnimation ? undefined : logoVariants}
+                    initial={disableAnimation ? undefined : "hidden"}
+                    whileInView={disableAnimation ? undefined : "visible"}
+                    viewport={disableAnimation ? undefined : revealViewport}
+                >
 
-                    {logos.map((logo, index) => (
+                    {logos.map((logo) => (
 
                         <motion.a
-                            {...animationProps}
-                            transition={disableAnimation ? undefined : {
-                                ...fadeInUp.transition,
-                                delay: 0.3 + index * 0.1
-                            }}
+                            variants={disableAnimation ? undefined : revealItemVariants}
                             href={logo.url}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -197,7 +182,7 @@ export default function ServicesPartSEO() {
 
                     ))}
 
-                </div>
+                </motion.div>
 
                 <Buttons
                     animationDelay={0.4}

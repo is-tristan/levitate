@@ -3,19 +3,12 @@
 // Next
 import Image from "next/image";
 
-// Motion
-import { easeInOut, motion } from "motion/react";
-
-// Data
 import { partnerLogos } from "@/data/partner-logos";
-
-// Styles
+import { motion } from "motion/react";
 import styles from "@/styles/components/grids/partners-grid.module.scss";
-
-// Imports
 import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
+import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 
-// Types
 type PartnersGridProps = {
     containerClassName?: string;
 }
@@ -23,6 +16,7 @@ type PartnersGridProps = {
 export default function PartnersGrid({
     containerClassName,
 }: PartnersGridProps) {
+    const containerVariants = getRevealContainerVariants();
 
     return (
 
@@ -36,28 +30,18 @@ export default function PartnersGrid({
 
                 </div>
 
-                <div className={styles.partnersGrid}>
+                <motion.div
+                    className={styles.partnersGrid}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={revealViewport}
+                >
 
                     {partnerLogos.map((partner, index) => (
 
                         <motion.div
-                            initial={{
-                                opacity: 0,
-                                y: 32
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0
-                            }}
-                            viewport={{
-                                once: true,
-                                amount: 0.2
-                            }}
-                            transition={{
-                                duration: 0.5,
-                                delay: index * 0.08,
-                                ease: easeInOut
-                            }}
+                            variants={revealItemVariants}
                             className={styles.partnersGridItem}
                             key={partner.name}
                         >
@@ -78,7 +62,7 @@ export default function PartnersGrid({
 
                     ))}
 
-                </div>
+                </motion.div>
 
             </div>
 

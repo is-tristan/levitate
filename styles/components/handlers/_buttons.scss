@@ -60,12 +60,5 @@
         .icon {
             color: var(--accent);
         }
-
-        &:hover {
-            .icon {
-                transform: translateX(0.15rem);
-            }
-        }
-
     }
 }

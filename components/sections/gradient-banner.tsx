@@ -9,18 +9,24 @@ import gradientBannerStyles from "@/styles/components/sections/gradient-banner.m
 
 // Types
 type GradientBannerProps = {
+    className?: string;
     heading: string;
     description: string;
+    urlOne?: string;
+    urlTwo?: string;
 }
 
 export default function GradientBanner({
+    className,
     heading,
-    description
+    description,
+    urlOne = "/contact",
+    urlTwo = "/portfolio"
 }: GradientBannerProps) {
 
     return (
 
-        <section id="banner" className={`row colorLight ${styles.banner} ${gradientBannerStyles.banner}`}>
+        <section id="banner" className={`row colorLight ${styles.banner} ${gradientBannerStyles.banner} ${className || undefined}`}>
 
             <div className={`container centered ${styles.bannerContainer}`}>
 
@@ -36,10 +42,10 @@ export default function GradientBanner({
                         layout="centered"
                         hasFullStop={true}
                         labelOne="Send us your brief"
-                        urlOne="/contact"
+                        urlOne={urlOne}
                         btnOneClassName="primary"
                         labelTwo="View our work"
-                        urlTwo="/portfolio"
+                        urlTwo={urlTwo}
                         btnTwoClassName="secondary"
                     />
 

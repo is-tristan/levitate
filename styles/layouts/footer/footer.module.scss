@@ -60,7 +60,7 @@
         gap: 1rem;
 
         a {
-            transition: var(--cubic);
+            transition: var(--ease);
 
             &:hover {
                 opacity: 0.85;
@@ -98,7 +98,7 @@
         }
 
         a {
-            transition: var(--cubic);
+            transition: var(--ease);
 
             &:hover {
                 color: var(--heading);

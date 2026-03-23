@@ -12,7 +12,7 @@
         flex-flow: row nowrap;
         align-items: center;
         gap: 0.5rem;
-        transition: var(--cubic);
+        transition: var(--ease);
 
         @media (width >=1024px) {
             gap: 0.75rem;
@@ -20,6 +20,10 @@
 
         &:hover {
             color: var(--primary);
+
+            span:first-child {
+                color: var(--primary);
+            }
         }
     }
 
@@ -53,6 +57,7 @@
 
         span:first-child {
             color: var(--heading);
+            transition: var(--ease);
         }
     }
 }

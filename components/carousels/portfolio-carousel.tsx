@@ -25,7 +25,6 @@ import styles from "@/styles/components/carousels/portfolio-carousel.module.scss
 type WebsiteCarouselProps = {
     heading: string;
     description?: string | null;
-    link: string;
 }
 
 // Splide Options
@@ -59,8 +58,7 @@ const options = {
 
 export default function WebsiteCarousel({
     heading,
-    description,
-    link
+    description
 }: WebsiteCarouselProps) {
 
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);

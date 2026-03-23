@@ -10,7 +10,7 @@
     z-index: 555;
     margin: auto;
     border-radius: 0 0 var(--borderRadius) var(--borderRadius);
-    transition: var(--cubic);
+    transition: var(--ease);
 
     &.scrolled {
         backdrop-filter: blur(2rem);
@@ -54,7 +54,7 @@
         position: relative;
         width: auto;
         height: 4rem;
-        transition: var(--cubic);
+        transition: var(--ease);
 
         @media (width >=768px) {
             gap: 1rem;
@@ -76,7 +76,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: var(--cubic);
+        transition: var(--ease);
     }
 
     .logoMark {
@@ -120,7 +120,7 @@
         position: relative;
 
         .navItemLabel {
-            transition: var(--cubic);
+            transition: var(--ease);
         }
 
         .navItemCaret {
@@ -129,7 +129,7 @@
             align-items: center;
             width: 0.66rem;
             height: 0.66rem;
-            transition: var(--cubic);
+            transition: var(--ease);
         }
 
         &:hover .navItemLabel,
@@ -171,7 +171,7 @@
         border-radius: var(--borderRadius);
         border: 1px solid var(--border);
         background: rgba(var(--backgroundAltRgb), 0.95);
-        transition: var(--cubic);
+        transition: var(--ease);
 
         .subMenuItem {
             display: flex;
@@ -180,7 +180,7 @@
             padding: 0.5rem;
             border-radius: var(--borderRadius);
             position: relative;
-            transition: var(--cubic);
+            transition: var(--ease);
 
             &::before {
                 content: '';
@@ -194,7 +194,7 @@
                 height: 100%;
                 border-radius: var(--borderRadius);
                 background: var(--border);
-                transition: var(--cubic);
+                transition: var(--ease);
             }
 
             &:hover {
@@ -228,7 +228,7 @@
             background: var(--background);
             color: var(--light);
             position: relative;
-            transition: var(--cubic);
+            transition: var(--ease);
 
             &::before {
                 content: '';
@@ -241,11 +241,11 @@
                 background: var(--secondary);
                 opacity: 0;
                 scale: 0;
-                transition: var(--cubic);
+                transition: var(--ease);
             }
 
             svg {
-                transition: var(--cubic);
+                transition: var(--ease);
                 position: relative;
                 z-index: 1;
                 width: 50%;

@@ -29,7 +29,7 @@
                 cursor: pointer;
                 position: relative;
                 overflow: hidden;
-                transition: var(--cubic);
+                transition: var(--ease);
 
                 &::before {
                     content: '';
@@ -42,7 +42,7 @@
                     height: 100%;
                     border-radius: 0;
                     background: var(--text);
-                    transition: var(--cubic);
+                    transition: var(--ease);
                 }
 
                 &.is-active,
@@ -85,7 +85,7 @@
             background: rgba(var(--lightRgb), 0.75);
             backdrop-filter: blur(0.5rem);
             border: 1px solid var(--border);
-            transition: var(--cubic);
+            transition: var(--ease);
             z-index: 10;
             cursor: pointer;
 
@@ -113,7 +113,7 @@
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
-                transition: var(--cubic);
+                transition: var(--ease);
             }
 
             &:hover {

@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { easeInOut, motion, type MotionValue, useTransform } from "motion/react";
+import { motion, type MotionValue, useTransform } from "motion/react";
 
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
+import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 import styles from "@/styles/components/sections/services-section.module.scss";
@@ -58,6 +59,8 @@ type ServicesPartDevelopmentProps = {
 
 export default function ServicesPartDevelopment({ scrollProgress }: ServicesPartDevelopmentProps) {
     const disableAnimation = useIsBelowBreakpoint();
+    const imageVariants = getRevealContainerVariants();
+    const logoVariants = getRevealContainerVariants();
 
     const imageOneY = useTransform(scrollProgress, [0, 0.14, 0.78], [0, 0, -360]);
     const imageTwoY = useTransform(scrollProgress, [0, 0.14, 0.78], [0, 0, -288]);
@@ -65,25 +68,6 @@ export default function ServicesPartDevelopment({ scrollProgress }: ServicesPart
     const imageFourY = useTransform(scrollProgress, [0, 0.14, 0.78], [0, 0, -144]);
     const imageFiveY = useTransform(scrollProgress, [0, 0.14, 0.78], [0, 0, -72]);
     const imageYValues = [imageOneY, imageTwoY, imageThreeY, imageFourY, imageFiveY];
-    const fadeInUp = {
-        initial: {
-            opacity: 0,
-            y: 32
-        },
-        whileInView: {
-            opacity: 1,
-            y: 0
-        },
-        viewport: {
-            once: true,
-            amount: 0.2
-        },
-        transition: {
-            duration: 0.5,
-            ease: easeInOut
-        }
-    };
-    const animationProps = disableAnimation ? {} : fadeInUp;
 
     return (
 
@@ -91,13 +75,20 @@ export default function ServicesPartDevelopment({ scrollProgress }: ServicesPart
 
             <div className={`imageCol aspectRatio1x1 hasRadius ${styles.devImageCol}`}>
 
-                <div className={styles.devStackedImages}>
+                <motion.div
+                    className={styles.devStackedImages}
+                    variants={disableAnimation ? undefined : imageVariants}
+                    initial={disableAnimation ? undefined : "hidden"}
+                    whileInView={disableAnimation ? undefined : "visible"}
+                    viewport={disableAnimation ? undefined : revealViewport}
+                >
 
                     {serviceImages.map((image, index) => (
 
                         <motion.div
                             key={index}
                             className={`${styles.devStackedImage} ${styles[`stackedImage-${index + 1}`]}`}
+                            variants={disableAnimation ? undefined : revealItemVariants}
                             style={disableAnimation ? undefined : { y: imageYValues[index] }}
                         >
 
@@ -114,7 +105,7 @@ export default function ServicesPartDevelopment({ scrollProgress }: ServicesPart
 
                     ))}
 
-                </div>
+                </motion.div>
 
                 <div className={styles.backgroundImage} aria-hidden="true"></div>
 
@@ -130,16 +121,18 @@ export default function ServicesPartDevelopment({ scrollProgress }: ServicesPart
                     description="At Levitate, we create beautiful, performance-driven websites that engage users and convert visitors into customers. Our Cardiff-based team designs with precision, combining creativity and strategy to build digital experiences that truly elevate your brand."
                 />
 
-                <div className={styles.logos}>
+                <motion.div
+                    className={styles.logos}
+                    variants={disableAnimation ? undefined : logoVariants}
+                    initial={disableAnimation ? undefined : "hidden"}
+                    whileInView={disableAnimation ? undefined : "visible"}
+                    viewport={disableAnimation ? undefined : revealViewport}
+                >
 
-                    {logos.map((logo, index) => (
+                    {logos.map((logo) => (
 
                         <motion.a
-                            {...animationProps}
-                            transition={disableAnimation ? undefined : {
-                                ...fadeInUp.transition,
-                                delay: 0.3 + index * 0.1
-                            }}
+                            variants={disableAnimation ? undefined : revealItemVariants}
                             href={logo.url}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -153,7 +146,7 @@ export default function ServicesPartDevelopment({ scrollProgress }: ServicesPart
 
                     ))}
 
-                </div>
+                </motion.div>
 
                 <Buttons
                     animationDelay={0.4}

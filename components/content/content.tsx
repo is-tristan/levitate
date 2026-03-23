@@ -2,9 +2,10 @@
 
 import Buttons from "@/components/handlers/buttons";
 import { ButtonsProps } from "@/types/buttons";
-import { easeInOut, motion } from "motion/react";
+import { motion } from "motion/react";
+import { usePathname } from "next/navigation";
+import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 
-// Types
 type HeadingProps = {
     type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     heading: string;
@@ -14,7 +15,7 @@ type HeadingProps = {
     className?: string;
     layout?: "default" | "centered";
     hasFullStop?: boolean;
-    disableAnimation?: boolean;
+    hasAnimation?: boolean;
 } & Pick<ButtonsProps, "btnOneClassName" | "btnTwoClassName" | "labelOne" | "labelTwo" | "urlOne" | "urlTwo" | "targetOne" | "targetTwo" | "relOne" | "relTwo">;
 
 
@@ -27,7 +28,7 @@ export default function Heading({
     className,
     layout = "default",
     hasFullStop = false,
-    disableAnimation = false,
+    hasAnimation = true,
     btnOneClassName,
     btnTwoClassName,
     labelOne,
@@ -39,89 +40,116 @@ export default function Heading({
     relOne,
     relTwo
 }: HeadingProps) {
-    const fadeInUp = {
-        initial: {
-            opacity: 0,
-            y: 32
-        },
-        whileInView: {
-            opacity: 1,
-            y: 0
-        },
-        viewport: {
-            once: true,
-            amount: 0.2
-        },
-        transition: {
-            duration: 0.8,
-            ease: easeInOut
-        }
-    };
-    const animationProps = disableAnimation ? {} : fadeInUp;
+    const pathname = usePathname();
+    const containerVariants = getRevealContainerVariants();
+    const headingClassName = `heading ${className || undefined} ${layout === "centered" ? "centered" : undefined} ${hasFullStop ? "hasFullStop" : undefined}`;
+    const HeadingTag = type;
+
+    if (!hasAnimation) {
+        return (
+
+            <div className={`content ${containerClassName || undefined}`}>
+
+                {eyebrow && <span className="eyebrow">{eyebrow}</span>}
+
+                <div className={headingClassName}>
+
+                    <HeadingTag dangerouslySetInnerHTML={{ __html: heading }}></HeadingTag>
+
+                </div>
+
+                {description && <p dangerouslySetInnerHTML={{ __html: description }}></p>}
+
+                {labelOne && urlOne && (
+
+                    <Buttons
+                        disableAnimation={true}
+                        btnOneClassName={btnOneClassName || undefined}
+                        btnTwoClassName={btnTwoClassName || undefined}
+                        labelOne={labelOne || undefined}
+                        labelTwo={labelTwo || undefined}
+                        urlOne={urlOne || undefined}
+                        urlTwo={urlTwo || undefined}
+                        targetOne={targetOne || undefined}
+                        targetTwo={targetTwo || undefined}
+                        relOne={relOne || undefined}
+                        relTwo={relTwo || undefined}
+                    />
+
+                )}
+
+            </div>
+
+        );
+    }
 
     return (
 
-        <div className={`content ${containerClassName || undefined}`}>
+        <motion.div
+            key={pathname}
+            className={`content ${containerClassName || undefined}`}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={revealViewport}
+        >
 
             {eyebrow && (
-                <motion.span
-                    {...animationProps}
-                    className="eyebrow"
-                >
+                <motion.span className="eyebrow" variants={revealItemVariants}>
                     {eyebrow}
                 </motion.span>
             )}
 
             <motion.div
-                {...animationProps}
-                className={`heading ${className || undefined} ${layout === "centered" ? "centered" : undefined} ${hasFullStop ? "hasFullStop" : undefined}`}
+                className={headingClassName}
+                variants={revealItemVariants}
             >
 
-                {type === "h1" && <h1 dangerouslySetInnerHTML={{ __html: heading }}></h1>}
+                {type === "h1" && <motion.h1 dangerouslySetInnerHTML={{ __html: heading }}></motion.h1>}
 
-                {type === "h2" && <h2 dangerouslySetInnerHTML={{ __html: heading }}></h2>}
+                {type === "h2" && <motion.h2 dangerouslySetInnerHTML={{ __html: heading }}></motion.h2>}
 
-                {type === "h3" && <h3 dangerouslySetInnerHTML={{ __html: heading }}></h3>}
+                {type === "h3" && <motion.h3 dangerouslySetInnerHTML={{ __html: heading }}></motion.h3>}
 
-                {type === "h4" && <h4 dangerouslySetInnerHTML={{ __html: heading }}></h4>}
+                {type === "h4" && <motion.h4 dangerouslySetInnerHTML={{ __html: heading }}></motion.h4>}
 
-                {type === "h5" && <h5 dangerouslySetInnerHTML={{ __html: heading }}></h5>}
+                {type === "h5" && <motion.h5 dangerouslySetInnerHTML={{ __html: heading }}></motion.h5>}
 
-                {type === "h6" && <h6 dangerouslySetInnerHTML={{ __html: heading }}></h6>}
+                {type === "h6" && <motion.h6 dangerouslySetInnerHTML={{ __html: heading }}></motion.h6>}
 
             </motion.div>
 
             {description && (
                 <motion.p
-                    {...animationProps}
-                    transition={disableAnimation ? undefined : {
-                        ...fadeInUp.transition,
-                        delay: 0.2
-                    }}
+                    variants={revealItemVariants}
                     dangerouslySetInnerHTML={{ __html: description }}
+                    suppressHydrationWarning={true}
                 ></motion.p>
             )}
 
             {labelOne && urlOne && (
 
-                <Buttons
-                    animationDelay={0.3}
-                    disableAnimation={disableAnimation}
-                    btnOneClassName={btnOneClassName || undefined}
-                    btnTwoClassName={btnTwoClassName || undefined}
-                    labelOne={labelOne || undefined}
-                    labelTwo={labelTwo || undefined}
-                    urlOne={urlOne || undefined}
-                    urlTwo={urlTwo || undefined}
-                    targetOne={targetOne || undefined}
-                    targetTwo={targetTwo || undefined}
-                    relOne={relOne || undefined}
-                    relTwo={relTwo || undefined}
-                />
+                <motion.div variants={revealItemVariants}>
+
+                    <Buttons
+                        disableAnimation={true}
+                        btnOneClassName={btnOneClassName || undefined}
+                        btnTwoClassName={btnTwoClassName || undefined}
+                        labelOne={labelOne || undefined}
+                        labelTwo={labelTwo || undefined}
+                        urlOne={urlOne || undefined}
+                        urlTwo={urlTwo || undefined}
+                        targetOne={targetOne || undefined}
+                        targetTwo={targetTwo || undefined}
+                        relOne={relOne || undefined}
+                        relTwo={relTwo || undefined}
+                    />
+
+                </motion.div>
 
             )}
 
-        </div>
+        </motion.div>
 
     )
 }

@@ -43,7 +43,7 @@
     backdrop-filter: blur(4rem);
     background: rgba(var(--lightRgb), 0.075);
     border-radius: var(--borderRadius) 0 0 var(--borderRadius);
-    transition: var(--cubic);
+    transition: var(--ease);
     overflow-y: auto;
 
     @media (width >=768px) {
@@ -112,7 +112,7 @@
         gap: 1rem;
         width: 100%;
         cursor: pointer;
-        transition: var(--cubic);
+        transition: var(--ease);
 
         &.currentUrl {
             color: var(--heading);
@@ -126,7 +126,7 @@
         align-items: center;
         gap: 0.5rem;
         width: 100%;
-        transition: var(--cubic);
+        transition: var(--ease);
 
         &:focus-within,
         &:hover {

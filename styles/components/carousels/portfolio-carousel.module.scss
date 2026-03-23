@@ -64,7 +64,7 @@
         opacity: 0;
         visibility: hidden;
         transform: translateY(1rem);
-        transition: var(--cubic);
+        transition: var(--ease);
 
         @media (width >=768px) {
             padding: 2rem;

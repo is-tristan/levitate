@@ -84,6 +84,21 @@
             height: 100%;
         }
     }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .icon {
+                transform: translateX(0.15rem);
+            }
+        }
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+        &:active,
+        &:focus {
+            scale: 1.025;
+        }
+    }
 }
 
 @mixin blurredShape($background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary))) {

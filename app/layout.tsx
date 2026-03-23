@@ -1,6 +1,7 @@
 // Next
 import type { Metadata } from "next";
 import LocalFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next"
 
 // Imports
 import "@/styles/main.scss";
@@ -104,6 +105,8 @@ export default function RootLayout({
           <Footer />
 
         </main>
+
+        <Analytics />
 
       </body>
 

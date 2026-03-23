@@ -14,6 +14,7 @@
     "@shadergradient/react": "^2.4.20",
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+    "@vercel/analytics": "^2.0.1",
     "camera-controls": "^3.1.2",
     "graphql": "^16.13.1",
     "gsap": "^3.14.2",

@@ -31,13 +31,13 @@ export default function Footer() {
 
                     <div className={styles.footerHeader}>
 
-                        <Link href="/" className={styles.footerLogo} dangerouslySetInnerHTML={{ __html: footerLogo }} />
+                        <Link href={process.env.NEXT_PUBLIC_DEVMODE === "true" ? "/" : "/web-design-in-cardiff"} className={styles.footerLogo} dangerouslySetInnerHTML={{ __html: footerLogo }} />
 
                         <SocialItems />
 
                     </div>
 
-                    <p style={{maxWidth: "25rem"}}>Levitate is a web design agency based in Cardiff, Wales. We create beautiful, performance-driven websites that engage users and convert visitors into customers.</p>
+                    <p style={{ maxWidth: "25rem" }}>Levitate is a web design agency based in Cardiff, Wales. We create beautiful, performance-driven websites that engage users and convert visitors into customers.</p>
 
                     <div className={styles.footerLogos}>
 
@@ -85,15 +85,19 @@ export default function Footer() {
 
                 <div className={`${styles.footerCol} ${styles.footerColRight} ${styles.copyrightColRight}`}>
 
-                    <Link href="/privacy-policy">Privacy Policy</Link>
+                    <Link href="/legal/privacy-policy">Privacy Policy</Link>
 
                     <span>|</span>
 
-                    <Link href="/terms-and-conditions">Terms and Conditions</Link>
+                    <Link href="/legal/terms-and-conditions">Terms and Conditions</Link>
 
                     <span>|</span>
 
-                    <Link href="/cookie-policy">Cookie Policy</Link>
+                    <Link href="/legal/cookie-policy">Cookie Policy</Link>
+
+                    <span>|</span>
+
+                    <Link href="#app">Back to top</Link>
 
                 </div>
 

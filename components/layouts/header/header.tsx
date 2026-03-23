@@ -68,7 +68,7 @@ export default function Header() {
 
                     <div className={styles.logo}>
 
-                        <Link href="/" className={styles.logoLink}>
+                        <Link href={process.env.NEXT_PUBLIC_DEVMODE === "true" ? "/" : "/web-design-in-cardiff"} className={styles.logoLink}>
 
                             <span className={styles.logoMark} dangerouslySetInnerHTML={{ __html: logoMark }} />
 
@@ -80,7 +80,7 @@ export default function Header() {
 
                     <ViewportBreakpoint mode="desktop">
 
-                        <div id="nav" className={styles.nav}>
+                        <div id="nav" className={styles.nav} style={{ display: process.env.NEXT_PUBLIC_DEVMODE === "true" ? "flex" : "none" }}>
 
                             {
                                 menuItems.map((item, index) => (
@@ -128,7 +128,7 @@ export default function Header() {
                                     ) : (
 
                                         <Link
-                                            href={item.url || '/'}
+                                            href={process.env.NEXT_PUBLIC_DEVMODE === "true" ? item.url?.replace("/", "/web-design-in-cardiff#contact") || '/' : item.url || '/'}
                                             key={index}
                                             className={`${styles.navItem} ${urlIsActive(item.url || '/') ? styles.currentUrl : undefined}`}
                                             data-has-children="false"
@@ -156,13 +156,17 @@ export default function Header() {
 
                     <ViewportBreakpoint mode="mobile">
 
-                        <NavToggle id="navToggle" handleActive={handleMenuActive} handleClose={handleMenuClose} isActive={isMenuActive} />
+                        <div style={{ display: process.env.NEXT_PUBLIC_DEVMODE === "true" ? "flex" : "none" }}>
+
+                            <NavToggle id="navToggle" handleActive={handleMenuActive} handleClose={handleMenuClose} isActive={isMenuActive} />
+
+                        </div>
 
                     </ViewportBreakpoint>
 
                 </div>
 
-            </header>
+            </header >
 
             <ViewportBreakpoint mode="mobile">
 

@@ -65,7 +65,7 @@ export default function Form() {
                 <fieldset className={`${styles.formField} ${styles.formFieldCheckbox}`}>
 
                     <input type="checkbox" name="policy" id="policy" required />
-                    <label htmlFor="policy">I have read and agree to the <Link href="/privacy-policy" target="_blank">privacy policy</Link>.</label>
+                    <label htmlFor="policy">I have read and agree to the <Link href="/legal/privacy-policy" target="_blank">privacy policy</Link>.</label>
 
                 </fieldset>
 

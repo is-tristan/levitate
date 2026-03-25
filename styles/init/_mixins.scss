@@ -103,7 +103,6 @@
 }
 
 @mixin blurredShape($background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary))) {
-    content: '';
     position: absolute;
     z-index: -1;
     top: 0;
@@ -112,12 +111,10 @@
     width: 20rem;
     height: 20rem;
     background: $background;
+    filter: blur(10rem);
     border-radius: 50%;
-    filter: blur(4rem);
-    opacity: 0.5;
-    
+
     @media (width >=1024px) {
-        filter: blur(10rem);
-        opacity: 1;
+        content: '';
     }
 }

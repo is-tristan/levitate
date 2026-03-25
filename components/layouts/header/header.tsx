@@ -145,7 +145,7 @@ export default function Header() {
                                     ) : (
 
                                         <Link
-                                            href="/contact"
+                                            href={process.env.NEXT_PUBLIC_DEVMODE === "true" ? item.url?.replace("/", "/web-design-in-cardiff#contact") || '/' : item.url || '/'}
                                             key={index}
                                             className={`${styles.navItem} ${urlIsActive(item.url || '/') ? styles.currentUrl : undefined}`}
                                             data-has-children="false"
@@ -165,7 +165,7 @@ export default function Header() {
                         <Buttons
                             buttonContainerClassName={styles.actions}
                             labelOne="Send us your brief"
-                            urlOne={process.env.NEXT_PUBLIC_DEVMODE === "true" ? "/contact" : "/web-design-in-cardiff#contact"}
+                            urlOne="/contact"
                             btnOneClassName="primary headerBtn"
                         />
 

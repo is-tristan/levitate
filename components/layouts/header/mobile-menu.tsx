@@ -105,7 +105,7 @@ export default function MobileMenu({
                         ) : (
 
                             <Link
-                                href={item.url || "/"}
+                                href="/contact"
                                 key={index}
                                 className={`${styles.navItem} ${urlIsActive(item.url || "/") ? styles.currentUrl : undefined}`}
                                 data-has-children="false"

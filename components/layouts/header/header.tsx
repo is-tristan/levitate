@@ -145,7 +145,7 @@ export default function Header() {
                                     ) : (
 
                                         <Link
-                                            href={process.env.NEXT_PUBLIC_DEVMODE === "true" ? item.url?.replace("/", "/web-design-in-cardiff#contact") || '/' : item.url || '/'}
+                                            href="/contact"
                                             key={index}
                                             className={`${styles.navItem} ${urlIsActive(item.url || '/') ? styles.currentUrl : undefined}`}
                                             data-has-children="false"

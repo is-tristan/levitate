@@ -2,6 +2,7 @@
 
 // Next
 import Link from "next/link";
+import { useState } from "react";
 
 // Styles
 import styles from "@/styles/components/handlers/form.module.scss";
@@ -9,7 +10,17 @@ import styles from "@/styles/components/handlers/form.module.scss";
 // Imports
 import Buttons from "@/components/handlers/buttons";
 
+// Icons
+import { checkLg } from "@/data/icons";
+
 export default function Form() {
+
+    // Form State
+    const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+
+    const handleCheckboxChange = () => {
+        setIsCheckboxChecked(!isCheckboxChecked);
+    }
 
     const handleSubmit = () => {
         const form = document.getElementById("contactForm") as HTMLFormElement;
@@ -29,21 +40,21 @@ export default function Form() {
 
                 <fieldset className={styles.formField}>
 
-                    <label htmlFor="name">Full Name</label>
+                    <label htmlFor="name">Full Name<span className={`${styles.required}`}></span></label>
                     <input type="text" name="name" id="name" placeholder="John Doe" required />
 
                 </fieldset>
 
                 <fieldset className={`${styles.formField} ${styles.formFieldHalf}`}>
 
-                    <label htmlFor="name">Email Address</label>
+                    <label htmlFor="name">Email Address<span className={`${styles.required}`}></span></label>
                     <input type="email" name="email" id="email" placeholder="you@company.com" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
 
                 </fieldset>
 
                 <fieldset className={`${styles.formField} ${styles.formFieldHalf}`}>
 
-                    <label htmlFor="phone">Phone Number</label>
+                    <label htmlFor="phone">Phone Number<span className={`${styles.required}`}></span></label>
                     <input type="text" name="phone" id="phone" placeholder="+44 7123 456789" required pattern="^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$" />
 
                 </fieldset>
@@ -51,21 +62,36 @@ export default function Form() {
                 <fieldset className={styles.formField}>
 
                     <label htmlFor="phone">Existing Website (if applicable)</label>
-                    <input type="text" name="existingWebsite" id="existingWebsite" placeholder="https://example.com" required />
+                    <input type="text" name="existingWebsite" id="existingWebsite" placeholder="https://example.com" />
 
                 </fieldset>
 
                 <fieldset className={styles.formField}>
 
-                    <label htmlFor="message">Your Message</label>
+                    <label htmlFor="message">Your Message<span className={`${styles.required}`}></span></label>
                     <textarea name="message" id="message" placeholder="Describe your project in detail. Include the amount of pages, desired platform, and any other relevant information." required></textarea>
 
                 </fieldset>
 
-                <fieldset className={`${styles.formField} ${styles.formFieldCheckbox}`}>
+                <fieldset className={`${styles.formField} ${styles.formFieldPolicy} ${styles.formFieldCheckbox} ${isCheckboxChecked ? styles.checked : ""}`}>
 
-                    <input type="checkbox" name="policy" id="policy" required />
-                    <label htmlFor="policy">I have read and agree to the <Link href="/legal/privacy-policy" target="_blank">privacy policy</Link>.</label>
+                    <div className={styles.checkbox} onClick={handleCheckboxChange}>
+
+                        <input type="checkbox" name="policy" id="policy" required />
+
+                    </div>
+
+                    <div className={styles.checkboxLabel}>
+
+                        <label htmlFor="policy">I have read and agree to the <Link href="/legal/privacy-policy" target="_blank">privacy policy</Link>.</label>
+
+                    </div>
+
+                    <div className={styles.customCheckbox}>
+
+                        <span dangerouslySetInnerHTML={{ __html: checkLg }} />
+
+                    </div>
 
                 </fieldset>
 
@@ -74,6 +100,7 @@ export default function Form() {
             <div className={styles.formFooter} onClick={handleSubmit}>
 
                 <Buttons
+                    disableAnimation={true}
                     btnOneClassName="btn primary"
                     labelOne="Send us your brief"
                 />

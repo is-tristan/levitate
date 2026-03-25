@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     default: "Levitate | Bespoke Websites That Get Results",
     template: "%s | Levitate"
   },
-  description: "Levitate crafts bespoke websites, branding, SEO, and digital experiences that help ambitious brands grow through strategy, creativity, and performance.",
+  description: "Levitate designs custom websites, branding, SEO, and digital experiences that empower ambitious brands to grow with strategy, creativity, and results.",
   keywords: [
     "Levitate",
     "web design",

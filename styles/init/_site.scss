@@ -20,3 +20,28 @@
         }
     }
 }
+
+.textLink {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: var(--ease);
+
+    .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 0.875rem;
+        height: 0.875rem;
+        color: var(--accent);
+        transition: var(--ease);
+    }
+
+    &:hover {
+        color: var(--light);
+
+        .icon {
+            transform: translateX(0.15rem);
+        }
+    }
+}

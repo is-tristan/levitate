@@ -12,8 +12,8 @@ type GradientBannerProps = {
     className?: string;
     heading: string;
     description: string;
-    urlOne?: string;
-    urlTwo?: string;
+    urlOne?: string | undefined;
+    urlTwo?: string | undefined;
 }
 
 export default function GradientBanner({
@@ -42,10 +42,10 @@ export default function GradientBanner({
                         layout="centered"
                         hasFullStop={true}
                         labelOne="Send us your brief"
-                        urlOne={urlOne}
+                        urlOne={urlOne || undefined}
                         btnOneClassName="primary"
                         labelTwo="View our work"
-                        urlTwo={urlTwo}
+                        urlTwo={urlTwo || undefined}
                         btnTwoClassName="secondary"
                     />
 

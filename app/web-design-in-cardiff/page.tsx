@@ -1,6 +1,6 @@
 // Components
 import GradientBanner from "@/components/sections/gradient-banner";
-import PortfolioCarousel from "@/components/carousels/portfolio-carousel";
+import { PortfolioCarouselSection } from "@/components/sections/portfolio-carousel-section";
 import PartnersGrid from "@/components/grids/partners-grid";
 import ServicesSection from "@/components/sections/services-section";
 import PricingCols from "@/components/sections/pricing-cols";
@@ -23,7 +23,7 @@ export default function WebDesignInCardiff() {
         urlTwo="#portfolio"
       />
 
-      <PortfolioCarousel heading="We've powered over <span class='gradientAnimation'>600+ businesses</span> in South Wales" />
+      <PortfolioCarouselSection heading="We've powered over <span class='gradientAnimation'>600+ businesses</span> in South Wales" />
 
       <PartnersGrid />
 

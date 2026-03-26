@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { PowerGlitch, PowerGlitchOptions } from "powerglitch";
 import { arrowRight } from "@/data/icons";
-import { ButtonsProps } from "@/types/buttons";
+import { ButtonsProps } from "@/types/all-types";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 

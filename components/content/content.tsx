@@ -1,7 +1,7 @@
 "use client";
 
 import Buttons from "@/components/handlers/buttons";
-import { ButtonsProps } from "@/types/buttons";
+import { ButtonsProps } from "@/types/all-types";
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";

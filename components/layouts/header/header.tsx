@@ -145,7 +145,7 @@ export default function Header() {
                                     ) : (
 
                                         <Link
-                                            href={process.env.NEXT_PUBLIC_DEVMODE === "true" ? item.url?.replace("/", "/web-design-in-cardiff#contact") || '/' : item.url || '/'}
+                                            href={item.url || '/'}
                                             key={index}
                                             className={`${styles.navItem} ${urlIsActive(item.url || '/') ? styles.currentUrl : undefined}`}
                                             data-has-children="false"
@@ -163,6 +163,7 @@ export default function Header() {
                         </div>
 
                         <Buttons
+                            disableAnimation={true}
                             buttonContainerClassName={styles.actions}
                             labelOne="Send us your brief"
                             urlOne="/contact"

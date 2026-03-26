@@ -1,7 +1,7 @@
 "use client";
 
 // React
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
 // Next
 import Image from "next/image";
@@ -9,23 +9,25 @@ import Image from "next/image";
 // Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/core";
-import type { Splide as SplideInstance, SlideComponent } from "@splidejs/splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 
-// Imports
-import Content from "@/components/content/content";
-import { websites } from "@/data/websites";
+// Components
 import { arrowRight } from "@/data/icons";
-import { useDelayedViewportMount, useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
+import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Styles
 import styles from "@/styles/components/carousels/portfolio-carousel.module.scss";
 
 // Types
-type WebsiteCarouselProps = {
-    heading: string;
-    description?: string | null;
-}
+type PortfolioCarouselProps = {
+    items: {
+        name: string;
+        url: string;
+        poster: string;
+        video?: string;
+        featured: boolean;
+    }[];
+};
 
 // Splide Options
 const baseOptions = {
@@ -60,15 +62,15 @@ const baseOptions = {
     },
 };
 
-export default function WebsiteCarousel({
-    heading,
-    description
-}: WebsiteCarouselProps) {
+export default function PortfolioCarousel({
+    items,
+}: PortfolioCarouselProps) {
 
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
     const isMobile = useIsBelowBreakpoint();
-    const [activeSlideIndex, setActiveSlideIndex] = useState<number | null>(null);
-    const { isMounted, viewportRef } = useDelayedViewportMount<HTMLDivElement>();
+    const featuredItems = useMemo(() => {
+        return items.filter(item => item.featured);
+    }, [items]);
     const carouselOptions = useMemo(() => {
         if (isMobile) {
             return {
@@ -80,51 +82,38 @@ export default function WebsiteCarousel({
         return baseOptions;
     }, [isMobile]);
 
+    const resetVideos = useCallback(() => {
+        videoRefs.current.forEach(video => {
+            if (!video) {
+                return;
+            }
+
+            video.pause();
+            video.currentTime = 0;
+        });
+    }, []);
+
     useEffect(() => {
         if (!isMobile) {
-            setActiveSlideIndex(null);
-            videoRefs.current.forEach(video => {
-                if (video) {
-                    video.pause();
-                    video.currentTime = 0;
-                }
-            });
+            resetVideos();
         }
-    }, [isMobile]);
+    }, [isMobile, resetVideos]);
 
-    useEffect(() => {
-        if (isMounted) {
-            return;
-        }
-
-        setActiveSlideIndex(null);
-        videoRefs.current.forEach(video => {
-            if (video) {
-                video.pause();
-                video.currentTime = 0;
-            }
-        });
-    }, [isMounted]);
-
-    const playVideoAt = (index: number) => {
+    const playVideoAt = useCallback((index: number) => {
         const video = videoRefs.current[index];
         if (video) {
             video.currentTime = 0;
             void video.play();
         }
-    };
+    }, []);
 
-    const getVideoIndex = (index: number, slideIndex: number) => {
-        return slideIndex > -1 ? slideIndex : index;
-    };
-
-    const pauseVideoAt = (index: number) => {
+    const pauseVideoAt = useCallback((index: number) => {
         const video = videoRefs.current[index];
         if (video) {
             video.pause();
             video.currentTime = 0;
         }
-    };
+    }, []);
 
     const handleVideoHover = (index: number) => {
         if (isMobile) {
@@ -140,145 +129,73 @@ export default function WebsiteCarousel({
         pauseVideoAt(index);
     };
 
+    if (!featuredItems.length) {
+        return null;
+    }
+
     return (
 
-        <section id="portfolio" className="row">
+        <div className={`container noPaddingTop ${styles.carouselContainer}`}>
 
-            <div className={`container centered noPaddingBottom ${styles.headingContainer}`}>
+            <Splide
+                className={`hasArrows splideTrackNoOverflow`}
+                options={carouselOptions}
+                extensions={isMobile ? undefined : { AutoScroll }}
+            >
 
-                <Content
-                    type="h2"
-                    heading={heading}
-                    hasFullStop={true}
-                    description={description || undefined}
-                    className={styles.heading}
-                />
+                {featuredItems.map((item, index) => (
 
-            </div>
+                    <SplideSlide key={`${item.name}-${index}`} onMouseEnter={() => handleVideoHover(index)} onMouseLeave={() => handleVideoLeave(index)} >
 
-            <div ref={viewportRef} className={`container noPaddingTop ${styles.carouselContainer}`}>
+                        <div className={`${styles.carouselItem}${isMobile ? ` ${styles.slideActive}` : ""}`} aria-label={item.name} >
 
-                {isMounted ? (
-                    <Splide
-                        className={`hasArrows splideTrackNoOverflow`}
-                        options={carouselOptions}
-                        extensions={isMobile ? undefined : { AutoScroll }}
-                        onMounted={(splide: SplideInstance) => {
-                            if (!isMobile) {
-                                return;
-                            }
-                            splide.Components.Slides.get(true).forEach(slide => {
-                                if (slide.slide.classList.contains("is-active")) {
-                                    const videoIndex = getVideoIndex(slide.index, slide.slideIndex);
-                                    setActiveSlideIndex(videoIndex);
-                                    playVideoAt(videoIndex);
-                                }
-                            });
-                        }}
-                        onActive={(_: SplideInstance, slide: SlideComponent) => {
-                            if (!isMobile) {
-                                return;
-                            }
-                            const videoIndex = getVideoIndex(slide.index, slide.slideIndex);
-                            setActiveSlideIndex(videoIndex);
-                            playVideoAt(videoIndex);
-                        }}
-                        onInactive={(_: SplideInstance, slide: SlideComponent) => {
-                            if (!isMobile) {
-                                return;
-                            }
-                            const videoIndex = getVideoIndex(slide.index, slide.slideIndex);
-                            if (activeSlideIndex === videoIndex) {
-                                setActiveSlideIndex(null);
-                            }
-                            pauseVideoAt(videoIndex);
-                        }}
-                    >
+                            {item.video && !isMobile ? (
 
-                        {websites.map((website, index) => (
+                                <video
+                                    ref={element => {
+                                        videoRefs.current[index] = element;
+                                    }}
+                                    src={item.video}
+                                    muted
+                                    loop
+                                    playsInline
+                                    className={styles.carouselVideo}
+                                    preload="none"
+                                    poster={item.poster}
+                                />
 
-                            <SplideSlide
-                                key={index}
-                                className={isMobile && activeSlideIndex === index ? styles.slideActive : undefined}
-                                onMouseEnter={() => handleVideoHover(index)}
-                                onMouseLeave={() => handleVideoLeave(index)}
-                            >
+                            ) : (
 
-                                <div
-                                    className={`${styles.carouselItem} ${isMobile && activeSlideIndex === index ? styles.slideActive : ""}`}
-                                    aria-label={website.name}
-                                >
+                                <Image
+                                    src={item.poster}
+                                    alt={item.name}
+                                    fill
+                                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 90vw, 85vw"
+                                    className={styles.carouselImage}
+                                    loading="lazy"
+                                />
 
-                                    {website.video && (!isMobile || activeSlideIndex === index) ? (
-
-                                        <video
-                                            ref={element => {
-                                                videoRefs.current[index] = element;
-                                            }}
-                                            src={website.video}
-                                            muted
-                                            loop
-                                            playsInline
-                                            className={styles.carouselVideo}
-                                            preload="none"
-                                            poster={website.poster}
-                                        />
-                                    ) : (
-
-                                        <Image
-                                            src={website.poster}
-                                            alt={website.name}
-                                            fill
-                                            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 90vw, 85vw"
-                                            className={styles.carouselImage}
-                                            loading="lazy"
-                                        />
-
-                                    )}
-
-                                    <div className={styles.carouselContent}>
-
-                                        <h3><a href={website.url} target="_blank" rel="noopener noreferrer">{website.name}<span className="colorAccent">.</span></a></h3>
-
-                                        <a href={website.url} className={styles.carouselTextLink} aria-label="View website" target="_blank" rel="noopener noreferrer">View Website <span className={styles.icon} dangerouslySetInnerHTML={{ __html: arrowRight }} /></a>
-
-                                    </div>
-
-                                    <a href={website.url} className={styles.itemLink} aria-label="View website" target="_blank" rel="noopener noreferrer"></a>
-
-                                </div>
-
-                            </SplideSlide>
-
-                        ))}
-
-                    </Splide>
-                ) : (
-                    <div className="splideTrackNoOverflow">
-                        <div className={styles.carouselItem} aria-label={websites[0].name}>
-                            <Image
-                                src={websites[0].poster}
-                                alt={websites[0].name}
-                                fill
-                                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 90vw, 85vw"
-                                className={styles.carouselImage}
-                                loading="lazy"
-                            />
+                            )}
 
                             <div className={styles.carouselContent}>
-                                <h3><a href={websites[0].url} target="_blank" rel="noopener noreferrer">{websites[0].name}<span className="colorAccent">.</span></a></h3>
 
-                                <a href={websites[0].url} className={styles.carouselTextLink} aria-label="View website" target="_blank" rel="noopener noreferrer">View Website <span className={styles.icon} dangerouslySetInnerHTML={{ __html: arrowRight }} /></a>
+                                <h3><a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}<span className="colorAccent">.</span></a></h3>
+
+                                <a href={item.url} className={styles.carouselTextLink} aria-label="View website" target="_blank" rel="noopener noreferrer">View Website <span className={styles.icon} dangerouslySetInnerHTML={{ __html: arrowRight }} /></a>
+
                             </div>
 
-                            <a href={websites[0].url} className={styles.itemLink} aria-label="View website" target="_blank" rel="noopener noreferrer"></a>
+                            <a href={item.url} className={styles.itemLink} aria-label="View website" target="_blank" rel="noopener noreferrer"></a>
+
                         </div>
-                    </div>
-                )}
 
-            </div>
+                    </SplideSlide>
 
-        </section>
+                ))}
+
+            </Splide>
+
+        </div>
 
     )
 }

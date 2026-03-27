@@ -1,11 +1,11 @@
-// Imports
+// Components
 import BannerAnimation from "./section-parts/banner/banner-animation";
 import Content from "@/components/content/content";
 import ReviewItems from "@/components/items/review-items";
+import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Styles
-import styles from "@/styles/components/sections/banner-section.module.scss";
-import gradientBannerStyles from "@/styles/components/sections/gradient-banner.module.scss";
+import styles from "@/styles/components/sections/gradient-banner.module.scss";
 
 // Types
 type GradientBannerProps = {
@@ -26,7 +26,7 @@ export default function GradientBanner({
 
     return (
 
-        <section id="banner" className={`row colorLight ${styles.banner} ${gradientBannerStyles.banner} ${className || undefined}`}>
+        <section id="banner" className={`row colorLight ${styles.banner} ${styles.banner} ${className || undefined}`}>
 
             <div className={`container centered ${styles.bannerContainer}`}>
 
@@ -38,7 +38,7 @@ export default function GradientBanner({
                         type="h1"
                         heading={heading}
                         description={description}
-                        className={gradientBannerStyles.bannerContent}
+                        className={styles.bannerContent}
                         layout="centered"
                         hasFullStop={true}
                         labelOne="Send us your brief"
@@ -53,7 +53,11 @@ export default function GradientBanner({
 
             </div>
 
-            <BannerAnimation />
+            <ViewportBreakpoint mode="desktop">
+
+                <BannerAnimation />
+
+            </ViewportBreakpoint>
 
         </section>
     );

@@ -1,31 +1,40 @@
+@use "@/styles/init/mixins" as *;
+
 .banner {
-    position: relative;
-    overflow: hidden;
     padding-top: var(--mobileHeaderHeight);
-    padding-bottom: var(--mobileHeaderHeight);
+    background-image: url("/images/backgrounds/banner/banner-gradient-background-noise.svg");
+    background-size: cover;
 
     @media (width >=1024px) {
-        min-height: calc(80vh - var(--headerHeight));
         padding-top: var(--headerHeight);
-        padding-bottom: var(--headerHeight);
-    }
-
-    @media (width >=1920px) {
-        min-height: calc(85vh - var(--headerHeight));
+        overflow: visible;
+        position: relative;
+        background-size: contain;
     }
 
     .bannerContainer {
-        position: relative;
-        z-index: 1;
+        @media (width >=1024px) {
+            position: relative;
+            margin: auto;
+            width: max-content;
+        }
     }
 
-    p {
-        @media all {
-            text-wrap: balance;
+    .bannerContent {
+        .bannerHeading {
+            @media (width < 768px) {
+                text-align: left;
+                margin: unset;
+                align-items: flex-start;
+            }
         }
+        @media (width >=1024px) {
 
-        @media (width >=1280px) {
-            font-size: 1.3rem;
+            h1,
+            p {
+                max-width: 40rem;
+                text-align: center;
+            }
         }
     }
 }

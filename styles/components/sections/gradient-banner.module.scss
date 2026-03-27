@@ -1,5 +1,8 @@
 .banner {
     position: relative;
+    overflow: hidden;
+    padding-top: var(--mobileHeaderHeight);
+    padding-bottom: var(--mobileHeaderHeight);
     border-radius: 0 0 1rem 1rem;
     background-size: cover;
     background-position: center;
@@ -18,6 +21,13 @@
     @media (width >=1024px) {
         border-radius: 0 0 5rem 5rem;
         background-image: none;
+        min-height: calc(80vh - var(--headerHeight));
+        padding-top: var(--headerHeight);
+        padding-bottom: var(--headerHeight);
+    }
+
+    @media (width >=1920px) {
+        min-height: calc(85vh - var(--headerHeight));
     }
 
     &::before {
@@ -35,6 +45,11 @@
         }
     }
 
+    .bannerContainer {
+        position: relative;
+        z-index: 1;
+    }
+
     h1 {
         max-width: 60rem;
         margin-right: auto;
@@ -45,6 +60,14 @@
         max-width: 50rem;
         margin-right: auto;
         margin-left: auto;
+
+        @media all {
+            text-wrap: balance;
+        }
+
+        @media (width >=1280px) {
+            font-size: 1.3rem;
+        }
     }
 
     .bannerAnimation {

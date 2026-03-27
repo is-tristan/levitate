@@ -1,9 +1,9 @@
-import GradientBanner from "@/components/sections/gradient-banner";
+import Banner from "@/components/sections/banner";
 
 export default function CookiePolicy() {
     return (
         <>
-            <GradientBanner
+            <Banner
                 heading="Cookie Policy"
                 description="This Cookie Policy explains how Levitate uses cookies and similar technologies on this website, including limited analytics tools used to understand site performance."
             />

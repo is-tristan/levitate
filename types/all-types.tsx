@@ -4,18 +4,18 @@ export interface ButtonsProps {
     disableAnimation?: boolean;
     buttonContainerClassName?: string;
     buttonAlignment?: "default" | "centered";
-    btnOneClassName?: string;
-    btnTwoClassName?: string;
-    labelOne?: string;
-    labelTwo?: string;
-    iconOne?: string;
-    iconTwo?: string;
-    urlOne?: string;
-    urlTwo?: string;
+    btnOneClassName?: string | undefined;
+    btnTwoClassName?: string | undefined;
+    labelOne?: string | undefined;
+    labelTwo?: string | undefined;
+    iconOne?: string | undefined;
+    iconTwo?: string | undefined;
+    urlOne?: string | undefined;
+    urlTwo?: string | undefined;
     targetOne?: "_blank" | "_self" | "_parent" | "_top";
     targetTwo?: "_blank" | "_self" | "_parent" | "_top";
-    relOne?: string;
-    relTwo?: string;
+    relOne?: string | undefined;
+    relTwo?: string | undefined;
 }
 
 // Portfolio Item Types

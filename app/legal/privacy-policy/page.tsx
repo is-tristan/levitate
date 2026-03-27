@@ -1,9 +1,9 @@
-import GradientBanner from "@/components/sections/gradient-banner";
+import Banner from "@/components/sections/banner";
 
 export default function PrivacyPolicy() {
     return (
         <>
-            <GradientBanner
+            <Banner
                 heading="Privacy Policy"
                 description="This Privacy Policy explains how Levitate collects, uses, and protects your personal information when you use our website or contact us through our forms."
             />

@@ -20,7 +20,7 @@ export default function WebDesignInCardiff() {
         heading="Bespoke web design, <span class='gradientAnimation'> built in Cardiff</span>"
         description="We help ambitious Cardiff brands unlock their full digital potential through award-winning, handcrafted websites designed right here in the heart of Wales."
         urlOne="#contact"
-        urlTwo="/portfolio"
+        urlTwo="#portfolio"
       />
 
       <PortfolioCarouselSection heading="We've powered over <span class='gradientAnimation'>600+ businesses</span> in South Wales" />

@@ -63,8 +63,8 @@ export default function TestimonialItem({
                             <Image
                                 src={testimonial.image}
                                 alt={testimonial.name}
-                                width={64}
-                                height={64}
+                                width={48}
+                                height={48}
                                 loading="lazy"
                                 style={{ objectFit: "cover", objectPosition: "center", borderRadius: "50%" }}
                             />

@@ -1,9 +1,9 @@
-import GradientBanner from "@/components/sections/gradient-banner";
+import Banner from "@/components/sections/banner";
 
 export default function TermsAndConditions() {
     return (
         <>
-            <GradientBanner
+            <Banner
                 heading="Terms and Conditions"
                 description="These Terms and Conditions set out the basis on which Levitate provides its website, services, and digital work to clients in the UK and worldwide."
             />

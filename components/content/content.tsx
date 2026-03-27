@@ -63,7 +63,7 @@ export default function Heading({
 
                 {description && <p dangerouslySetInnerHTML={{ __html: description }}></p>}
 
-                {labelOne && urlOne && (
+                {labelOne && urlOne ? (
 
                     <Buttons
                         disableAnimation={true}
@@ -79,7 +79,7 @@ export default function Heading({
                         relTwo={relTwo || undefined}
                     />
 
-                )}
+                ) : null}
 
             </div>
 

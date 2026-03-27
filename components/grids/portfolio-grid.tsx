@@ -150,13 +150,13 @@ export default async function PortfolioGrid() {
 
                                     <div className={styles.rightContent}>
 
-                                        <Link href={slug} target="_blank" rel="noopener noreferrer" className={`textLink ${styles.portfolioGridButton}`}>
+                                        <Link href={slug} target="_blank" rel="noopener noreferrer" className={`hidden textLink ${styles.portfolioGridButton}`}>
 
                                             <span className="buttonLabel">Read Case Study</span>
 
                                         </Link>
 
-                                        <span>|</span>
+                                        <span className="hidden">|</span>
 
                                         {item.url && (
 

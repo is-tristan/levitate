@@ -5,9 +5,9 @@ import PartnersGrid from "@/components/grids/partners-grid";
 import ServicesSection from "@/components/sections/services-section";
 import PricingCols from "@/components/sections/pricing-cols";
 import PaymentTerms from "@/components/sections/payment-terms";
-import TestimonialsCarousel from "@/components/carousels/testimonials-carousel";
+import TestimonialsSection from "@/components/sections/testimonials-section";
 import CTA from "@/components/sections/cta-section";
-import LogoCarousel from "@/components/carousels/logo-carousel";
+import LogoSection from "@/components/sections/logo-section";
 import ContactSection from "@/components/sections/contact-section";
 
 export default function WebDesignInCardiff() {
@@ -33,11 +33,11 @@ export default function WebDesignInCardiff() {
 
       <PaymentTerms />
 
-      <TestimonialsCarousel containerClassName="noPaddingBottom" />
+      <TestimonialsSection containerClassName="noPaddingBottom" />
 
       <CTA />
 
-      <LogoCarousel />
+      <LogoSection />
 
       <ContactSection />
 

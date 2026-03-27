@@ -38,6 +38,7 @@ const glitchOptions: PowerGlitchOptions = {
     },
     pulse: false
 };
+
 export default function Buttons({
     animationDelay = 0,
     disableAnimation = false,

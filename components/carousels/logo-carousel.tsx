@@ -1,16 +1,20 @@
 "use client";
 
+// React
 import { useEffect, useState } from "react";
-import { logos } from "@/data/logos";
 
+// Next
 import Image from "next/image";
 
+// Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import "@splidejs/react-splide/css/core";
 
+// Styles
 import styles from "@/styles/components/carousels/logo-carousel.module.scss";
 
+// Options
 const options = {
     type: "loop",
     perPage: 5,
@@ -23,6 +27,7 @@ const options = {
     drag: false,
     fixedWidth: 128,
     fixedHeight: 64,
+    lazyLoad: "nearby",
     breakpoints: {
         1023: {
             perPage: 3,
@@ -39,8 +44,17 @@ const options = {
     },
 };
 
+type LogoItem = {
+    name: string;
+    logo: string;
+};
+
+type LogoCarouselProps = {
+    logos?: LogoItem[];
+};
+
 // Shuffle
-const shuffleLogos = (items: typeof logos) => {
+const shuffleLogos = (items: LogoItem[]) => {
     const shuffledItems = [...items];
 
     for (let index = shuffledItems.length - 1; index > 0; index -= 1) {
@@ -52,77 +66,69 @@ const shuffleLogos = (items: typeof logos) => {
     return shuffledItems;
 };
 
-export default function LogoCarousel() {
+export default function LogoCarousel({
+    logos = [],
+}: LogoCarouselProps) {
     const [topLogos, setTopLogos] = useState(logos);
     const [bottomLogos, setBottomLogos] = useState(logos);
 
     useEffect(() => {
         setTopLogos(shuffleLogos(logos));
         setBottomLogos(shuffleLogos(logos));
-    }, []);
+    }, [logos]);
+
+    if (!logos.length) {
+        return null;
+    }
 
     return (
 
-        <section id="logos" className="row" aria-hidden="true">
+        <div className="container noPaddingTop">
 
-            <div className="container noPaddingBottom">
+            <div className={styles.carouselContainer}>
 
-                <div className="heading centered hasFullStop">
+                <>
 
-                    <h3 className={styles.heading} style={{ fontSize: "1.25rem", fontFamily: "var(--font-dm-sans)", fontWeight: "700" }}>Over <strong className="gradientAnimation">700+</strong> businesses have chosen us to grow online</h3>
+                    <Splide
+                        options={options}
+                        extensions={{ AutoScroll }}
+                        className={styles.splide}
+                    >
+                        {topLogos.map((logo) => (
 
-                </div>
+                            <SplideSlide className={styles.logoItem} key={logo.name}>
 
-            </div>
+                                <img data-splide-lazy={logo.logo} alt={logo.name} width={128} height={64} style={{ objectFit: "contain" }} />
 
-            <div className="container noPaddingTop">
+                            </SplideSlide>
 
-                <div className={styles.carouselContainer}>
+                        ))}
 
-                    <>
+                    </Splide>
 
-                        <Splide
-                            options={options}
-                            extensions={{ AutoScroll }}
-                            className={styles.splide}
-                        >
-                            {topLogos.map((logo) => (
+                    <Splide
+                        options={{ ...options, direction: "rtl" }}
+                        extensions={{ AutoScroll }}
+                        className={styles.splide}
+                    >
 
-                                <SplideSlide className={styles.logoItem} key={logo.name}>
+                        {bottomLogos.map((logo) => (
 
-                                    <Image src={logo.logo} alt={logo.name} width={128} height={64} loading="lazy" style={{ objectFit: "contain" }} />
+                            <SplideSlide className={styles.logoItem} key={logo.name}>
 
-                                </SplideSlide>
+                                <img data-splide-lazy={logo.logo} alt={logo.name} width={128} height={64} style={{ objectFit: "contain" }} />
 
-                            ))}
+                            </SplideSlide>
 
-                        </Splide>
+                        ))}
 
-                        <Splide
-                            options={{ ...options, direction: "rtl" }}
-                            extensions={{ AutoScroll }}
-                            className={styles.splide}
-                        >
+                    </Splide>
 
-                            {bottomLogos.map((logo) => (
-
-                                <SplideSlide className={styles.logoItem} key={logo.name}>
-
-                                    <Image src={logo.logo} alt={logo.name} width={128} height={64} loading="lazy" style={{ objectFit: "contain" }} />
-
-                                </SplideSlide>
-
-                            ))}
-
-                        </Splide>
-
-                    </>
-
-                </div>
+                </>
 
             </div>
 
-        </section>
+        </div>
 
     );
 

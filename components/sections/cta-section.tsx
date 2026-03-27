@@ -48,7 +48,7 @@ type CTAProps = {
 
 export default function CTA({
     eyebrow = "",
-    heading = "Creating a <span class='gradientAnimation'>digital impact worldwide</span>",
+    heading = "Creating a digital impact <span class='gradientAnimation'>worldwide</span>",
     description = "We help brands explore their digital potential, through award winning, hand crafted websites.",
     labelOne = "Get in touch",
     urlOne = "/contact",

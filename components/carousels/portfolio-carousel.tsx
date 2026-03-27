@@ -52,6 +52,7 @@ export default function PortfolioCarousel({
 }: PortfolioCarouselProps) {
 
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+    const shouldPlayVideoRefs = useRef<boolean[]>([]);
     const isMobile = useIsBelowBreakpoint();
     const featuredItems = useMemo(() => {
         return items
@@ -78,6 +79,7 @@ export default function PortfolioCarousel({
             video.pause();
             video.currentTime = 0;
         });
+        shouldPlayVideoRefs.current = [];
     }, []);
 
     useEffect(() => {
@@ -89,14 +91,26 @@ export default function PortfolioCarousel({
     const playVideoAt = useCallback((index: number) => {
         const video = videoRefs.current[index];
         if (video) {
+            shouldPlayVideoRefs.current[index] = true;
             video.currentTime = 0;
-            void video.play();
+            const playPromise = video.play();
+            if (playPromise) {
+                void playPromise
+                    .then(() => {
+                        if (!shouldPlayVideoRefs.current[index]) {
+                            video.pause();
+                            video.currentTime = 0;
+                        }
+                    })
+                    .catch(() => {});
+            }
         }
     }, []);
 
     const pauseVideoAt = useCallback((index: number) => {
         const video = videoRefs.current[index];
         if (video) {
+            shouldPlayVideoRefs.current[index] = false;
             video.pause();
             video.currentTime = 0;
         }

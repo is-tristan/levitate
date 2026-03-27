@@ -2,7 +2,7 @@
 import ContactForm from "./components/contact-form";
 import ContactInfoCols from "./components/contact-info-cols";
 import ContactMap from "./components/contact-map";
-import LogoCarousel from "@/components/carousels/logo-carousel";
+import LogoSection from "@/components/sections/logo-section";
 
 export default function ContactUs() {
 
@@ -14,7 +14,7 @@ export default function ContactUs() {
 
             <ContactInfoCols />
 
-            <LogoCarousel />
+            <LogoSection />
 
             <ContactMap />
 

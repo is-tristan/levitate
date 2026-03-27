@@ -2,7 +2,7 @@
 import GradientBanner from "@/components/sections/gradient-banner";
 import PortfolioGrid from "@/components/grids/portfolio-grid";
 import TestimonialsCarousel from "@/components/carousels/testimonials-carousel";
-import LogoCarousel from "@/components/carousels/logo-carousel";
+import LogoSection from "@/components/sections/logo-section";
 import ContactSection from "@/components/sections/contact-section";
 
 export default function Portfolio() {
@@ -20,7 +20,7 @@ export default function Portfolio() {
 
             <TestimonialsCarousel containerClassName="noPaddingBottom" />
 
-            <LogoCarousel />
+            <LogoSection />
 
             <ContactSection />
 

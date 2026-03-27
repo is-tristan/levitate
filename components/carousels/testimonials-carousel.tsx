@@ -3,12 +3,7 @@
 // React
 import { useMemo, useState } from "react";
 
-// Data
-import { testimonials } from "@/data/testimonials";
-
-// Imports
-import Content from "@/components/content/content";
-import ReviewItems from "@/components/items/review-items";
+// Components
 import TestimonialItem from "@/components/item/testimonial-item";
 import { useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
@@ -22,8 +17,13 @@ import styles from "@/styles/components/carousels/testimonials-carousel.module.s
 
 // Types
 type TestimonialsCarouselProps = {
-    containerClassName?: string;
-}
+    testimonials: {
+        name: string;
+        position: string;
+        quote: string;
+        image: string;
+    }[];
+};
 
 // Splide Options
 const baseTestimonialsOptions = {
@@ -41,7 +41,7 @@ const baseTestimonialsOptions = {
 }
 
 export default function TestimonialsCarousel({
-    containerClassName,
+    testimonials,
 }: TestimonialsCarouselProps) {
     const [progressWidth, setProgressWidth] = useState(`${100 / testimonials.length}%`);
     const isMobile = useIsBelowBreakpoint();
@@ -57,27 +57,12 @@ export default function TestimonialsCarousel({
         setProgressWidth(`${progress}%`);
     };
 
+    if (!testimonials.length) {
+        return null;
+    }
+
     return (
-
-        <section id="testimonials" className="row testimonials">
-
-            <div className={`container ${containerClassName || undefined} ${styles.headingContainer}`}>
-
-                <Content
-                    type="h2"
-                    heading="We've got over <span class='gradientAnimation'>150+ 5 star reviews</span> on all platforms"
-                    hasFullStop={true}
-                    className={styles.heading}
-                />
-
-                <ViewportBreakpoint mode="desktop">
-
-                    <ReviewItems layout="inline" />
-
-                </ViewportBreakpoint>
-
-            </div>
-
+        <>
             <ViewportBreakpoint mode="desktop">
 
                 <div className={`container noPaddingTop ${styles.testimonialsContainer}`}>
@@ -133,7 +118,7 @@ export default function TestimonialsCarousel({
 
             </ViewportBreakpoint>
 
-        </section>
+        </>
 
     )
 

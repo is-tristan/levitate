@@ -3,9 +3,9 @@ import GradientBanner from "@/components/sections/gradient-banner";
 import { PortfolioCarouselSection } from "@/components/sections/portfolio-carousel-section";
 import PartnersGrid from "@/components/grids/partners-grid";
 import ServicesSection from "@/components/sections/services-section";
-import TestimonialsCarousel from "@/components/carousels/testimonials-carousel";
+import TestimonialsSection from "@/components/sections/testimonials-section";
 import CTA from "@/components/sections/cta-section";
-import LogoCarousel from "@/components/carousels/logo-carousel";
+import LogoSection from "@/components/sections/logo-section";
 
 export default function Home() {
 
@@ -24,11 +24,11 @@ export default function Home() {
 
       <ServicesSection />
 
-      <TestimonialsCarousel containerClassName="noPaddingBottom" />
+      <TestimonialsSection containerClassName="noPaddingBottom" />
 
       <CTA />
 
-      <LogoCarousel />
+      <LogoSection />
 
     </>
 

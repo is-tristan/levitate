@@ -1,7 +1,8 @@
 .banner {
     position: relative;
     overflow: hidden;
-    padding-top: var(--mobileHeaderHeight);
+    padding-top: calc(var(--mobileHeaderHeight) / 1.5);
+    padding-bottom: calc(var(--mobileHeaderHeight) / 1.5);
 
     @media (width >=768px) {
         min-height: clamp(40rem, 100vh, calc(100vh - var(--headerHeight)));

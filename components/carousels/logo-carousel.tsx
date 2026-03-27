@@ -18,7 +18,6 @@ const options = {
     gap: "3rem",
     arrows: false,
     pagination: false,
-    easing: "cubic-bezier(0.4, 0, 0.2, 1)",
     pauseOnHover: false,
     pauseOnFocus: false,
     drag: false,
@@ -27,6 +26,7 @@ const options = {
     breakpoints: {
         1023: {
             perPage: 3,
+            gap: "1.5rem",
         },
         767: {
             perPage: 2,
@@ -115,7 +115,7 @@ export default function LogoCarousel() {
                             ))}
 
                         </Splide>
-                        
+
                     </>
 
                 </div>

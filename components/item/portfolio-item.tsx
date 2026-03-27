@@ -23,7 +23,6 @@ type PortfolioItemProps = {
     onMouseEnter: () => void;
     onMouseLeave: () => void;
     videoRef: (element: HTMLVideoElement | null) => void;
-    className?: string;
 };
 
 export default function PortfolioItem({
@@ -32,13 +31,12 @@ export default function PortfolioItem({
     onMouseEnter,
     onMouseLeave,
     videoRef,
-    className,
 }: PortfolioItemProps) {
 
     return (
 
         <div
-            className={`${styles.carouselItem}${isMobile ? ` ${styles.slideActive}` : undefined} ${className || undefined}`}
+            className={`${styles.carouselItem} ${isMobile ? ` ${styles.slideActive}` : undefined}`}
             aria-label={item.name}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}

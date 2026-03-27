@@ -58,6 +58,7 @@ export default function Buttons({
     relTwo }: ButtonsProps) {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const isBelowBreakpoint = useIsBelowBreakpoint();
+    const disableMotion = disableAnimation || isBelowBreakpoint;
     const containerVariants = getRevealContainerVariants(animationDelay);
 
     useEffect(() => {
@@ -77,13 +78,13 @@ export default function Buttons({
         <motion.div
             ref={containerRef}
             className={`buttons ${buttonContainerClassName || undefined} ${buttonAlignment === "centered" ? "centered" : undefined}`}
-            variants={disableAnimation ? undefined : containerVariants}
-            initial={disableAnimation ? undefined : "hidden"}
-            whileInView={disableAnimation ? undefined : "visible"}
-            viewport={disableAnimation ? undefined : revealViewport}
+            variants={disableMotion ? undefined : containerVariants}
+            initial={disableMotion ? undefined : "hidden"}
+            whileInView={disableMotion ? undefined : "visible"}
+            viewport={disableMotion ? undefined : revealViewport}
         >
 
-            <motion.div variants={disableAnimation ? undefined : revealItemVariants}>
+            <motion.div variants={disableMotion ? undefined : revealItemVariants}>
 
                 <Link href={urlOne || "#"} target={targetOne || "_self"} rel={relOne || undefined} className={`btn ${btnOneClassName || undefined} `}>
 
@@ -101,7 +102,7 @@ export default function Buttons({
 
             {labelTwo && (
 
-                <motion.div variants={disableAnimation ? undefined : revealItemVariants}>
+                <motion.div variants={disableMotion ? undefined : revealItemVariants}>
 
                     <Link href={urlTwo || "#"} target={targetTwo || "_self"} rel={relTwo || undefined} className={`btn ${btnTwoClassName || undefined} `}>
 

@@ -5,6 +5,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    padding-right: 2px;
 
     @media (width >=1024px) {
         animation: gradientAnimation 7.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;

@@ -3,9 +3,6 @@
 // React
 import { useEffect, useState } from "react";
 
-// Next
-import Image from "next/image";
-
 // Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";

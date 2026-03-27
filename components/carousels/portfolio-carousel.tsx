@@ -102,7 +102,7 @@ export default function PortfolioCarousel({
                             video.currentTime = 0;
                         }
                     })
-                    .catch(() => {});
+                    .catch(() => { });
             }
         }
     }, []);

@@ -30,7 +30,9 @@ interface DelayedViewportMountOptions {
 }
 
 export function useIsBelowBreakpoint(breakpoint = DEFAULT_BREAKPOINT) {
-    const [isBelowBreakpoint, setIsBelowBreakpoint] = useState(false);
+    const [isBelowBreakpoint, setIsBelowBreakpoint] = useState(
+        typeof window !== "undefined" && window.innerWidth < breakpoint
+    );
 
     const updateIsBelowBreakpoint = useCallback(() => {
         setIsBelowBreakpoint(typeof window !== "undefined" && window.innerWidth < breakpoint);

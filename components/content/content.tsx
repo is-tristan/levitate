@@ -5,6 +5,7 @@ import { ButtonsProps } from "@/types/all-types";
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
+import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 type HeadingProps = {
     type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -41,11 +42,13 @@ export default function Heading({
     relTwo
 }: HeadingProps) {
     const pathname = usePathname();
+    const isBelowBreakpoint = useIsBelowBreakpoint();
+    const disableMotion = !hasAnimation || isBelowBreakpoint;
     const containerVariants = getRevealContainerVariants();
     const headingClassName = `heading ${className || undefined} ${layout === "centered" ? "centered" : undefined} ${hasFullStop ? "hasFullStop" : undefined}`;
     const HeadingTag = type;
 
-    if (!hasAnimation) {
+    if (disableMotion) {
         return (
 
             <div className={`content ${containerClassName || undefined}`}>
@@ -88,21 +91,21 @@ export default function Heading({
         <motion.div
             key={pathname}
             className={`content ${containerClassName || undefined}`}
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={revealViewport}
+            variants={disableMotion ? undefined : containerVariants}
+            initial={disableMotion ? undefined : "hidden"}
+            whileInView={disableMotion ? undefined : "visible"}
+            viewport={disableMotion ? undefined : revealViewport}
         >
 
             {eyebrow && (
-                <motion.span className="eyebrow" variants={revealItemVariants}>
+                <motion.span className="eyebrow" variants={disableMotion ? undefined : revealItemVariants}>
                     {eyebrow}
                 </motion.span>
             )}
 
             <motion.div
                 className={headingClassName}
-                variants={revealItemVariants}
+                variants={disableMotion ? undefined : revealItemVariants}
             >
 
                 {type === "h1" && <motion.h1 dangerouslySetInnerHTML={{ __html: heading }}></motion.h1>}
@@ -121,7 +124,7 @@ export default function Heading({
 
             {description && (
                 <motion.p
-                    variants={revealItemVariants}
+                    variants={disableMotion ? undefined : revealItemVariants}
                     dangerouslySetInnerHTML={{ __html: description }}
                     suppressHydrationWarning={true}
                 ></motion.p>
@@ -129,7 +132,7 @@ export default function Heading({
 
             {labelOne && urlOne && (
 
-                <motion.div variants={revealItemVariants}>
+                <motion.div variants={disableMotion ? undefined : revealItemVariants}>
 
                     <Buttons
                         disableAnimation={true}

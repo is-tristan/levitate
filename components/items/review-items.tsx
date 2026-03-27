@@ -3,6 +3,7 @@
 import { facebookLogo, googleLogoMark, starIcons } from "@/data/icons";
 import { motion } from "motion/react";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
+import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Styles
 import styles from "@/styles/components/items/review-items.module.scss";
@@ -35,16 +36,17 @@ export default function ReviewItems({
     layout = "default",
     className,
 }: ReviewItemsProps) {
+    const isBelowBreakpoint = useIsBelowBreakpoint();
     const containerVariants = getRevealContainerVariants();
 
     return (
 
         <motion.div
             className={`${styles.reviewLogos} ${layout === "inline" ? styles.inline : undefined} ${className || undefined}`}
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={revealViewport}
+            variants={isBelowBreakpoint ? undefined : containerVariants}
+            initial={isBelowBreakpoint ? undefined : "hidden"}
+            whileInView={isBelowBreakpoint ? undefined : "visible"}
+            viewport={isBelowBreakpoint ? undefined : revealViewport}
         >
 
             {reviewItems.map((item) => (
@@ -55,7 +57,7 @@ export default function ReviewItems({
                     rel="noopener noreferrer"
                     className={styles.reviewLogo}
                     aria-label={item.ariaLabel}
-                    variants={revealItemVariants}
+                    variants={isBelowBreakpoint ? undefined : revealItemVariants}
                 >
 
                     <div className={styles.reviewLogoHeader}>

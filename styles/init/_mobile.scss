@@ -1,0 +1,27 @@
+.carouselContainerMobile {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1.5rem;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+
+    .carouselItemMobile {
+        scroll-snap-align: center;
+        flex: 0 0 calc(100% - 4rem);
+        width: 100%;
+
+        &:first-child {
+            margin-left: 1.5rem;
+        }
+
+        &:last-child {
+            margin-right: 1.5rem;
+        }
+    }
+}

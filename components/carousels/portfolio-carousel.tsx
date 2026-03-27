@@ -3,17 +3,14 @@
 // React
 import { useCallback, useEffect, useMemo, useRef } from "react";
 
-// Next
-import Image from "next/image";
-
 // Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/core";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 
 // Components
-import { arrowRight } from "@/data/icons";
-import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
+import PortfolioItem from "@/components/item/portfolio-item";
+import { useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Styles
 import styles from "@/styles/components/carousels/portfolio-carousel.module.scss";
@@ -37,23 +34,11 @@ const baseOptions = {
     gap: "1rem",
     arrows: false,
     pagination: false,
-    easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+    pauseOnHover: false,
+    pauseOnFocus: false,
     padding: {
         right: "7.5%",
         left: "7.5%",
-    },
-    pauseOnHover: false,
-    breakpoints: {
-        1279: {
-            padding: {
-                left: "5%",
-                right: "5%",
-            },
-        },
-        767: {
-            autoplay: true,
-            interval: 4500,
-        }
     },
     autoScroll: {
         speed: 1,
@@ -69,7 +54,9 @@ export default function PortfolioCarousel({
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
     const isMobile = useIsBelowBreakpoint();
     const featuredItems = useMemo(() => {
-        return items.filter(item => item.featured);
+        return items
+            .filter(item => item.featured)
+            .sort((firstItem, secondItem) => firstItem.name.localeCompare(secondItem.name));
     }, [items]);
     const carouselOptions = useMemo(() => {
         if (isMobile) {
@@ -137,63 +124,60 @@ export default function PortfolioCarousel({
 
         <div className={`container noPaddingTop ${styles.carouselContainer}`}>
 
-            <Splide
-                className={`hasArrows splideTrackNoOverflow`}
-                options={carouselOptions}
-                extensions={isMobile ? undefined : { AutoScroll }}
-            >
+            <ViewportBreakpoint mode="desktop">
 
-                {featuredItems.map((item, index) => (
+                <Splide
+                    className={`hasArrows splideTrackNoOverflow`}
+                    options={carouselOptions}
+                    extensions={isMobile ? undefined : { AutoScroll }}
+                >
 
-                    <SplideSlide key={`${item.name}-${index}`} onMouseEnter={() => handleVideoHover(index)} onMouseLeave={() => handleVideoLeave(index)} >
+                    {featuredItems.map((item, index) => (
 
-                        <div className={`${styles.carouselItem}${isMobile ? ` ${styles.slideActive}` : ""}`} aria-label={item.name} >
+                        <SplideSlide key={`${item.name}-${index}`}>
+                            <PortfolioItem
+                                item={item}
+                                isMobile={isMobile}
+                                onMouseEnter={() => handleVideoHover(index)}
+                                onMouseLeave={() => handleVideoLeave(index)}
+                                videoRef={element => {
+                                    videoRefs.current[index] = element;
+                                }}
+                            />
 
-                            {item.video && !isMobile ? (
+                        </SplideSlide>
 
-                                <video
-                                    ref={element => {
-                                        videoRefs.current[index] = element;
-                                    }}
-                                    src={item.video}
-                                    muted
-                                    loop
-                                    playsInline
-                                    className={styles.carouselVideo}
-                                    preload="none"
-                                    poster={item.poster}
-                                />
+                    ))}
 
-                            ) : (
+                </Splide>
 
-                                <Image
-                                    src={item.poster}
-                                    alt={item.name}
-                                    fill
-                                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 90vw, 85vw"
-                                    className={styles.carouselImage}
-                                    loading="lazy"
-                                />
+            </ViewportBreakpoint>
 
-                            )}
+            <ViewportBreakpoint mode="mobile">
 
-                            <div className={styles.carouselContent}>
+                <div className={`carouselContainerMobile ${styles.portfolioCarouselMobile}`}>
 
-                                <h3><a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}<span className="colorAccent">.</span></a></h3>
+                    {featuredItems.map((item, index) => (
 
-                                <a href={item.url} className={styles.carouselTextLink} aria-label="View website" target="_blank" rel="noopener noreferrer">View Website <span className={styles.icon} dangerouslySetInnerHTML={{ __html: arrowRight }} /></a>
+                        <article className={`carouselItemMobile ${styles.portfolioCarouselItemMobile}`} key={`${item.name}-${index}`}>
 
-                            </div>
+                            <PortfolioItem
+                                item={item}
+                                isMobile={isMobile}
+                                onMouseEnter={() => handleVideoHover(index)}
+                                onMouseLeave={() => handleVideoLeave(index)}
+                                videoRef={element => {
+                                    videoRefs.current[index] = element;
+                                }}
+                            />
 
-                            <a href={item.url} className={styles.itemLink} aria-label="View website" target="_blank" rel="noopener noreferrer"></a>
+                        </article>
 
-                        </div>
+                    ))}
 
-                    </SplideSlide>
+                </div>
 
-                ))}
-
-            </Splide>
+            </ViewportBreakpoint>
 
         </div>
 

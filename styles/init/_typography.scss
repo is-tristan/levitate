@@ -7,7 +7,7 @@ h5,
 h6 {
     font-family: var(--font-prophet), ui-sans-serif, sans-serif;
     color: var(--heading);
-    line-height: 115%;
+    line-height: 105%;
     margin: 0;
     padding: 0;
     text-wrap: balance;
@@ -16,6 +16,10 @@ h6 {
 
     @media (width >=768px) and (width <1024px) {
         text-align: center;
+    }
+
+    @media (width >=1024px) {
+        line-height: 115%;
     }
 }
 

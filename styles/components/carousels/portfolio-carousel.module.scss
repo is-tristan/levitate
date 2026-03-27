@@ -15,10 +15,10 @@
 
 .carouselContainer {
     aspect-ratio: 1/1;
+    padding-right: 0;
+    padding-left: 0;
 
     @media (width >=1024px) {
-        padding-right: 0;
-        padding-left: 0;
         aspect-ratio: 16/9;
     }
 }

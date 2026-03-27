@@ -1,8 +1,5 @@
 "use client";
 
-// Next
-import Image from "next/image";
-
 // React
 import { useMemo, useState } from "react";
 
@@ -12,7 +9,8 @@ import { testimonials } from "@/data/testimonials";
 // Imports
 import Content from "@/components/content/content";
 import ReviewItems from "@/components/items/review-items";
-import { useDelayedViewportMount, useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
+import TestimonialItem from "@/components/item/testimonial-item";
+import { useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -21,9 +19,6 @@ import type { Splide as SplideInstance } from "@splidejs/splide";
 
 // Styles
 import styles from "@/styles/components/carousels/testimonials-carousel.module.scss";
-
-// Icons
-import { quoteIcon } from "@/data/icons";
 
 // Types
 type TestimonialsCarouselProps = {
@@ -39,7 +34,6 @@ const baseTestimonialsOptions = {
     perPage: 1,
     perMove: 1,
     gap: "0",
-    easing: "cubic-bezier(0.4, 0, 0.2, 1)",
     autoplay: true,
     interval: 6000,
     pauseOnHover: false,
@@ -51,7 +45,6 @@ export default function TestimonialsCarousel({
 }: TestimonialsCarouselProps) {
     const [progressWidth, setProgressWidth] = useState(`${100 / testimonials.length}%`);
     const isMobile = useIsBelowBreakpoint();
-    const { isMounted, viewportRef } = useDelayedViewportMount<HTMLDivElement>();
     const testimonialsOptions = useMemo(() => {
         return {
             ...baseTestimonialsOptions,
@@ -85,9 +78,10 @@ export default function TestimonialsCarousel({
 
             </div>
 
-            <div ref={viewportRef} className={`container noPaddingTop ${styles.testimonialsContainer}`}>
+            <ViewportBreakpoint mode="desktop">
 
-                {isMounted ? (
+                <div className={`container noPaddingTop ${styles.testimonialsContainer}`}>
+
                     <Splide
                         className={"hasArrows"}
                         options={testimonialsOptions}
@@ -99,96 +93,45 @@ export default function TestimonialsCarousel({
 
                             <SplideSlide key={index}>
 
-                                <div className={styles.testimonial}>
-
-                                    <div className={styles.testimonialImage}>
-
-                                        <Image
-                                            src={testimonial.image}
-                                            alt={testimonial.name}
-                                            width={576}
-                                            height={576}
-                                            sizes="(max-width: 1023px) 100vw, 50vw"
-                                            loading="lazy"
-                                            style={{ objectFit: "cover", objectPosition: "center top" }}
-                                        />
-
-                                    </div>
-
-                                    <div className={styles.testimonialContent}>
-
-                                        <p>{testimonial.quote}</p>
-
-                                        <div className={styles.testimonialMeta}>
-
-                                            <div className={styles.testimonialMetaIcon} dangerouslySetInnerHTML={{ __html: quoteIcon }}></div>
-
-                                            <div className={styles.testimonialMetaContent}>
-
-                                                <h3 className={`colorPrimary`}>{testimonial.name}</h3>
-
-                                                <span>{testimonial.position}</span>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                                <TestimonialItem testimonial={testimonial} />
 
                             </SplideSlide>
 
                         ))}
 
                     </Splide>
-                ) : (
-                    <div className={styles.testimonial}>
 
-                        <div className={styles.testimonialImage}>
+                    <div className={styles.testimonialsProgress}>
 
-                            <Image
-                                src={testimonials[0].image}
-                                alt={testimonials[0].name}
-                                width={576}
-                                height={576}
-                                sizes="(max-width: 1023px) 100vw, 50vw"
-                                loading="lazy"
-                                style={{ objectFit: "cover", objectPosition: "center top" }}
-                            />
-
-                        </div>
-
-                        <div className={styles.testimonialContent}>
-
-                            <p>{testimonials[0].quote}</p>
-
-                            <div className={styles.testimonialMeta}>
-
-                                <div className={styles.testimonialMetaIcon} dangerouslySetInnerHTML={{ __html: quoteIcon }}></div>
-
-                                <div className={styles.testimonialMetaContent}>
-
-                                    <h3 className={`colorPrimary`}>{testimonials[0].name}</h3>
-
-                                    <span>{testimonials[0].position}</span>
-
-                                </div>
-
-                            </div>
-
-                        </div>
+                        <div className={styles.testimonialsProgressBar} style={{ width: progressWidth }}></div>
 
                     </div>
-                )}
-
-                <div className={styles.testimonialsProgress}>
-
-                    <div className={styles.testimonialsProgressBar} style={{ width: progressWidth }}></div>
 
                 </div>
 
-            </div>
+            </ViewportBreakpoint>
+
+            <ViewportBreakpoint mode="mobile">
+
+                <div className={`container noPaddingTop ${styles.testimonialsCarouselMobile}`}>
+
+                    <div className="carouselContainerMobile">
+
+                        {testimonials.map((testimonial, index) => (
+
+                            <article className="carouselItemMobile" key={index}>
+
+                                <TestimonialItem testimonial={testimonial} />
+
+                            </article>
+
+                        ))}
+
+                    </div>
+
+                </div>
+
+            </ViewportBreakpoint>
 
         </section>
 

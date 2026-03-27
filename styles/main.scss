@@ -7,6 +7,7 @@
 @use "init/mixins" as *;
 @use "init/classes" as *;
 @use "init/site" as *;
+@use "init/mobile" as *;
 
 // Handlers
 @use "components/handlers/buttons" as *;

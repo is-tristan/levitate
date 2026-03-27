@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { logos } from "@/data/logos";
-import { useDelayedViewportMount } from "@/utils/helpers/device-rendering";
 
 import Image from "next/image";
 
@@ -40,6 +39,7 @@ const options = {
     },
 };
 
+// Shuffle
 const shuffleLogos = (items: typeof logos) => {
     const shuffledItems = [...items];
 
@@ -55,7 +55,6 @@ const shuffleLogos = (items: typeof logos) => {
 export default function LogoCarousel() {
     const [topLogos, setTopLogos] = useState(logos);
     const [bottomLogos, setBottomLogos] = useState(logos);
-    const { isMounted, viewportRef } = useDelayedViewportMount<HTMLDivElement>();
 
     useEffect(() => {
         setTopLogos(shuffleLogos(logos));
@@ -76,73 +75,48 @@ export default function LogoCarousel() {
 
             </div>
 
-            <div ref={viewportRef} className="container noPaddingTop">
+            <div className="container noPaddingTop">
 
                 <div className={styles.carouselContainer}>
 
-                    {isMounted ? (
-                        <>
-                            <Splide
-                                options={options}
-                                extensions={{ AutoScroll }}
-                                className={styles.splide}
-                            >
-                                {topLogos.map((logo) => (
+                    <>
 
-                                    <SplideSlide className={styles.logoItem} key={logo.name}>
+                        <Splide
+                            options={options}
+                            extensions={{ AutoScroll }}
+                            className={styles.splide}
+                        >
+                            {topLogos.map((logo) => (
 
-                                        <Image src={logo.logo} alt={logo.name} width={128} height={64} loading="lazy" style={{ objectFit: "contain" }} />
+                                <SplideSlide className={styles.logoItem} key={logo.name}>
 
-                                    </SplideSlide>
+                                    <Image src={logo.logo} alt={logo.name} width={128} height={64} loading="lazy" style={{ objectFit: "contain" }} />
 
-                                ))}
+                                </SplideSlide>
 
-                            </Splide>
+                            ))}
 
-                            <Splide
-                                options={{ ...options, direction: "rtl" }}
-                                extensions={{ AutoScroll }}
-                                className={styles.splide}
-                            >
-                                {bottomLogos.map((logo) => (
+                        </Splide>
 
-                                    <SplideSlide className={styles.logoItem} key={logo.name}>
+                        <Splide
+                            options={{ ...options, direction: "rtl" }}
+                            extensions={{ AutoScroll }}
+                            className={styles.splide}
+                        >
 
-                                        <Image src={logo.logo} alt={logo.name} width={128} height={64} loading="lazy" style={{ objectFit: "contain" }} />
+                            {bottomLogos.map((logo) => (
 
-                                    </SplideSlide>
+                                <SplideSlide className={styles.logoItem} key={logo.name}>
 
-                                ))}
+                                    <Image src={logo.logo} alt={logo.name} width={128} height={64} loading="lazy" style={{ objectFit: "contain" }} />
 
-                            </Splide>
-                        </>
-                    ) : (
-                        <>
-                            <div className={styles.staticTrack}>
-                                {topLogos.slice(0, 5).map((logo) => (
+                                </SplideSlide>
 
-                                    <div className={styles.logoItem} key={logo.name}>
+                            ))}
 
-                                        <Image src={logo.logo} alt={logo.name} width={128} height={64} loading="lazy" style={{ objectFit: "contain" }} />
-
-                                    </div>
-
-                                ))}
-                            </div>
-
-                            <div className={styles.staticTrack}>
-                                {bottomLogos.slice(0, 5).map((logo) => (
-
-                                    <div className={styles.logoItem} key={logo.name}>
-
-                                        <Image src={logo.logo} alt={logo.name} width={128} height={64} loading="lazy" style={{ objectFit: "contain" }} />
-
-                                    </div>
-
-                                ))}
-                            </div>
-                        </>
-                    )}
+                        </Splide>
+                        
+                    </>
 
                 </div>
 

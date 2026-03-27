@@ -40,13 +40,17 @@
     width: 100%;
     max-width: 95%;
     padding: 3rem;
-    background: rgba(var(--backgroundRgb), 0.975);
+    background-image: url("/images/backgrounds/gradients/mobile-background-gradient-2.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: var(--borderRadius) 0 0 var(--borderRadius);
     transition: var(--ease);
     overflow-y: auto;
 
     @media (width >=768px) {
         max-width: 50%;
+        background-image: url("/images/backgrounds/gradients/tablet-background-gradient-2.webp");
     }
 
     * {

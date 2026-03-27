@@ -117,16 +117,10 @@ export default function PortfolioCarousel({
     }, []);
 
     const handleVideoHover = (index: number) => {
-        if (isMobile) {
-            return;
-        }
         playVideoAt(index);
     };
 
     const handleVideoLeave = (index: number) => {
-        if (isMobile) {
-            return;
-        }
         pauseVideoAt(index);
     };
 
@@ -152,11 +146,9 @@ export default function PortfolioCarousel({
                             <PortfolioItem
                                 item={item}
                                 isMobile={isMobile}
-                                onMouseEnter={() => handleVideoHover(index)}
-                                onMouseLeave={() => handleVideoLeave(index)}
-                                videoRef={element => {
-                                    videoRefs.current[index] = element;
-                                }}
+                                onMouseEnter={() => { }}
+                                onMouseLeave={() => { }}
+                                videoRef={() => { }}
                             />
 
                         </SplideSlide>

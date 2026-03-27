@@ -20,22 +20,22 @@ const shaderGradientProps = {
     destination: "onCanvas",
     embedMode: "off",
     envPreset: "city" as const,
-    format: "gif",
-    frameRate: 10,
+    format: "webp",
+    frameRate: 5,
     gizmoHelper: "hide",
     grain: "on" as const,
     lightType: "3d" as const,
     pixelDensity: 1,
-    positionX: -0.5,
-    positionY: 0.1,
+    positionX: 0,
+    positionY: 0,
     positionZ: 0,
-    range: "disabled",
+    range: "enabled",
     rangeEnd: 40,
     rangeStart: 0,
-    reflection: 0.1,
+    reflection: 0,
     rotationX: 0,
     rotationY: 0,
-    rotationZ: 235,
+    rotationZ: 0,
     shader: "defaults",
     type: "waterPlane" as const,
     uAmplitude: 0,
@@ -43,7 +43,7 @@ const shaderGradientProps = {
     uFrequency: 5.5,
     uSpeed: 0.1,
     uStrength: 0.8,
-    uTime: 0.2,
+    uTime: 0.1,
     wireframe: false
 };
 
@@ -53,7 +53,7 @@ export default function BannerAnimation() {
 
         <div className={styles.bannerAnimation}>
 
-            <ShaderGradientCanvas style={{ position: "absolute", inset: 0 }} fov={25} >
+            <ShaderGradientCanvas style={{ position: "absolute", inset: 0 }} fov={24} >
 
                 <ShaderGradient {...shaderGradientProps} />
 

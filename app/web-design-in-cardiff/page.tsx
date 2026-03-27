@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 // Components
 import GradientBanner from "@/components/sections/gradient-banner";
 import { PortfolioCarouselSection } from "@/components/sections/portfolio-carousel-section";
@@ -6,6 +8,7 @@ import ServicesSection from "@/components/sections/services-section";
 import PricingCols from "@/components/sections/pricing-cols";
 import PaymentTerms from "@/components/sections/payment-terms";
 import TestimonialsSection from "@/components/sections/testimonials-section";
+import Loading from "@/components/item/loading";
 import CTA from "@/components/sections/cta-section";
 import LogoSection from "@/components/sections/logo-section";
 import ContactSection from "@/components/sections/contact-section";
@@ -23,7 +26,9 @@ export default function WebDesignInCardiff() {
         urlTwo="#portfolio"
       />
 
-      <PortfolioCarouselSection heading="We've powered over <span class='gradientAnimation'>600+ businesses</span> in South Wales" />
+      <Suspense fallback={<Loading />}>
+        <PortfolioCarouselSection heading="We've powered over <span class='gradientAnimation'>600+ businesses</span> in South Wales" />
+      </Suspense>
 
       <PartnersGrid />
 
@@ -33,7 +38,9 @@ export default function WebDesignInCardiff() {
 
       <PaymentTerms />
 
-      <TestimonialsSection containerClassName="noPaddingBottom" />
+      <Suspense fallback={<Loading />}>
+        <TestimonialsSection containerClassName="noPaddingBottom" />
+      </Suspense>
 
       <CTA />
 

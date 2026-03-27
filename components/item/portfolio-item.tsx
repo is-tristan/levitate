@@ -32,7 +32,6 @@ export default function PortfolioItem({
     onMouseLeave,
     videoRef,
 }: PortfolioItemProps) {
-
     return (
 
         <div

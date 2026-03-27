@@ -27,6 +27,7 @@ const DmSans = LocalFont({
 
 // Metadata
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
     default: "Levitate | Bespoke Websites That Get Results",
     template: "%s | Levitate"

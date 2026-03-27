@@ -173,6 +173,10 @@ $formTransition: all .1s ease;
 
     .checkboxLabel {
         cursor: pointer;
+
+        @media all {
+            text-align: left;
+        }
     }
 
     .customCheckbox {

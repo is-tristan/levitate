@@ -41,28 +41,28 @@ export default function Form() {
                 <fieldset className={styles.formField}>
 
                     <label htmlFor="name">Full Name<span className={`${styles.required}`}></span></label>
-                    <input type="text" name="name" id="name" placeholder="John Doe" required />
+                    <input type="text" name="name" id="name" placeholder="John Doe" required autoComplete="name" />
 
                 </fieldset>
 
                 <fieldset className={`${styles.formField} ${styles.formFieldHalf}`}>
 
                     <label htmlFor="name">Email Address<span className={`${styles.required}`}></span></label>
-                    <input type="email" name="email" id="email" placeholder="you@company.com" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                    <input type="email" name="email" id="email" placeholder="you@company.com" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" autoComplete="email" />
 
                 </fieldset>
 
                 <fieldset className={`${styles.formField} ${styles.formFieldHalf}`}>
 
                     <label htmlFor="phone">Phone Number<span className={`${styles.required}`}></span></label>
-                    <input type="text" name="phone" id="phone" placeholder="+44 7123 456789" required pattern="^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$" />
+                    <input type="text" name="phone" id="phone" placeholder="+44 7123 456789" required pattern="^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$" autoComplete="tel" />
 
                 </fieldset>
 
                 <fieldset className={styles.formField}>
 
                     <label htmlFor="phone">Existing Website (if applicable)</label>
-                    <input type="text" name="existingWebsite" id="existingWebsite" placeholder="https://example.com" />
+                    <input type="text" name="existingWebsite" id="existingWebsite" placeholder="https://example.com" autoComplete="url" />
 
                 </fieldset>
 

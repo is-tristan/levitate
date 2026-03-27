@@ -5,8 +5,9 @@ import { motion, type MotionValue, useTransform } from "motion/react";
 
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
+import ServiceItemLogos from "@/components/items/service-item-logos";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
-import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
+import { useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
 import styles from "@/styles/components/sections/services-section.module.scss";
 
@@ -60,7 +61,6 @@ type ServicesPartDevelopmentProps = {
 export default function ServicesPartDevelopment({ scrollProgress }: ServicesPartDevelopmentProps) {
     const disableAnimation = useIsBelowBreakpoint();
     const imageVariants = getRevealContainerVariants();
-    const logoVariants = getRevealContainerVariants();
 
     const imageOneY = useTransform(scrollProgress, [0, 0.14, 0.78], [0, 0, -360]);
     const imageTwoY = useTransform(scrollProgress, [0, 0.14, 0.78], [0, 0, -288]);
@@ -96,7 +96,7 @@ export default function ServicesPartDevelopment({ scrollProgress }: ServicesPart
                                 src={image.image}
                                 alt={image.alt}
                                 fill
-                                sizes="100%"
+                                sizes="(max-width: 767px) 332px, 750px"
                                 style={{ objectFit: "contain" }}
                                 priority={index === 0}
                             />
@@ -121,33 +121,11 @@ export default function ServicesPartDevelopment({ scrollProgress }: ServicesPart
                     description="At Levitate, we create beautiful, performance-driven websites that engage users and convert visitors into customers. Our Cardiff-based team designs with precision, combining creativity and strategy to build digital experiences that truly elevate your brand."
                 />
 
-                <motion.div
-                    className={styles.logos}
-                    variants={logoVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={revealViewport}
-                >
-
-                    {logos.map((logo) => (
-
-                        <motion.a
-                            variants={revealItemVariants}
-                            href={logo.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            key={logo.alt}
-                            className={styles.logo}
-                        >
-
-                            <Image src={logo.image} alt={logo.alt} width={128} height={80} style={{ objectFit: "contain" }} loading="lazy" />
-
-                        </motion.a>
-
-                    ))}
-
-                </motion.div>
-
+                <ServiceItemLogos
+                    logos={logos}
+                    containerClassName={styles.logos}
+                    itemClassName={styles.logo}
+                />
                 <Buttons
                     animationDelay={0.4}
                     labelOne="Learn More"

@@ -8,6 +8,11 @@
 
     .heading {
         max-width: 40rem;
+        text-align: center;
+
+        @media (width >=1024px) {
+            text-align: left;
+        }
 
         @media (width >=1512px) {
             max-width: 50rem;
@@ -21,7 +26,7 @@
 
     article {
         background: var(--backgroundAlt);
-        padding: 1.5rem;
+        padding: 1.25rem;
         border-radius: var(--borderRadius);
         border: 1.5px solid var(--border);
     }

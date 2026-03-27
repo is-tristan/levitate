@@ -12,7 +12,7 @@ import { useLayoutEffect, useRef } from "react";
 import ServicesPartBranding from "@/components/sections/section-parts/services/services-part-branding";
 import ServicesPartDevelopment from "@/components/sections/section-parts/services/services-part-dev";
 import ServicesPartSEO from "@/components/sections/section-parts/services/services-part-seo";
-import ServicesPartCardiff from "@/components/sections/section-parts/services/services-cardiff";
+import ServicesPartCardiff from "@/components/sections/section-parts/services/services-part-cardiff";
 
 // Styles
 import styles from "@/styles/components/sections/services-section.module.scss";

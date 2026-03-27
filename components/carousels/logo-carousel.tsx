@@ -24,7 +24,7 @@ const options = {
     drag: false,
     fixedWidth: 128,
     fixedHeight: 64,
-    lazyLoad: "nearby",
+    lazyLoad: "sequential",
     breakpoints: {
         1023: {
             perPage: 3,

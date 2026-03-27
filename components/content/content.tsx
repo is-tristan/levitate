@@ -124,7 +124,7 @@ export default function Heading({
 
             {description && (
                 <motion.p
-                    variants={disableMotion ? undefined : revealItemVariants}
+                    variants={revealItemVariants}
                     dangerouslySetInnerHTML={{ __html: description }}
                     suppressHydrationWarning={true}
                 ></motion.p>
@@ -132,7 +132,7 @@ export default function Heading({
 
             {labelOne && urlOne && (
 
-                <motion.div variants={disableMotion ? undefined : revealItemVariants}>
+                <motion.div variants={revealItemVariants}>
 
                     <Buttons
                         disableAnimation={true}

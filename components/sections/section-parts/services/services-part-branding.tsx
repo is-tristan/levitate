@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
+import ServiceItemLogos from "@/components/items/service-item-logos";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
@@ -57,7 +57,6 @@ export default function ServicesPartBranding() {
     const typeY = useTransform(scrollYProgress, [0, 0.5, 1], [-32, 0, 0]);
     const voiceY = useTransform(scrollYProgress, [0, 0.5, 1], [40, 0, 0]);
     const containerVariants = getRevealContainerVariants();
-    const logoVariants = getRevealContainerVariants();
 
     return (
 
@@ -160,32 +159,11 @@ export default function ServicesPartBranding() {
                     description="Your brand deserves to stand out. Levitate's creative team crafts distinctive brand identities that capture your voice, values, and vision — from logo design to messaging and visuals that make a lasting impression."
                 />
 
-                <motion.div
-                    className={styles.logos}
-                    variants={logoVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={revealViewport}
-                >
-
-                    {logos.map((logo) => (
-
-                        <motion.a
-                            variants={revealItemVariants}
-                            href={logo.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            key={logo.alt}
-                            className={styles.logo}
-                        >
-
-                            <Image src={logo.image} alt={logo.alt} width={128} height={80} style={{ objectFit: "contain" }} loading="lazy" />
-
-                        </motion.a>
-
-                    ))}
-
-                </motion.div>
+                <ServiceItemLogos
+                    logos={logos}
+                    containerClassName={styles.logos}
+                    itemClassName={styles.logo}
+                />
 
                 <Buttons
                     animationDelay={0.4}

@@ -3,7 +3,7 @@
 import { facebookLogo, googleLogoMark, starIcons } from "@/data/icons";
 import { motion } from "motion/react";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
-import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
+import { useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Styles
 import styles from "@/styles/components/items/review-items.module.scss";
@@ -41,40 +41,81 @@ export default function ReviewItems({
 
     return (
 
-        <motion.div
-            className={`${styles.reviewLogos} ${layout === "inline" ? styles.inline : undefined} ${className || undefined}`}
-            variants={isBelowBreakpoint ? undefined : containerVariants}
-            initial={isBelowBreakpoint ? undefined : "hidden"}
-            whileInView={isBelowBreakpoint ? undefined : "visible"}
-            viewport={isBelowBreakpoint ? undefined : revealViewport}
-        >
+        <>
 
-            {reviewItems.map((item) => (
-                <motion.a
-                    key={item.ariaLabel}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.reviewLogo}
-                    aria-label={item.ariaLabel}
-                    variants={isBelowBreakpoint ? undefined : revealItemVariants}
+            <ViewportBreakpoint mode="desktop">
+
+                <motion.div
+                    className={`${styles.reviewLogos} ${layout === "inline" ? styles.inline : undefined} ${className || undefined}`}
+                    variants={isBelowBreakpoint ? undefined : containerVariants}
+                    initial={isBelowBreakpoint ? undefined : "hidden"}
+                    whileInView={isBelowBreakpoint ? undefined : "visible"}
+                    viewport={isBelowBreakpoint ? undefined : revealViewport}
                 >
 
-                    <div className={styles.reviewLogoHeader}>
+                    {reviewItems.map((item) => (
+                        <motion.a
+                            key={item.ariaLabel}
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.reviewLogo}
+                            aria-label={item.ariaLabel}
+                            variants={isBelowBreakpoint ? undefined : revealItemVariants}
+                        >
 
-                        <div className={styles.reviewLogoIcon} dangerouslySetInnerHTML={{ __html: item.icon }}></div>
+                            <div className={styles.reviewLogoHeader}>
 
-                        <div className={styles.reviewLogoStar} dangerouslySetInnerHTML={{ __html: starIcons }}></div>
+                                <div className={styles.reviewLogoIcon} dangerouslySetInnerHTML={{ __html: item.icon }}></div>
 
-                    </div>
+                                <div className={styles.reviewLogoStar} dangerouslySetInnerHTML={{ __html: starIcons }}></div>
 
-                    <span><strong>{item.reviewRating}</strong> Based on <strong className="colorPrimary">{item.reviewCount}+</strong> reviews</span>
+                            </div>
 
-                </motion.a>
+                            <span><strong>{item.reviewRating}</strong> Based on <strong className="colorPrimary">{item.reviewCount}+</strong> reviews</span>
 
-            ))}
+                        </motion.a>
 
-        </motion.div>
+                    ))}
+
+                </motion.div>
+
+            </ViewportBreakpoint>
+
+            <ViewportBreakpoint mode="mobile">
+
+                <div className={`${styles.reviewLogos} ${layout === "inline" ? styles.inline : undefined} ${className || undefined}`}>
+
+                    {reviewItems.map((item) => (
+                        
+                        <a
+                            key={item.ariaLabel}
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.reviewLogo}
+                            aria-label={item.ariaLabel}
+                        >
+
+                            <div className={styles.reviewLogoHeader}>
+
+                                <div className={styles.reviewLogoIcon} dangerouslySetInnerHTML={{ __html: item.icon }}></div>
+
+                                <div className={styles.reviewLogoStar} dangerouslySetInnerHTML={{ __html: starIcons }}></div>
+
+                            </div>
+
+                            <span><strong>{item.reviewRating}</strong> Based on <strong className="colorPrimary">{item.reviewCount}+</strong> reviews</span>
+
+                        </a>
+
+                    ))}
+
+                </div>
+
+            </ViewportBreakpoint>
+
+        </>
 
     )
 

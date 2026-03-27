@@ -14,7 +14,7 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     width: 3rem;
     height: 2rem;
     background: transparent;
@@ -23,7 +23,7 @@
 
     .navLine {
         width: 100%;
-        height: 1.25px;
+        height: 1px;
         background: var(--light);
         transition: var(--ease);
     }
@@ -38,7 +38,7 @@
     bottom: 0;
     height: 100vh;
     width: 100%;
-    max-width: 95%;
+    max-width: 90%;
     padding: 3rem;
     background-image: url("/images/backgrounds/gradients/mobile-background-gradient-2.webp");
     background-size: cover;
@@ -61,14 +61,14 @@
 .mobileMenuContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 5rem;
 }
 
 .mobileMenuHeader {
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 
     .mobileMenuLogo {

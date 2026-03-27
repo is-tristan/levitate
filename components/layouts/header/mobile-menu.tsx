@@ -16,9 +16,6 @@ import { footerLogo, closeIcon, chevronDown } from "@/data/icons";
 // Data
 import { menuItems } from "@/data/menu-items";
 
-// Imports
-import Buttons from "@/components/handlers/buttons"
-
 // Types
 type MobileMenuProps = {
     handleClose: () => void;
@@ -51,8 +48,6 @@ export default function MobileMenu({
             <div className={styles.mobileMenuContainer}>
 
                 <div className={styles.mobileMenuHeader}>
-
-                    <span className={styles.mobileMenuLogo} dangerouslySetInnerHTML={{ __html: footerLogo }} />
 
                     <button id="mobileMenuClose" className={styles.mobileMenuClose} aria-label="Close" aria-expanded={isActive ? "true" : "false"} aria-controls="mobileMenu" onClick={handleClose} dangerouslySetInnerHTML={{ __html: closeIcon }} />
 
@@ -121,16 +116,6 @@ export default function MobileMenu({
                     ))}
 
                 </div>
-
-
-
-                <Buttons
-                    buttonContainerClassName={styles.mobileMenuFooter}
-                    labelOne="Send us your brief"
-                    urlOne="/contact"
-                    btnOneClassName="primary headerBtn"
-                />
-
 
             </div>
 

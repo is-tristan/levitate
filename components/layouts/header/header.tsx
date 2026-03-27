@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Icons
-import { logoMark, logoText, chevronDown } from "@/data/icons";
+import { logoMark, logoText, chevronDown, envelope } from "@/data/icons";
 
 // Data
 import { menuItems } from "@/data/menu-items";
@@ -174,9 +174,21 @@ export default function Header() {
 
                     <ViewportBreakpoint mode="mobile">
 
-                        <div style={{ display: process.env.NEXT_PUBLIC_DEVMODE === "true" ? "flex" : "none" }}>
+                        <div className={styles.mobileActions}>
 
-                            <NavToggle id="navToggle" handleActive={handleMenuActive} handleClose={handleMenuClose} isActive={isMenuActive} />
+                            <Link href="/contact" className={styles.headerContactMobile}>
+
+                                <span>Contact</span>
+
+                                <div className={styles.headerContactMobileIcon} dangerouslySetInnerHTML={{ __html: envelope }} />
+
+                            </Link>
+
+                            <div style={{ display: process.env.NEXT_PUBLIC_DEVMODE === "true" ? "flex" : "none" }}>
+
+                                <NavToggle id="navToggle" handleActive={handleMenuActive} handleClose={handleMenuClose} isActive={isMenuActive} />
+
+                            </div>
 
                         </div>
 

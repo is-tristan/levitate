@@ -35,6 +35,8 @@ export default function NavToggle({
 
                 <span className={styles.navLine}></span>
 
+                <span className={styles.navLine}></span>
+
             </button>
 
         </div>

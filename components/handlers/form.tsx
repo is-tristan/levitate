@@ -1,8 +1,11 @@
 "use client";
 
+// Tracking
+import { sendGTMEvent } from "@next/third-parties/google";
+
 // Next
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState, type SubmitEvent } from "react";
 
 // Styles
 import styles from "@/styles/components/handlers/form.module.scss";
@@ -17,19 +20,40 @@ export default function Form() {
 
     // Form State
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+    const submitAfterGtmTimeoutIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const handleCheckboxChange = () => {
         setIsCheckboxChecked(!isCheckboxChecked);
     }
 
-    const handleSubmit = () => {
-        const form = document.getElementById("contactForm") as HTMLFormElement;
-        form.requestSubmit();
+    const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const gtmPayload = { event: "formSubmitted", value: "landingContactForm" };
+        const record = { ...gtmPayload, loggedAt: new Date().toISOString() };
+        sendGTMEvent(gtmPayload);
+        try {
+            await fetch("/api/gtm-debug", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(record),
+                keepalive: true,
+            });
+        } catch {
+        }
+        if (submitAfterGtmTimeoutIdRef.current !== null) {
+            clearTimeout(submitAfterGtmTimeoutIdRef.current);
+        }
+        const form = event.currentTarget;
+        submitAfterGtmTimeoutIdRef.current = setTimeout(() => {
+            submitAfterGtmTimeoutIdRef.current = null;
+            form.submit();
+            form.reset();
+        }, 150);
     }
 
     return (
 
-        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" className={styles.form}>
+        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" className={styles.form} onSubmit={handleSubmit}>
 
             <input type="hidden" name="access_key" value="2661e58f-732a-48b8-a5d3-ed652f8ec557" />
             <input type="hidden" name="subject" value="New Submission from Levitate" />
@@ -48,14 +72,22 @@ export default function Form() {
                 <fieldset className={`${styles.formField} ${styles.formFieldHalf}`}>
 
                     <label htmlFor="name">Email Address<span className={`${styles.required}`}></span></label>
-                    <input type="email" name="email" id="email" placeholder="you@company.com" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" autoComplete="email" />
+                    <input type="email" name="email" id="email" placeholder="you@company.com" required pattern="^[-a-zA-Z0-9._%+]+@[-a-zA-Z0-9.]+\.[a-zA-Z]{2,}$" autoComplete="email" />
 
                 </fieldset>
 
                 <fieldset className={`${styles.formField} ${styles.formFieldHalf}`}>
 
                     <label htmlFor="phone">Phone Number<span className={`${styles.required}`}></span></label>
-                    <input type="text" name="phone" id="phone" placeholder="+44 7123 456789" required pattern="^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$" autoComplete="tel" />
+                    <input
+                        type="text"
+                        name="phone"
+                        id="phone"
+                        placeholder="Phone Number"
+                        required
+                        pattern="^(\+?\d{1,4}[-\s.]?)?(\(?\d{1,4}\)?[-\s.]?)?[\d\s.\-]{5,}$"
+                        autoComplete="tel"
+                    />
 
                 </fieldset>
 
@@ -97,13 +129,13 @@ export default function Form() {
 
             </div>
 
-            <div className={styles.formFooter} onClick={handleSubmit}>
+            <div className={styles.formFooter}>
 
                 <Buttons
                     disableAnimation={true}
-                    btnOneClassName="btn primary"
+                    submitForm={true}
+                    btnOneClassName="primary"
                     labelOne="Send us your brief"
-                    urlOne="javascript:void(0)"
                 />
 
             </div>

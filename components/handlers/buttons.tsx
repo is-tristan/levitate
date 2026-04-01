@@ -55,7 +55,8 @@ export default function Buttons({
     targetOne,
     targetTwo,
     relOne,
-    relTwo }: ButtonsProps) {
+    relTwo,
+    submitForm = false }: ButtonsProps) {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const isBelowBreakpoint = useIsBelowBreakpoint();
     const disableMotion = disableAnimation || isBelowBreakpoint;
@@ -86,17 +87,35 @@ export default function Buttons({
 
             <motion.div variants={disableMotion ? undefined : revealItemVariants}>
 
-                <Link href={urlOne || "#"} target={targetOne || "_self"} rel={relOne || undefined} className={`btn ${btnOneClassName || undefined} `}>
+                {submitForm ? (
 
-                    <div className="buttonContent">
+                    <button type="submit" className={`btn ${btnOneClassName || undefined} `}>
 
-                        <span className="buttonLabel">{labelOne}</span>
+                        <div className="buttonContent">
 
-                        {iconOne && <div className="icon" dangerouslySetInnerHTML={{ __html: iconOne || { arrowRight } }} />}
+                            <span className="buttonLabel">{labelOne}</span>
 
-                    </div>
+                            {iconOne && <div className="icon" dangerouslySetInnerHTML={{ __html: iconOne || { arrowRight } }} />}
 
-                </Link>
+                        </div>
+
+                    </button>
+
+                ) : (
+
+                    <Link href={urlOne || "#"} target={targetOne || "_self"} rel={relOne || undefined} className={`btn ${btnOneClassName || undefined} `}>
+
+                        <div className="buttonContent">
+
+                            <span className="buttonLabel">{labelOne}</span>
+
+                            {iconOne && <div className="icon" dangerouslySetInnerHTML={{ __html: iconOne || { arrowRight } }} />}
+
+                        </div>
+
+                    </Link>
+
+                )}
 
             </motion.div>
 

@@ -16,6 +16,7 @@ export interface ButtonsProps {
     targetTwo?: "_blank" | "_self" | "_parent" | "_top";
     relOne?: string | undefined;
     relTwo?: string | undefined;
+    submitForm?: boolean;
 }
 
 // Portfolio Item Types

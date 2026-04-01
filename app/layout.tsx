@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import LocalFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next"
+import { GoogleTagManager } from "@next/third-parties/google";
 
 // Imports
 import "@/styles/main.scss";
@@ -95,8 +96,6 @@ export default function RootLayout({
 
           <Header />
 
-          <SmoothScroll />
-
           <div id="appContent" className="appContent">
 
             {children}
@@ -108,6 +107,10 @@ export default function RootLayout({
         </main>
 
         <Analytics />
+
+        <GoogleTagManager gtmId="AW-18023043406" />
+
+        <SmoothScroll />
 
       </body>
 

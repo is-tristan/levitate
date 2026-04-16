@@ -34,16 +34,16 @@ const baseOptions = {
     gap: "1rem",
     arrows: false,
     pagination: false,
-    pauseOnHover: false,
-    pauseOnFocus: false,
+    pauseOnHover: true,
+    pauseOnFocus: true,
     padding: {
         right: "7.5%",
         left: "7.5%",
     },
     autoScroll: {
         speed: 1,
-        pauseOnHover: false,
-        pauseOnFocus: false,
+        pauseOnHover: true,
+        pauseOnFocus: true,
     },
 };
 
@@ -146,9 +146,11 @@ export default function PortfolioCarousel({
                             <PortfolioItem
                                 item={item}
                                 isMobile={isMobile}
-                                onMouseEnter={() => { }}
-                                onMouseLeave={() => { }}
-                                videoRef={() => { }}
+                                onMouseEnter={() => handleVideoHover(index)}
+                                onMouseLeave={() => handleVideoLeave(index)}
+                                videoRef={element => {
+                                    videoRefs.current[index] = element;
+                                }}
                             />
 
                         </SplideSlide>
@@ -170,11 +172,9 @@ export default function PortfolioCarousel({
                             <PortfolioItem
                                 item={item}
                                 isMobile={isMobile}
-                                onMouseEnter={() => handleVideoHover(index)}
-                                onMouseLeave={() => handleVideoLeave(index)}
-                                videoRef={element => {
-                                    videoRefs.current[index] = element;
-                                }}
+                                onMouseEnter={() => {}}
+                                onMouseLeave={() => {}}
+                                videoRef={() => {}}
                             />
 
                         </article>

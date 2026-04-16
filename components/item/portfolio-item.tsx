@@ -84,10 +84,9 @@ export default function PortfolioItem({
             <Link
                 href={item.url}
                 className={styles.itemLink}
-                aria-label="View website"
+                aria-label={`View website for ${item.name}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                title={`View website for ${item.name}`}
             />
 
         </div>

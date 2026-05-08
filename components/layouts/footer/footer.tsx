@@ -43,13 +43,13 @@ export default function Footer() {
 
                         <a href="https://madeinbritain.com" target="_blank" rel="noopener noreferrer">
 
-                            <Image src={madeInBritainLogo} alt="Made in Britain" width={103} height={24} loading="lazy" style={{ objectFit: "contain", objectPosition: "center" }} />
+                            <Image src={madeInBritainLogo} alt="Made in Britain" width={103} height={24} loading="lazy" style={{ objectFit: "contain", objectPosition: "center", width: "auto", height: "auto" }} />
 
                         </a>
 
                         <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">
 
-                            <Image src={icoLogo} alt="ICO" width={48.5} height={24} loading="lazy" style={{ objectFit: "contain", objectPosition: "center" }} />
+                            <Image src={icoLogo} alt="ICO" width={48.5} height={24} loading="lazy" style={{ objectFit: "contain", objectPosition: "center", width: "auto", height: "auto" }} />
 
                         </a>
 

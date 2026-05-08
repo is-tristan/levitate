@@ -49,3 +49,11 @@ export interface PortfolioCarouselProps {
     heading: string;
     description?: string | null;
 }
+
+// Section Types
+export interface SectionProps {
+    heading: string;
+    description?: string | null;
+    image?: string | null;
+    imageAlignment?: "left" | "right";
+}

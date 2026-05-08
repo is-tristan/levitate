@@ -16,10 +16,16 @@ export const menuItems = [
                 icon: appWindow,
             },
             {
-                label: 'SEO',
+                label: 'SEO / AEO',
                 description: 'Optimize your website for search engines and convert more visitors into customers.',
-                url: '/services/seo',
+                url: '/services/search-engine-optimisation',
                 icon: clipBoardData,
+            },
+            {
+                label: 'Google Ads',
+                description: 'From search to display, we create campaigns that drive measurable results and ROI.',
+                url: '/services/google-ads',
+                icon: target,
             },
             {
                 label: 'Branding',
@@ -33,30 +39,30 @@ export const menuItems = [
         label: 'Portfolio',
         url: '/portfolio',
     },
-    {
-        label: 'Company',
-        url: '#',
-        children: [
-            {
-                label: 'About Us',
-                url: '/company/about-us',
-                description: 'Learn more about our company and our mission.',
-                icon: target,
-            },
-            {
-                label: 'Team',
-                url: '/company/team',
-                description: 'Meet the team that makes our company run.',
-                icon: people,
-            },
-            {
-                label: 'Careers',
-                url: '/company/careers',
-                description: 'Explore our open positions and join our team.',
-                icon: briefcase,
-            },
-        ],
-    },
+    // {
+    //     label: 'Company',
+    //     url: '#',
+    //     children: [
+    //         {
+    //             label: 'About Us',
+    //             url: '/company/about-us',
+    //             description: 'Learn more about our company and our mission.',
+    //             icon: target,
+    //         },
+    //         {
+    //             label: 'Team',
+    //             url: '/company/team',
+    //             description: 'Meet the team that makes our company run.',
+    //             icon: people,
+    //         },
+    //         {
+    //             label: 'Careers',
+    //             url: '/company/careers',
+    //             description: 'Explore our open positions and join our team.',
+    //             icon: briefcase,
+    //         },
+    //     ],
+    // },
     {
         label: 'Blog',
         url: '/blog',

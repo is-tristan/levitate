@@ -76,7 +76,7 @@ export default async function LogoSection() {
 
                 <div className="heading centered hasFullStop">
 
-                    <h3 className={styles.heading} style={{ fontSize: "1.25rem", fontFamily: "var(--font-dm-sans)", fontWeight: "700" }}>Over <strong className="gradientAnimation">700+</strong> businesses have chosen us to grow online</h3>
+                    <h3 className="altHeading">Over <strong className="gradientAnimation">700+</strong> businesses have chosen us to grow online</h3>
 
                 </div>
 

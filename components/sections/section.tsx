@@ -47,7 +47,7 @@ export default function Section({ heading, description, image, imageAlignment = 
                         hasFullStop={true}
                         layout={description ? "default" : "centered"}
                         labelOne="Contact Us"
-                        urlOne="#contact"
+                        urlOne="/contact"
                         btnOneClassName="primary"
                     />
 

@@ -51,22 +51,29 @@
     }
 
     h1 {
-        max-width: 60rem;
-        margin-right: auto;
-        margin-left: auto;
+        text-align: left;
+
+        @media (width >=768px) {
+            text-align: center;
+            max-width: 60rem;
+            margin-right: auto;
+            margin-left: auto;
+        }
     }
 
     p {
-        max-width: 50rem;
-        margin-right: auto;
-        margin-left: auto;
+        text-align: left;
 
-        @media all {
+        @media (width >=768px) {
+            text-align: center;
+            max-width: 50rem;
+            margin-right: auto;
+            margin-left: auto;
             text-wrap: balance;
         }
 
         @media (width >=1280px) {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
         }
     }
 

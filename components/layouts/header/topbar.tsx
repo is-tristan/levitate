@@ -23,7 +23,7 @@ export default function Topbar() {
 
                         <div className={styles.topbarItemIcon} dangerouslySetInnerHTML={{ __html: lifeBuoy }} />
 
-                        <span>Need Support?</span>
+                        <span>Need Help?</span>
 
                     </a>
 

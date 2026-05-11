@@ -176,14 +176,6 @@ export default function Header() {
 
                         <div className={styles.mobileActions}>
 
-                            <Link href="/contact" className={styles.headerContactMobile}>
-
-                                <span>Contact</span>
-
-                                <div className={styles.headerContactMobileIcon} dangerouslySetInnerHTML={{ __html: envelope }} />
-
-                            </Link>
-
                             <div style={{ display: "flex" }}>
 
                                 <NavToggle id="navToggle" handleActive={handleMenuActive} handleClose={handleMenuClose} isActive={isMenuActive} />

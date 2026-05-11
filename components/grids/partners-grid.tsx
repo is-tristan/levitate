@@ -20,13 +20,13 @@ export default function PartnersGrid({
 
     return (
 
-        <section id="partners" className="row">
+        <section id="partners" className={`row ${styles.partnersRow}`}>
 
             <div className={`container ${containerClassName || undefined}`}>
 
                 <div className="heading centered hasFullStop">
 
-                    <h3 className={styles.heading} style={{ fontSize: "1.25rem", fontFamily: "var(--font-dm-sans)", fontWeight: "700" }}>Partnered and <strong className="gradientAnimation">certified</strong> by world-leading digital platforms</h3>
+                    <h3 className="altHeading">Partnered and <strong className="gradientAnimation">certified</strong> by world-leading digital platforms</h3>
 
                 </div>
 

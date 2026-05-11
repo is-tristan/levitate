@@ -38,7 +38,7 @@
     bottom: 0;
     height: 100vh;
     width: 100%;
-    max-width: 90%;
+    max-width: 95%;
     padding: 3rem;
     background-image: url("/images/backgrounds/gradients/mobile-background-gradient-2.webp");
     background-size: cover;
@@ -61,53 +61,63 @@
 .mobileMenuContainer {
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    justify-content: space-between;
 }
 
 .mobileMenuHeader {
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 0 2rem;
+}
 
-    .mobileMenuLogo {
-        width: 7.5rem;
-        height: auto;
+.mobileMenuLogo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    .mobileMenuLogoMark {
+        width: 1.75rem;
+        height: 1.75rem;
     }
 
-    .mobileMenuClose {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 2.25rem;
-        height: 2.25rem;
-        background: transparent;
-        color: var(--text);
-        border: none;
-        cursor: pointer;
+    .mobileMenuLogoText {
+        width: auto;
+        height: 1rem;
+    }
 
-        svg {
-            width: 100%;
-            height: 100%;
-        }
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.mobileMenuClose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: transparent;
+    color: var(--text);
+    border: none;
+    cursor: pointer;
+
+    svg {
+        width: 100%;
+        height: 100%;
     }
 }
 
 .mobileNavMenu {
     display: flex;
     flex-flow: column nowrap;
+    justify-content: space-between;
     gap: 2rem;
     font-size: 1rem;
     width: 100%;
-    height: max-content;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
 
     .navItem {
         display: flex;
@@ -146,6 +156,9 @@
         flex-flow: column nowrap;
         gap: 1rem;
         padding: 0.5rem 0;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--secondary) transparent;
 
         &.subMenuActive {
             display: flex;
@@ -155,8 +168,9 @@
     .subMenuItem {
         display: flex;
         flex-flow: row nowrap;
+        align-items: center;
         gap: 1rem;
-        padding: 0.66rem;
+        padding: 0.33rem;
         border-radius: var(--borderRadius);
 
         &.currentUrl,
@@ -169,8 +183,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 2rem;
-            height: 2rem;
+            width: 1.5rem;
+            height: 1.5rem;
             background: var(--background);
             border-radius: var(--borderRadius);
 
@@ -190,12 +204,19 @@
                 font-weight: 700;
                 color: var(--heading);
             }
+
+            p {
+                display: none;
+            }
         }
     }
 }
 
 .mobileMenuFooter {
-    padding-top: 2rem;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 3rem;
+    padding: 2rem 0;
 }
 
 .mobileMenuActive {

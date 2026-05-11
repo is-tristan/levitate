@@ -4,15 +4,20 @@
 
 .resourcesGrid {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     gap: 1.5rem;
     width: 100%;
-    overflow-x: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    scroll-snap-type: x mandatory;
-    touch-action: pan-x;
-    -webkit-overflow-scrolling: touch;
+
+    @media (width <1024px) {
+        flex-flow: row nowrap;
+        gap: 1rem;
+        overflow-x: scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x mandatory;
+        touch-action: pan-x;
+        -webkit-overflow-scrolling: touch;
+    }
 
     .resourcesGridItem {
         display: flex;
@@ -22,9 +27,13 @@
         overflow: hidden;
         position: relative;
         aspect-ratio: 16/9;
-        flex-basis: calc(50% - 0.75rem);
+        flex: 0 0 calc(calc(100% / 3) - 1.5rem);
         border: 1px solid var(--border);
-        scroll-snap-align: center;
+
+        @media (width <1024px) {
+            scroll-snap-align: center;
+            flex: 0 0 calc(100% - 1.5rem);
+        }
 
         img {
             transition: var(--ease);

@@ -11,10 +11,14 @@ import { usePathname } from "next/navigation";
 import styles from "@/styles/layouts/header/mobile-menu.module.scss";
 
 // Icons
-import { footerLogo, closeIcon, chevronDown } from "@/data/icons";
+import { logoMark, logoText, closeIcon, chevronDown } from "@/data/icons";
 
 // Data
 import { menuItems } from "@/data/menu-items";
+
+// Components
+import SocialItems from "@/components/items/social-items";
+import ContactItems from "@/components/items/contact-items";
 
 // Types
 type MobileMenuProps = {
@@ -48,6 +52,11 @@ export default function MobileMenu({
             <div className={styles.mobileMenuContainer}>
 
                 <div className={styles.mobileMenuHeader}>
+
+                    <Link href="/" className={styles.mobileMenuLogo}>
+                        <span className={styles.mobileMenuLogoMark} dangerouslySetInnerHTML={{ __html: logoMark }} />
+                        <span className={styles.mobileMenuLogoText} dangerouslySetInnerHTML={{ __html: logoText }} />
+                    </Link>
 
                     <button id="mobileMenuClose" className={styles.mobileMenuClose} aria-label="Close" aria-expanded={isActive ? "true" : "false"} aria-controls="mobileMenu" onClick={handleClose} dangerouslySetInnerHTML={{ __html: closeIcon }} />
 
@@ -114,6 +123,14 @@ export default function MobileMenu({
                         )
 
                     ))}
+
+                </div>
+
+                <div className={styles.mobileMenuFooter}>
+
+                    <SocialItems />
+
+                    <ContactItems />
 
                 </div>
 

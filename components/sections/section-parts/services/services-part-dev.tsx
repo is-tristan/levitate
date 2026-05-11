@@ -129,7 +129,7 @@ export default function ServicesPartDevelopment({ scrollProgress }: ServicesPart
                 <Buttons
                     animationDelay={0.4}
                     labelOne="Learn More"
-                    urlOne={process.env.NEXT_PUBLIC_DEVMODE === "true" ? "/services/web-development" : "/web-design-in-cardiff#pricing"}
+                    urlOne="/services/web-development"
                     btnOneClassName="primary"
                 />
 

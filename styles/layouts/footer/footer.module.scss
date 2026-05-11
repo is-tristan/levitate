@@ -45,7 +45,6 @@
     .footerCol {
         display: flex;
         flex-flow: column nowrap;
-        justify-content: space-between;
         gap: 2rem;
     }
 
@@ -89,6 +88,7 @@
 .copyright {
     flex-flow: column-reverse nowrap;
     gap: 1rem;
+    font-size: 0.8rem;
 
     @media (width >=1024px) {
         flex-flow: row nowrap;
@@ -97,11 +97,15 @@
         padding-top: 5rem;
     }
 
+    p {
+        font-size: inherit;
+    }
+
     .copyrightColRight {
         display: flex;
         flex-flow: row wrap;
         gap: 0.5rem;
-        font-size: 0.8rem;
+        font-size: inherit;
 
         @media (width >=1024px) {
             flex-flow: row nowrap;

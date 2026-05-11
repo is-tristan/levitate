@@ -1,6 +1,6 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
 
-// Components
 import Banner from "@/components/sections/banner";
 import Section from "@/components/sections/section";
 import PartnersGrid from "@/components/grids/partners-grid";
@@ -8,6 +8,21 @@ import TestimonialsSection from "@/components/sections/testimonials-section";
 import Loading from "@/components/item/loading";
 import CTA from "@/components/sections/cta-section";
 import LogoSection from "@/components/sections/logo-section";
+
+export const metadata: Metadata = {
+  title: "Google Ads Management",
+  description: "Dominate search results with Levitate's Google Ads management. Data-driven PPC campaigns that deliver qualified leads, growth, and measurable ROI from Cardiff.",
+  keywords: ["Google Ads", "PPC", "pay per click", "Google Ads management", "Cardiff PPC agency", "search advertising", "lead generation"],
+  openGraph: {
+    title: "Google Ads Management | Levitate",
+    description: "Dominate search results with Levitate's Google Ads management. Data-driven PPC campaigns that deliver qualified leads, growth, and measurable ROI from Cardiff.",
+    url: "/services/google-ads",
+  },
+  twitter: {
+    title: "Google Ads Management | Levitate",
+    description: "Dominate search results with Levitate's Google Ads management. Data-driven PPC campaigns that deliver qualified leads, growth, and measurable ROI from Cardiff.",
+  },
+};
 
 export default function GoogleAds() {
 
@@ -28,7 +43,7 @@ export default function GoogleAds() {
                 description="Our data-driven Google Ads strategies put you at the top of searches. We handle keyword research, ad creation, and constant refinement for maximum results. Watch your business soar with precise, cost-effective advertising."
                 image={"/images/pages/services/google-ads/google-ads.webp"}
             />
-
+            
             <Suspense fallback={<Loading />}>
                 <TestimonialsSection containerClassName="noPaddingBottom" />
             </Suspense>

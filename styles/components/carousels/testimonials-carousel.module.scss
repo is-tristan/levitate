@@ -77,16 +77,18 @@
             color: var(--heading);
 
             @media (width >=1024px) {
-                font-size: 1rem;
+                font-size: 1.25rem;
             }
 
             &::before {
-                content: '“ ';
+                content: '“';
+                margin-right: 0.125rem;
                 color: var(--primary);
             }
 
             &::after {
-                content: ' ”';
+                content: '”';
+                margin-left: 0.125rem;
                 color: var(--primary);
             }
         }

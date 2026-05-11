@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import Banner from "@/components/sections/banner";
+
+export const metadata: Metadata = {
+  title: "Terms and Conditions",
+  description: "Review Levitate's Terms and Conditions covering website use, project scope, payments, intellectual property, and service delivery for clients in the UK and worldwide.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default function TermsAndConditions() {
     return (

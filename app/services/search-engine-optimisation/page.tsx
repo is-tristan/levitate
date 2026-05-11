@@ -1,13 +1,29 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
 
-// Components
 import Banner from "@/components/sections/banner";
 import Section from "@/components/sections/section";
 import PartnersGrid from "@/components/grids/partners-grid";
+import ResourcesGrid from "@/components/grids/resources-grid";
 import TestimonialsSection from "@/components/sections/testimonials-section";
 import Loading from "@/components/item/loading";
 import CTA from "@/components/sections/cta-section";
 import LogoSection from "@/components/sections/logo-section";
+
+export const metadata: Metadata = {
+  title: "Search Engine Optimisation (SEO)",
+  description: "Climb the search rankings with Levitate's tailored SEO strategies. Technical audits, content optimisation, and link building that drive long-term organic growth.",
+  keywords: ["SEO", "search engine optimisation", "organic search", "technical SEO", "Cardiff SEO agency", "link building", "content optimisation", "Google rankings"],
+  openGraph: {
+    title: "Search Engine Optimisation (SEO) | Levitate",
+    description: "Climb the search rankings with Levitate's tailored SEO strategies. Technical audits, content optimisation, and link building that drive long-term organic growth.",
+    url: "/services/search-engine-optimisation",
+  },
+  twitter: {
+    title: "Search Engine Optimisation (SEO) | Levitate",
+    description: "Climb the search rankings with Levitate's tailored SEO strategies. Technical audits, content optimisation, and link building that drive long-term organic growth.",
+  },
+};
 
 export default function SearchEngineOptimisation() {
 
@@ -28,6 +44,10 @@ export default function SearchEngineOptimisation() {
                 description="Levitate crafts tailored SEO strategies that boost visibility and traffic. We handle technical audits, content optimisation, and link building for long-term dominance. Real results from on-page tweaks to AI-enhanced AEO tactics."
                 image={"/images/pages/services/seo/seo.webp"}
             />
+
+            <Suspense fallback={<Loading />}>
+                <ResourcesGrid />
+            </Suspense>
 
             <Suspense fallback={<Loading />}>
                 <TestimonialsSection containerClassName="noPaddingBottom" />

@@ -85,7 +85,7 @@ export default function Header() {
 
                     <div className={styles.logo}>
 
-                        <Link href={process.env.NEXT_PUBLIC_DEVMODE === "true" ? "/" : "/web-design-in-cardiff"} className={styles.logoLink}>
+                        <Link href="/" className={styles.logoLink}>
 
                             <span className={styles.logoMark} dangerouslySetInnerHTML={{ __html: logoMark }} />
 
@@ -97,7 +97,7 @@ export default function Header() {
 
                     <ViewportBreakpoint mode="desktop">
 
-                        <div id="nav" className={styles.nav} style={{ display: process.env.NEXT_PUBLIC_DEVMODE === "true" ? "flex" : "none" }}>
+                        <div id="nav" className={styles.nav}>
 
                             {
                                 menuItems.map((item, index) => (
@@ -184,7 +184,7 @@ export default function Header() {
 
                             </Link>
 
-                            <div style={{ display: process.env.NEXT_PUBLIC_DEVMODE === "true" ? "flex" : "none" }}>
+                            <div style={{ display: "flex" }}>
 
                                 <NavToggle id="navToggle" handleActive={handleMenuActive} handleClose={handleMenuClose} isActive={isMenuActive} />
 

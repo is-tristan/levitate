@@ -7,6 +7,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 // Imports
 import "@/styles/main.scss";
 import Header from "@/components/layouts/header/header";
+import Topbar from "@/components/layouts/header/topbar";
 import Footer from "@/components/layouts/footer/footer";
 
 // Utils
@@ -93,6 +94,8 @@ export default function RootLayout({
       <body className={`${Prophet.variable} ${DmSans.variable}`}>
 
         <main id="app" className="app">
+
+          <Topbar />
 
           <Header />
 

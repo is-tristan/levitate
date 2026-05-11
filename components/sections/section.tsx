@@ -41,6 +41,7 @@ export default function Section({ heading, description, image, imageAlignment = 
 
                     <Content
                         type="h2"
+                        tagClassName="large"
                         heading={heading}
                         description={description || undefined}
                         hasFullStop={true}

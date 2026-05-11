@@ -31,7 +31,7 @@ export default function Footer() {
 
                     <div className={styles.footerHeader}>
 
-                        <Link href={process.env.NEXT_PUBLIC_DEVMODE === "true" ? "/" : "/web-design-in-cardiff"} className={styles.footerLogo} dangerouslySetInnerHTML={{ __html: footerLogo }} />
+                        <Link href="/" className={styles.footerLogo} dangerouslySetInnerHTML={{ __html: footerLogo }} />
 
                         <SocialItems />
 

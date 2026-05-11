@@ -57,3 +57,23 @@ export interface SectionProps {
     image?: string | null;
     imageAlignment?: "left" | "right";
 }
+
+export interface ResourceTypes {
+    resources: {
+        nodes: {
+            title: string;
+            featuredImage: {
+                node: {
+                    mediaItemUrl: string;
+                };
+            };
+            resourceFields: {
+                file: {
+                    node: {
+                        mediaItemUrl: string;
+                    };
+                };
+            };
+        }[];
+    } | null;
+}

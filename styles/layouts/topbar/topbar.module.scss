@@ -1,0 +1,66 @@
+.topbar {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+
+    .topbarContainer {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: var(--topbarHeight);
+        font-size: 0.75rem;
+    }
+
+    .topbarStatus {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: #00FF00;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+
+            @keyframes pulse {
+                0% {
+                    opacity: 0.5;
+                }
+                50% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+    
+    .topbarItemLink {
+        display: flex;
+        align-items: center;
+        gap: 0.33rem;
+        text-decoration: none;
+        color: var(--text);
+        transition: var(--ease);
+
+        .topbarItemIcon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 0.875rem;
+            height: 0.875rem;
+        }
+
+        &:hover {
+            color: var(--primary);
+        }
+    }
+}

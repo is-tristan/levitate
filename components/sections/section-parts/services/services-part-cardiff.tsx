@@ -40,7 +40,7 @@ export default function ServicesCardiff() {
 
                 <Buttons
                     labelOne="Learn More"
-                    urlOne={process.env.NEXT_PUBLIC_DEVMODE === "true" ? "/company/about-us" : "/web-design-in-cardiff#pricing"}
+                    urlOne="/company/about-us"
                     btnOneClassName="primary"
                 />
 

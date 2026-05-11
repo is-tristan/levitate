@@ -168,7 +168,7 @@ export default function ServicesPartBranding() {
                 <Buttons
                     animationDelay={0.4}
                     labelOne="Learn More"
-                    urlOne={process.env.NEXT_PUBLIC_DEVMODE === "true" ? "/services/branding" : "/web-design-in-cardiff#pricing"}
+                    urlOne="/services/branding"
                     btnOneClassName="primary"
                 />
 

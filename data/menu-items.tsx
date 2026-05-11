@@ -38,7 +38,7 @@ export const menuItems = [
     {
         label: 'Portfolio',
         url: '/portfolio',
-    },
+    }
     // {
     //     label: 'Company',
     //     url: '#',
@@ -63,8 +63,8 @@ export const menuItems = [
     //         },
     //     ],
     // },
-    {
-        label: 'Blog',
-        url: '/blog',
-    }
+    // {
+    //     label: 'Blog',
+    //     url: '/blog',
+    // }
 ]

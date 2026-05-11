@@ -42,6 +42,10 @@ h2 {
     @media (width >=768px) {
         line-height: 102.5%;
     }
+
+    &.large {
+        font-size: clamp(2.25rem, 5vw, 5rem);
+    }
 }
 
 h3 {
@@ -70,7 +74,7 @@ small,
 p,
 ul,
 ol {
-    font-size: clamp(0.85rem, 0.9vw, 0.9rem);
+    font-size: clamp(0.875rem, 1.05vw, 1.05rem);
     line-height: 175%;
     font-weight: 500;
     text-wrap: pretty;
@@ -82,7 +86,7 @@ ol {
     }
 
     @media (width >=1024px) {
-        letter-spacing: -0.02em;
+        letter-spacing: -0.03em;
     }
 }
 

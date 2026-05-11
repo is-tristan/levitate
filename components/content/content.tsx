@@ -14,6 +14,7 @@ type HeadingProps = {
     description?: string;
     containerClassName?: string;
     className?: string;
+    tagClassName?: string | null;
     layout?: "default" | "centered";
     hasFullStop?: boolean;
     hasAnimation?: boolean;
@@ -27,6 +28,7 @@ export default function Heading({
     description,
     containerClassName,
     className,
+    tagClassName,
     layout = "default",
     hasFullStop = false,
     hasAnimation = true,
@@ -49,6 +51,7 @@ export default function Heading({
     const HeadingTag = type;
 
     if (disableMotion) {
+
         return (
 
             <div className={`content ${containerClassName || undefined}`}>
@@ -57,7 +60,7 @@ export default function Heading({
 
                 <div className={headingClassName}>
 
-                    <HeadingTag dangerouslySetInnerHTML={{ __html: heading }}></HeadingTag>
+                    <HeadingTag className={tagClassName || undefined} dangerouslySetInnerHTML={{ __html: heading }}></HeadingTag>
 
                 </div>
 
@@ -108,17 +111,17 @@ export default function Heading({
                 variants={disableMotion ? undefined : revealItemVariants}
             >
 
-                {type === "h1" && <motion.h1 dangerouslySetInnerHTML={{ __html: heading }}></motion.h1>}
+                {type === "h1" && <motion.h1 className={tagClassName || undefined} dangerouslySetInnerHTML={{ __html: heading }}></motion.h1>}
 
-                {type === "h2" && <motion.h2 dangerouslySetInnerHTML={{ __html: heading }}></motion.h2>}
+                {type === "h2" && <motion.h2 className={tagClassName || undefined} dangerouslySetInnerHTML={{ __html: heading }}></motion.h2>}
 
-                {type === "h3" && <motion.h3 dangerouslySetInnerHTML={{ __html: heading }}></motion.h3>}
+                {type === "h3" && <motion.h3 className={tagClassName || undefined} dangerouslySetInnerHTML={{ __html: heading }}></motion.h3>}
 
-                {type === "h4" && <motion.h4 dangerouslySetInnerHTML={{ __html: heading }}></motion.h4>}
+                {type === "h4" && <motion.h4 className={tagClassName || undefined} dangerouslySetInnerHTML={{ __html: heading }}></motion.h4>}
 
-                {type === "h5" && <motion.h5 dangerouslySetInnerHTML={{ __html: heading }}></motion.h5>}
+                {type === "h5" && <motion.h5 className={tagClassName || undefined} dangerouslySetInnerHTML={{ __html: heading }}></motion.h5>}
 
-                {type === "h6" && <motion.h6 dangerouslySetInnerHTML={{ __html: heading }}></motion.h6>}
+                {type === "h6" && <motion.h6 className={tagClassName || undefined} dangerouslySetInnerHTML={{ __html: heading }}></motion.h6>}
 
             </motion.div>
 

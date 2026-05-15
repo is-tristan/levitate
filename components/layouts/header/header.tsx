@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
+import { isActiveRoute } from "@/utils/helpers/navigation";
 
 // Icons
 import { logoMark, logoText, chevronDown, envelope } from "@/data/icons";
@@ -26,9 +27,7 @@ export default function Header() {
 
     // Pathname
     const pathname = usePathname();
-    const urlIsActive = (url: string) => {
-        return pathname.startsWith(url);
-    }
+    const urlIsActive = (url: string) => isActiveRoute(pathname, url);
 
     // Mobile Menu Active
     const [isMenuActive, setIsMenuActive] = useState(false);

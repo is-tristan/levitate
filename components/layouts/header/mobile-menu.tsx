@@ -7,6 +7,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { isActiveRoute } from "@/utils/helpers/navigation";
+
 // Styles
 import styles from "@/styles/layouts/header/mobile-menu.module.scss";
 
@@ -33,9 +35,7 @@ export default function MobileMenu({
 
     // Pathname
     const pathname = usePathname();
-    const urlIsActive = (url: string) => {
-        return pathname.startsWith(url);
-    }
+    const urlIsActive = (url: string) => isActiveRoute(pathname, url);
 
     // Submenu Open State
     const [activeSubmenuIndex, setActiveSubmenuIndex] = useState<number | null>(null);
@@ -109,9 +109,9 @@ export default function MobileMenu({
                         ) : (
 
                             <Link
-                                href="/contact"
+                                href={item.url || '/'}
                                 key={index}
-                                className={`${styles.navItem} ${urlIsActive(item.url || "/") ? styles.currentUrl : undefined}`}
+                                className={`${styles.navItem} ${urlIsActive(item.url || '/') ? styles.currentUrl : undefined}`}
                                 data-has-children="false"
                                 onClick={handleClose}
                             >

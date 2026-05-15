@@ -29,6 +29,14 @@
         }
     }
 
+    .teamGridItemInner {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 100%;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
     .teamGridImage {
         aspect-ratio: 4/3;
         border-radius: var(--borderRadius) var(--borderRadius) 0 0;

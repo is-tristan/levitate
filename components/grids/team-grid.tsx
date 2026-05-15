@@ -1,32 +1,19 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "motion/react";
-
 import data from "@/data/team.json";
 import styles from "@/styles/components/grids/team-grid.module.scss";
-import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 
 export default function TeamGrid() {
-    const containerVariants = getRevealContainerVariants();
-
     return (
 
         <section id="team" className="row">
 
             <div className="container">
 
-                <motion.div
-                    className={styles.teamGrid}
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={revealViewport}
-                >
+                <div className={styles.teamGrid}>
 
                     {data.team.map((member) => (
 
-                        <motion.article className={styles.teamGridItem} key={member.name} variants={revealItemVariants}>
+                        <article className={styles.teamGridItem} key={member.name}>
 
                             <div className={styles.teamGridImage}>
 
@@ -42,11 +29,11 @@ export default function TeamGrid() {
 
                             </div>
 
-                        </motion.article>
+                        </article>
 
                     ))}
 
-                </motion.div>
+                </div>
 
             </div>
 

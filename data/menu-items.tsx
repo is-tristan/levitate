@@ -1,4 +1,4 @@
-import { appWindow, clipBoardData, paintBrush, target, people, briefcase } from "./icons";
+import { appWindow, clipBoardData, paintBrush, target } from "./icons";
 
 export const menuItems = [
     {
@@ -47,32 +47,4 @@ export const menuItems = [
         label: 'Contact',
         url: '/contact',
     }
-    // {
-    //     label: 'Company',
-    //     url: '#',
-    //     children: [
-    //         {
-    //             label: 'About Us',
-    //             url: '/company/about-us',
-    //             description: 'Learn more about our company and our mission.',
-    //             icon: target,
-    //         },
-    //         {
-    //             label: 'Team',
-    //             url: '/company/team',
-    //             description: 'Meet the team that makes our company run.',
-    //             icon: people,
-    //         },
-    //         {
-    //             label: 'Careers',
-    //             url: '/company/careers',
-    //             description: 'Explore our open positions and join our team.',
-    //             icon: briefcase,
-    //         },
-    //     ],
-    // },
-    // {
-    //     label: 'Blog',
-    //     url: '/blog',
-    // }
 ]

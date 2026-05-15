@@ -126,14 +126,15 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    justify-content: center;
-    gap: 3.5rem;
+    justify-content: space-between;
+    gap: 1.5rem;
     position: absolute;
     z-index: 1;
     inset: 0;
     margin: auto;
-    width: max-content;
+    width: 100%;
     height: max-content;
+    max-width: 40%;
 
     .navItem {
         display: flex;

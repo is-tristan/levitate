@@ -1,0 +1,56 @@
+.teamGrid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 5rem 1.5rem;
+    width: 100%;
+
+    @media (width >=1024px) {
+        gap: 5rem 2rem;
+        justify-content: space-between;
+    }
+
+    .teamGridItem {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 100%;
+        border-radius: var(--borderRadius);
+        position: relative;
+        flex-basis: 100%;
+        background: linear-gradient(to bottom right, var(--secondary), var(--primary));
+        border: 1.5px solid var(--border);
+
+        @media (width >=576px) {
+            flex-basis: calc(50% - 0.75rem);
+        }
+
+        @media (width >=1024px) {
+            flex-basis: calc(33.33% - 1.5rem);
+        }
+    }
+
+    .teamGridImage {
+        aspect-ratio: 4/3;
+        border-radius: var(--borderRadius) var(--borderRadius) 0 0;
+        position: relative;
+        margin-top: -3.5rem;
+    }
+
+    .teamGridContent {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 0.25rem;
+        padding: 2rem 1.5rem;
+        background: var(--backgroundAlt);
+        border-radius: 0 0 var(--borderRadius) var(--borderRadius);
+
+        h3 {
+            font-size: 1.66rem;
+            letter-spacing: -0.02em;
+        }
+    }
+
+}

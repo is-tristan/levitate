@@ -6,6 +6,10 @@ export const menuItems = [
         url: '/',
     },
     {
+        label: 'About',
+        url: '/about',
+    },
+    {
         label: 'Services',
         url: '#',
         children: [
@@ -38,6 +42,10 @@ export const menuItems = [
     {
         label: 'Portfolio',
         url: '/portfolio',
+    },
+    {
+        label: 'Contact',
+        url: '/contact',
     }
     // {
     //     label: 'Company',

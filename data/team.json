@@ -1,0 +1,64 @@
+{
+    "team": [
+        {
+            "name": "Dan",
+            "position": "Creative Director",
+            "image": "/images/team/dan-jenkins.webp"
+        },
+        {
+            "name": "Tristan",
+            "position": "Head Developer",
+            "image": "/images/team/tristan-wills.webp"
+        },
+        {
+            "name": "Cerys",
+            "position": "Design Manager",
+            "image": "/images/team/cerys-may.webp"
+        },
+        {
+            "name": "Luke",
+            "position": "Project Manager",
+            "image": "/images/team/luke-roberts.webp"
+        },
+        {
+            "name": "Olivia",
+            "position": "Developer",
+            "image": "/images/team/olivia-siegelberg.webp"
+        },
+        {
+            "name": "Dave",
+            "position": "Sales Manager",
+            "image": "/images/team/dave.webp"
+        },
+        {
+            "name": "Lovish",
+            "position": "Developer",
+            "image": "/images/team/lovish.webp"
+        },
+        {
+            "name": "Solake",
+            "position": "Finance Manager",
+            "image": "/images/team/solake.webp"
+        },
+        {
+            "name": "Sophie",
+            "position": "Branding Strategist",
+            "image": "/images/team/sophie.webp"
+        },
+        {
+            "name": "Jonathan",
+            "position": "Bookkeeper",
+            "image": "/images/team/jonathan.webp"
+        },
+        {
+            "name": "Emily",
+            "position": "Graphic Designer",
+            "image": "/images/team/emily.webp"
+        },
+        {
+            "name": "Christopher",
+            "position": "Sales Executive",
+            "image": "/images/team/christopher.webp"
+        }
+    ]
+}

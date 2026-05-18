@@ -1,6 +1,8 @@
+// React & Next
 import { Suspense } from "react";
 import type { Metadata } from "next";
 
+// Components
 import Banner from "@/components/sections/banner";
 import PortfolioGrid from "@/components/grids/portfolio-grid";
 import TestimonialsSection from "@/components/sections/testimonials-section";
@@ -8,6 +10,7 @@ import Loading from "@/components/item/loading";
 import LogoSection from "@/components/sections/logo-section";
 import ContactSection from "@/components/sections/contact-section";
 
+// Metadata
 export const metadata: Metadata = {
   title: "Portfolio",
   description: "Explore Levitate's portfolio of bespoke websites, branding projects, and digital experiences crafted for ambitious brands across Cardiff and the UK.",
@@ -22,28 +25,32 @@ export const metadata: Metadata = {
   },
 };
 
+// Page
 export default function Portfolio() {
-    return (
 
-        <>
+  return (
 
-            <Banner
-                heading="Our Portfolio"
-                description="We help ambitious brands explore their full digital potential through award-winning, handcrafted websites that blend creativity, strategy, and performance."
-            />
+    <>
 
-            <PortfolioGrid />
+      <Banner
+        heading="Our Portfolio"
+        description="We help ambitious brands explore their full digital potential through award-winning, handcrafted websites that blend creativity, strategy, and performance."
+      />
 
-            <Suspense fallback={<Loading />}>
-                <TestimonialsSection containerClassName="noPaddingBottom" />
-            </Suspense>
+      <Suspense fallback={<Loading />}>
+        <PortfolioGrid />
+      </Suspense>
 
-            <LogoSection />
+      <Suspense fallback={<Loading />}>
+        <TestimonialsSection containerClassName="noPaddingBottom" />
+      </Suspense>
 
-            <ContactSection />
+      <LogoSection />
 
-        </>
+      <ContactSection />
 
-    );
+    </>
+
+  );
 
 }

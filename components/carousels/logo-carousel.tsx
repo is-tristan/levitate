@@ -11,6 +11,8 @@ import "@splidejs/react-splide/css/core";
 // Styles
 import styles from "@/styles/components/carousels/logo-carousel.module.scss";
 
+import type { LogoCarouselProps, LogoItem } from "@/types/all-types";
+
 // Options
 const options = {
     type: "loop",
@@ -39,15 +41,6 @@ const options = {
         pauseOnHover: false,
         pauseOnFocus: false,
     },
-};
-
-type LogoItem = {
-    name: string;
-    logo: string;
-};
-
-type LogoCarouselProps = {
-    logos?: LogoItem[];
 };
 
 // Shuffle

@@ -4,20 +4,7 @@ import styles from "@/styles/components/carousels/logo-carousel.module.scss";
 // Components
 import LogoCarousel from "@/components/carousels/logo-carousel";
 
-type LogoQueryResponse = {
-    data?: {
-        logos?: {
-            nodes?: {
-                title: string;
-                featuredImage?: {
-                    node?: {
-                        mediaItemUrl?: string;
-                    };
-                };
-            }[];
-        };
-    };
-};
+import type { LogoQueryResponse } from "@/types/all-types";
 
 const logoQuery = `
     query logoQuery {

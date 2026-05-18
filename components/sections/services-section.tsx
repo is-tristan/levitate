@@ -17,10 +17,7 @@ import ServicesPartCardiff from "@/components/sections/section-parts/services/se
 // Styles
 import styles from "@/styles/components/sections/services-section.module.scss";
 
-// Types
-interface ServicesSectionProps {
-    hasCardiffOffice?: boolean;
-}
+import type { ServicesSectionProps } from "@/types/all-types";
 
 export default function ServicesSection({ hasCardiffOffice = false }: ServicesSectionProps) {
     const sectionRef = useRef<HTMLElement>(null);

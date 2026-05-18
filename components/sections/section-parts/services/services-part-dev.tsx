@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, type MotionValue, useTransform } from "motion/react";
+import { motion, useTransform } from "motion/react";
 
 import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
@@ -10,6 +10,8 @@ import { getRevealContainerVariants, revealItemVariants, revealViewport } from "
 import { useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
 import styles from "@/styles/components/sections/services-section.module.scss";
+
+import type { ServicesPartDevelopmentProps } from "@/types/all-types";
 
 // Development Services Images
 const serviceImages = [
@@ -53,10 +55,6 @@ const logos = [
         url: "https://www.nextjs.org",
     },
 ]
-
-type ServicesPartDevelopmentProps = {
-    scrollProgress: MotionValue<number>;
-};
 
 export default function ServicesPartDevelopment({ scrollProgress }: ServicesPartDevelopmentProps) {
     const disableAnimation = useIsBelowBreakpoint();

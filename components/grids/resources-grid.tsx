@@ -7,39 +7,38 @@ import Content from "@/components/content/content";
 // Styles
 import styles from "@/styles/components/grids/resources-grid.module.scss";
 
-// Types
-import { ResourceTypes } from "@/types/all-types";
-interface ResourcesData {
-    resources: {
-        nodes: ResourceTypes[];
-    } | null;
-}
+import type { ResourcesData, ResourcesGridProps } from "@/types/all-types";
 
-// Query
 const resourcesQuery = `
-    query resources {
-        resources {
-            nodes {
-            title
-            featuredImage {
-                node {
-                mediaItemUrl
-                }
-            }
-                resourceFields {
-                    file {
-                    node {
-                        mediaItemUrl
-                    }
-                    }
-                }
-            }
+query resourcesByCategory($categorySlug: [String]) {
+  resources {
+    nodes {
+      pageCategories(where: {slug: $categorySlug}) {
+        edges {
+          node {
+            id
+          }
         }
+      }
+      title
+      featuredImage {
+        node {
+          mediaItemUrl
+        }
+      }
+      resourceFields {
+        file {
+          node {
+            mediaItemUrl
+          }
+        }
+      }
     }
+  }
+}
 `;
 
-// Get Portfolio Data
-async function getResourcesData() {
+async function getResourcesData(categorySlug: string) {
     const wordpressGraphQlUrl = process.env.WORDPRESS_GRAPHQL_URL;
 
     if (!wordpressGraphQlUrl) {
@@ -52,7 +51,8 @@ async function getResourcesData() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            query: resourcesQuery
+            query: resourcesQuery,
+            variables: { categorySlug: [categorySlug] }
         }),
         cache: "no-store"
     });
@@ -63,18 +63,26 @@ async function getResourcesData() {
 
     const { data } = await response.json() as { data?: ResourcesData };
 
-    return data?.resources?.nodes ?? [];
+    const nodes = data?.resources?.nodes ?? [];
+
+    return nodes.filter((resource) => (resource.pageCategories?.edges?.length ?? 0) > 0);
 }
 
-export default async function ResourcesGrid() {
+export default async function ResourcesGrid({
+    categorySlug,
+    heading,
+    description,
+    sectionId = "resources",
+    hasFullStop = true,
+}: ResourcesGridProps) {
 
-    const resources: ResourceTypes[] = await getResourcesData();
+    const resources = await getResourcesData(categorySlug);
 
     if (!resources.length) {
         return null;
     }
 
-    const resourcesData = resources.map((resource: any) => ({
+    const resourcesData = resources.map((resource) => ({
         title: resource?.title ?? "",
         featuredImage: resource?.featuredImage?.node?.mediaItemUrl ?? "",
         file: resource?.resourceFields?.file?.node?.mediaItemUrl ?? "",
@@ -82,15 +90,15 @@ export default async function ResourcesGrid() {
 
     return (
 
-        <section id="resources" className="row">
+        <section id={sectionId} className="row">
 
             <div className="container centered noPaddingBottom">
 
                 <Content
                     type="h2"
-                    heading="SEO Case Studies"
-                    hasFullStop={true}
-                    description="See how we have helped businesses grow their online presence."
+                    heading={heading}
+                    hasFullStop={hasFullStop}
+                    description={description}
                 />
 
             </div>

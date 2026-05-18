@@ -10,20 +10,7 @@ import { arrowRight } from "@/data/icons";
 // Styles
 import styles from "@/styles/components/carousels/portfolio-carousel.module.scss";
 
-type PortfolioItemData = {
-    name: string;
-    url: string;
-    poster: string;
-    video?: string;
-};
-
-type PortfolioItemProps = {
-    item: PortfolioItemData;
-    isMobile: boolean;
-    onMouseEnter: () => void;
-    onMouseLeave: () => void;
-    videoRef: (element: HTMLVideoElement | null) => void;
-};
+import type { PortfolioItemProps } from "@/types/all-types";
 
 export default function PortfolioItem({
     item,

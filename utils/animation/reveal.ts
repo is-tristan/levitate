@@ -28,5 +28,5 @@ export const revealItemVariants = {
 
 export const revealViewport = {
     once: true,
-    amount: 0.45
+    amount: 0.5
 };

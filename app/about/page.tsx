@@ -52,6 +52,7 @@ export default function Branding() {
         <>
 
             <Banner
+                className="contactBanner"
                 heading="The Minds Behind the <span class='gradientAnimation'>Magic</span>"
                 description="Behind every campaign, every website, and every scroll-stopping piece of content is a team that genuinely cares. Based in Cardiff and connected to the wider digital world, we're a creative, curious bunch who love what we do."
                 backgroundImage={"/images/pages/about/team-cover.webp"}

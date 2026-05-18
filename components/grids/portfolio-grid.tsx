@@ -5,18 +5,10 @@ import Link from "next/link";
 // Styles
 import styles from "@/styles/components/grids/portfolio-grid.module.scss";
 
-// Types
-import { PortfolioItemData } from "@/types/all-types";
+import type { PortfolioData, PortfolioItemData } from "@/types/all-types";
 
 // Logos
 import { nextjs, wordpress, sanity, astro, shopify, figma, adobexd, supabase } from "@/data/stack-logos";
-
-// Types
-interface PortfolioData {
-    portfolioItems: {
-        nodes: PortfolioItemData[];
-    } | null;
-}
 
 // Query
 const portfolioQuery = `

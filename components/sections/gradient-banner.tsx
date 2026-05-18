@@ -8,13 +8,7 @@ import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 import styles from "@/styles/components/sections/gradient-banner.module.scss";
 
 // Types
-type GradientBannerProps = {
-    className?: string;
-    heading: string;
-    description: string;
-    urlOne?: string | undefined;
-    urlTwo?: string | undefined;
-}
+import type { GradientBannerProps } from "@/types/all-types";
 
 export default function GradientBanner({
     className,

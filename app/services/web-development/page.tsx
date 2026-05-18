@@ -1,6 +1,8 @@
+// React & Next
 import { Suspense } from "react";
 import type { Metadata } from "next";
 
+// Components
 import Banner from "@/components/sections/banner";
 import Section from "@/components/sections/section";
 import { PortfolioCarouselSection } from "@/components/sections/portfolio-carousel-section";
@@ -10,21 +12,23 @@ import Loading from "@/components/item/loading";
 import CTA from "@/components/sections/cta-section";
 import LogoSection from "@/components/sections/logo-section";
 
+// Metadata
 export const metadata: Metadata = {
-  title: "Web Design & Development",
-  description: "Elevate your online presence with bespoke web design and development from Levitate. High-performance, responsive websites that convert visitors into customers.",
-  keywords: ["web design", "web development", "bespoke websites", "responsive design", "Cardiff web design", "custom websites", "website development"],
-  openGraph: {
-    title: "Web Design & Development | Levitate",
+    title: "Web Design & Development",
     description: "Elevate your online presence with bespoke web design and development from Levitate. High-performance, responsive websites that convert visitors into customers.",
-    url: "/services/web-development",
-  },
-  twitter: {
-    title: "Web Design & Development | Levitate",
-    description: "Elevate your online presence with bespoke web design and development from Levitate. High-performance, responsive websites that convert visitors into customers.",
-  },
+    keywords: ["web design", "web development", "bespoke websites", "responsive design", "Cardiff web design", "custom websites", "website development"],
+    openGraph: {
+        title: "Web Design & Development | Levitate",
+        description: "Elevate your online presence with bespoke web design and development from Levitate. High-performance, responsive websites that convert visitors into customers.",
+        url: "/services/web-development",
+    },
+    twitter: {
+        title: "Web Design & Development | Levitate",
+        description: "Elevate your online presence with bespoke web design and development from Levitate. High-performance, responsive websites that convert visitors into customers.",
+    },
 };
 
+// Page
 export default function WebDevelopment() {
 
     return (

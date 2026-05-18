@@ -5,15 +5,7 @@ import PortfolioCarousel from "@/components/carousels/portfolio-carousel";
 // Styles
 import styles from "@/styles/components/carousels/portfolio-carousel.module.scss";
 
-// Types
-import { PortfolioItemData } from "@/types/all-types";
-
-// Types
-interface PortfolioData {
-    portfolioItems: {
-        nodes: PortfolioItemData[];
-    } | null;
-}
+import type { PortfolioCarouselSectionProps, PortfolioData, PortfolioItemData } from "@/types/all-types";
 
 // Query
 const portfolioQuery = `
@@ -66,12 +58,6 @@ async function getPortfolioData() {
     const { data } = await response.json() as { data?: PortfolioData };
 
     return data?.portfolioItems?.nodes ?? [];
-}
-
-// Types
-type PortfolioCarouselSectionProps = {
-    heading: string;
-    description?: string | null;
 }
 
 export async function PortfolioCarouselSection({

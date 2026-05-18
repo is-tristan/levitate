@@ -22,11 +22,7 @@ import { menuItems } from "@/data/menu-items";
 import SocialItems from "@/components/items/social-items";
 import ContactItems from "@/components/items/contact-items";
 
-// Types
-type MobileMenuProps = {
-    handleClose: () => void;
-    isActive: boolean;
-}
+import type { MobileMenuProps } from "@/types/all-types";
 
 export default function MobileMenu({
     handleClose,

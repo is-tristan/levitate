@@ -7,28 +7,7 @@ import TestimonialsCarousel from "@/components/carousels/testimonials-carousel";
 // Styles
 import styles from "@/styles/components/carousels/testimonials-carousel.module.scss";
 
-type TestimonialsSectionProps = {
-    containerClassName?: string;
-};
-
-type TestimonialsQueryResponse = {
-    data?: {
-        testimonials?: {
-            nodes?: {
-                title: string;
-                content: string;
-                featuredImage?: {
-                    node?: {
-                        mediaItemUrl?: string;
-                    };
-                };
-                testimonialFields?: {
-                    position?: string;
-                };
-            }[];
-        };
-    };
-};
+import type { TestimonialsQueryResponse, TestimonialsSectionProps } from "@/types/all-types";
 
 const testimonialsQuery = `
     query testimonialsQuery {

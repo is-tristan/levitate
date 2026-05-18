@@ -34,17 +34,7 @@ const flags = [
     },
 ]
 
-// Types
-type CTAProps = {
-    className?: string;
-    eyebrow?: string;
-    heading?: string;
-    description?: string;
-    labelOne?: string;
-    urlOne?: string;
-    labelTwo?: string;
-    urlTwo?: string;
-}
+import type { CTAProps } from "@/types/all-types";
 
 export default function CTA({
     eyebrow = "",

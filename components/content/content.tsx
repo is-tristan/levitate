@@ -1,25 +1,11 @@
 "use client";
 
 import Buttons from "@/components/handlers/buttons";
-import { ButtonsProps } from "@/types/all-types";
+import type { HeadingProps } from "@/types/all-types";
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
-
-type HeadingProps = {
-    type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-    heading: string;
-    eyebrow?: string;
-    description?: string;
-    containerClassName?: string;
-    className?: string;
-    tagClassName?: string | null;
-    layout?: "default" | "centered";
-    hasFullStop?: boolean;
-    hasAnimation?: boolean;
-} & Pick<ButtonsProps, "btnOneClassName" | "btnTwoClassName" | "labelOne" | "labelTwo" | "urlOne" | "urlTwo" | "targetOne" | "targetTwo" | "relOne" | "relTwo">;
-
 
 export default function Heading({
     type = "h2",

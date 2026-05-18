@@ -8,11 +8,7 @@ import { useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device
 // Styles
 import styles from "@/styles/components/items/review-items.module.scss";
 
-// Types
-type ReviewItemsProps = {
-    layout?: "default" | "inline";
-    className?: string;
-}
+import type { ReviewItemsProps } from "@/types/all-types";
 
 // Data
 const reviewItems = [

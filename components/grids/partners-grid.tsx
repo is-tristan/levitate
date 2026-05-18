@@ -9,9 +9,7 @@ import styles from "@/styles/components/grids/partners-grid.module.scss";
 import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 
-type PartnersGridProps = {
-    containerClassName?: string;
-}
+import type { PartnersGridProps } from "@/types/all-types";
 
 export default function PartnersGrid({
     containerClassName,

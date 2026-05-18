@@ -5,25 +5,7 @@ import { motion } from "motion/react";
 import { revealViewport } from "@/utils/animation/reveal";
 import styles from "@/styles/components/sections/pricing-cols.module.scss";
 
-export interface PricingIncludedItem {
-    description: string;
-    icon: string;
-}
-
-export interface PricingItemData {
-    id: string;
-    title: string;
-    pricingMetaFields: {
-        included: PricingIncludedItem[];
-        price: string;
-        smallText: string;
-    };
-}
-
-interface PricingItemProps {
-    pricingItem: PricingItemData;
-    itemIndex: number;
-}
+import type { PricingItemProps } from "@/types/all-types";
 
 const getPricingItemVariants = (itemIndex: number) => ({
     hidden: {

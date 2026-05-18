@@ -12,17 +12,7 @@ import styles from "@/styles/components/carousels/testimonials-carousel.module.s
 // Helpers
 import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
-// Types
-type TestimonialItemData = {
-    name: string;
-    position: string;
-    quote: string;
-    image: string;
-};
-
-type TestimonialItemProps = {
-    testimonial: TestimonialItemData;
-};
+import type { TestimonialItemProps } from "@/types/all-types";
 
 export default function TestimonialItem({
     testimonial,

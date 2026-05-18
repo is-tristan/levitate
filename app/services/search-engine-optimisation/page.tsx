@@ -1,6 +1,8 @@
+// React & Next
 import { Suspense } from "react";
 import type { Metadata } from "next";
 
+// Components
 import Banner from "@/components/sections/banner";
 import Section from "@/components/sections/section";
 import PartnersGrid from "@/components/grids/partners-grid";
@@ -10,21 +12,23 @@ import Loading from "@/components/item/loading";
 import CTA from "@/components/sections/cta-section";
 import LogoSection from "@/components/sections/logo-section";
 
+// Metadata
 export const metadata: Metadata = {
-  title: "Search Engine Optimisation (SEO)",
-  description: "Climb the search rankings with Levitate's tailored SEO strategies. Technical audits, content optimisation, and link building that drive long-term organic growth.",
-  keywords: ["SEO", "search engine optimisation", "organic search", "technical SEO", "Cardiff SEO agency", "link building", "content optimisation", "Google rankings"],
-  openGraph: {
-    title: "Search Engine Optimisation (SEO) | Levitate",
+    title: "Search Engine Optimisation (SEO)",
     description: "Climb the search rankings with Levitate's tailored SEO strategies. Technical audits, content optimisation, and link building that drive long-term organic growth.",
-    url: "/services/search-engine-optimisation",
-  },
-  twitter: {
-    title: "Search Engine Optimisation (SEO) | Levitate",
-    description: "Climb the search rankings with Levitate's tailored SEO strategies. Technical audits, content optimisation, and link building that drive long-term organic growth.",
-  },
+    keywords: ["SEO", "search engine optimisation", "organic search", "technical SEO", "Cardiff SEO agency", "link building", "content optimisation", "Google rankings"],
+    openGraph: {
+        title: "Search Engine Optimisation (SEO) | Levitate",
+        description: "Climb the search rankings with Levitate's tailored SEO strategies. Technical audits, content optimisation, and link building that drive long-term organic growth.",
+        url: "/services/search-engine-optimisation",
+    },
+    twitter: {
+        title: "Search Engine Optimisation (SEO) | Levitate",
+        description: "Climb the search rankings with Levitate's tailored SEO strategies. Technical audits, content optimisation, and link building that drive long-term organic growth.",
+    },
 };
 
+// Page
 export default function SearchEngineOptimisation() {
 
     return (
@@ -46,7 +50,11 @@ export default function SearchEngineOptimisation() {
             />
 
             <Suspense fallback={<Loading />}>
-                <ResourcesGrid />
+                <ResourcesGrid
+                    categorySlug="seo"
+                    heading="SEO Case Studies"
+                    description="See how we have helped businesses grow their online presence."
+                />
             </Suspense>
 
             <Suspense fallback={<Loading />}>

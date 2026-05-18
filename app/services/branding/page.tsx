@@ -1,14 +1,18 @@
+// React & Next
 import { Suspense } from "react";
 import type { Metadata } from "next";
 
+// Components
 import Banner from "@/components/sections/banner";
 import Section from "@/components/sections/section";
 import PartnersGrid from "@/components/grids/partners-grid";
+import ResourcesGrid from "@/components/grids/resources-grid";
 import TestimonialsSection from "@/components/sections/testimonials-section";
 import Loading from "@/components/item/loading";
 import CTA from "@/components/sections/cta-section";
 import LogoSection from "@/components/sections/logo-section";
 
+// Metadata
 export const metadata: Metadata = {
   title: "Branding & Graphic Design",
   description: "Transform your vision into striking visuals with Levitate's expert branding and graphic design services. Logos, identity systems, and marketing materials that capture attention.",
@@ -24,6 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
+// Page
 export default function Branding() {
 
   return (
@@ -43,6 +48,14 @@ export default function Branding() {
         description="We deliver bold, original graphics tailored to your business needs. From logos to marketing materials, our designs build strong identities and lasting impressions. Precision and creativity unite for standout results."
         image={"/images/pages/services/branding/branding.webp"}
       />
+
+      <Suspense fallback={<Loading />}>
+        <ResourcesGrid
+          categorySlug="branding"
+          heading="Branding Case Studies"
+          description="See how we have helped businesses create strong brand identities and lasting impressions."
+        />
+      </Suspense>
 
       <Suspense fallback={<Loading />}>
         <TestimonialsSection containerClassName="noPaddingBottom" />

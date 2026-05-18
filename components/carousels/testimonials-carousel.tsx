@@ -15,15 +15,7 @@ import type { Splide as SplideInstance } from "@splidejs/splide";
 // Styles
 import styles from "@/styles/components/carousels/testimonials-carousel.module.scss";
 
-// Types
-type TestimonialsCarouselProps = {
-    testimonials: {
-        name: string;
-        position: string;
-        quote: string;
-        image: string;
-    }[];
-};
+import type { TestimonialsCarouselProps } from "@/types/all-types";
 
 // Splide Options
 const baseTestimonialsOptions = {

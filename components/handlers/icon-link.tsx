@@ -2,10 +2,7 @@ import Link from "next/link";
 import { arrowUpRight } from "@/data/icons";
 import styles from "@/styles/components/handlers/icon-link.module.scss";
 
-type IconLinkProps = {
-    link: string;
-    icon: string | undefined;
-}
+import type { IconLinkProps } from "@/types/all-types";
 
 export default function IconLink({
     link,

@@ -3,20 +3,14 @@
 // Imports
 import styles from "@/styles/layouts/header/mobile-menu.module.scss";
 
-// Types
-type NavToggleProps = {
-    id: string;
-    handleActive: () => void;
-    handleClose: () => void;
-    isActive: boolean;
-}
+import type { HeaderMobileBurgerProps } from "@/types/all-types";
 
-export default function NavToggle({
+export default function HeaderMobileBurger({
     id,
     handleActive,
     handleClose,
     isActive
-}: NavToggleProps) {
+}: HeaderMobileBurgerProps) {
 
     return (
 

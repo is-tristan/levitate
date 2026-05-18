@@ -8,17 +8,13 @@ import styles from "@/styles/components/sections/banner-section.module.scss";
 import Content from "@/components/content/content";
 
 // Types
-type BannerProps = {
-    heading: string;
-    description: string;
-    backgroundImage?: string;
-}
+import type { BannerProps } from "@/types/all-types";
 
-export default function Banner({ heading, description, backgroundImage }: BannerProps) {
+export default function Banner({ className, heading, description, backgroundImage }: BannerProps) {
 
     return (
 
-        <section className={`row ${styles.banner}`}>
+        <section className={`row ${styles.banner} ${className || undefined}`}>
 
             <div className={`container ${styles.bannerContainer}`}>
 

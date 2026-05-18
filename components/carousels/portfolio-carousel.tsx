@@ -15,16 +15,7 @@ import { useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device
 // Styles
 import styles from "@/styles/components/carousels/portfolio-carousel.module.scss";
 
-// Types
-type PortfolioCarouselProps = {
-    items: {
-        name: string;
-        url: string;
-        poster: string;
-        video?: string;
-        featured: boolean;
-    }[];
-};
+import type { PortfolioCarouselProps } from "@/types/all-types";
 
 // Splide Options
 const baseOptions = {

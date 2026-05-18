@@ -6,17 +6,7 @@ import { motion } from "motion/react";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
-type ServiceItemLogo = {
-    image: string;
-    alt: string;
-    url: string;
-};
-
-type ServiceItemLogosProps = {
-    logos: ServiceItemLogo[];
-    containerClassName: string;
-    itemClassName: string;
-};
+import type { ServiceItemLogosProps } from "@/types/all-types";
 
 export default function ServiceItemLogos({
     logos,

@@ -1,16 +1,11 @@
 // Components
 import Content from "@/components/content/content";
-import PricingItem, { type PricingItemData } from "@/components/item/pricing-item";
+import PricingItem from "@/components/item/pricing-item";
 
 // Styles
 import styles from "@/styles/components/sections/pricing-cols.module.scss";
 
-// Types
-interface PricingData {
-    allPricing: {
-        nodes: PricingItemData[];
-    } | null;
-}
+import type { PricingData } from "@/types/all-types";
 
 // Query
 const pricingQuery = `

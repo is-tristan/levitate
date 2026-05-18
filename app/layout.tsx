@@ -7,7 +7,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 // Imports
 import "@/styles/main.scss";
 import Header from "@/components/layouts/header/header";
-import Topbar from "@/components/layouts/header/topbar";
+import Topbar from "@/components/layouts/topbar/topbar";
 import Footer from "@/components/layouts/footer/footer";
 
 // Utils

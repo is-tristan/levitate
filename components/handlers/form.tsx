@@ -26,20 +26,9 @@ export default function Form() {
         setIsCheckboxChecked(!isCheckboxChecked);
     }
 
-    const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const gtmPayload = { event: "formSubmitted", value: "landingContactForm" };
-        const record = { ...gtmPayload, loggedAt: new Date().toISOString() };
-        sendGTMEvent(gtmPayload);
-        try {
-            await fetch("/api/gtm-debug", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(record),
-                keepalive: true,
-            });
-        } catch {
-        }
+        sendGTMEvent({ event: "formSubmitted", value: "landingContactForm" });
         if (submitAfterGtmTimeoutIdRef.current !== null) {
             clearTimeout(submitAfterGtmTimeoutIdRef.current);
         }

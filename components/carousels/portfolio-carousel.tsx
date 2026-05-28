@@ -20,7 +20,7 @@ import type { PortfolioCarouselProps } from "@/types/all-types";
 // Splide Options
 const baseOptions = {
     type: "loop",
-    perPage: 1,
+    perPage: 2,
     perMove: 1,
     gap: "1rem",
     arrows: false,
@@ -35,6 +35,11 @@ const baseOptions = {
         speed: 1,
         pauseOnHover: true,
         pauseOnFocus: true,
+    },
+    breakpoints: {
+        767: {
+            perPage: 1,
+        },
     },
 };
 

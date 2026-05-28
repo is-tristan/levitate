@@ -1,7 +1,6 @@
 // Next
 import type { Metadata } from "next";
 import LocalFont from "next/font/local";
-import { Analytics } from "@vercel/analytics/next"
 import { GoogleTagManager } from "@next/third-parties/google";
 
 // Imports
@@ -109,11 +108,9 @@ export default function RootLayout({
 
         </main>
 
-        <Analytics />
+        <SmoothScroll />
 
         <GoogleTagManager gtmId="AW-18023043406" />
-
-        <SmoothScroll />
 
       </body>
 

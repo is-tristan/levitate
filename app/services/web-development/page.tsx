@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 // Components
 import Banner from "@/components/sections/banner";
 import Section from "@/components/sections/section";
+import WebDevelopmentVisual from "@/components/sections/section-parts/services/inner/web-development-visual";
 import { PortfolioCarouselSection } from "@/components/sections/portfolio-carousel-section";
 import PartnersGrid from "@/components/grids/partners-grid";
 import TestimonialsSection from "@/components/sections/testimonials-section";
@@ -46,7 +47,7 @@ export default function WebDevelopment() {
             <Section
                 heading="Designs Built to <span class='gradientAnimation'>Elevate Brands</span>"
                 description="Our Cardiff team blends creativity and strategy to build websites that stand out. From responsive designs to seamless user experiences, we focus on your brand's growth and goals. Expect precision, innovation, and measurable impact every time."
-                image={"/images/pages/services/web-development/web-development.webp"}
+                imageSlot={<WebDevelopmentVisual />}
             />
 
             <Suspense fallback={<Loading />}>

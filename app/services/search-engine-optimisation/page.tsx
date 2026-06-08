@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 // Components
 import Banner from "@/components/sections/banner";
 import Section from "@/components/sections/section";
+import SeoVisual from "@/components/sections/section-parts/services/inner/seo-visual";
 import PartnersGrid from "@/components/grids/partners-grid";
 import ResourcesGrid from "@/components/grids/resources-grid";
 import TestimonialsSection from "@/components/sections/testimonials-section";
@@ -46,7 +47,7 @@ export default function SearchEngineOptimisation() {
             <Section
                 heading="Rise above the <span class='gradientAnimation'>Competition</span>"
                 description="Levitate crafts tailored SEO strategies that boost visibility and traffic. We handle technical audits, content optimisation, and link building for long-term dominance. Real results from on-page tweaks to AI-enhanced AEO tactics."
-                image={"/images/pages/services/seo/seo.webp"}
+                imageSlot={<SeoVisual />}
             />
 
             <Suspense fallback={<Loading />}>

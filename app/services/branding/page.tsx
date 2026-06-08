@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 // Components
 import Banner from "@/components/sections/banner";
 import Section from "@/components/sections/section";
+import BrandingVisual from "@/components/sections/section-parts/services/inner/branding-visual";
 import PartnersGrid from "@/components/grids/partners-grid";
 import ResourcesGrid from "@/components/grids/resources-grid";
 import TestimonialsSection from "@/components/sections/testimonials-section";
@@ -46,7 +47,7 @@ export default function Branding() {
       <Section
         heading="Visuals That Lift <span class='gradientAnimation'>Your Brand</span>"
         description="We deliver bold, original graphics tailored to your business needs. From logos to marketing materials, our designs build strong identities and lasting impressions. Precision and creativity unite for standout results."
-        image={"/images/pages/services/branding/branding.webp"}
+        imageSlot={<BrandingVisual />}
       />
 
       <Suspense fallback={<Loading />}>

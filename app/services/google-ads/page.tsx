@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 // Components
 import Banner from "@/components/sections/banner";
 import Section from "@/components/sections/section";
+import GoogleAdsVisual from "@/components/sections/section-parts/services/inner/google-ads-visual";
 import PartnersGrid from "@/components/grids/partners-grid";
 import ResourcesGrid from "@/components/grids/resources-grid";
 import TestimonialsSection from "@/components/sections/testimonials-section";
@@ -46,7 +47,7 @@ export default function GoogleAds() {
       <Section
         heading="Rise above the <span class='gradientAnimation'>Competition</span>"
         description="Our data-driven Google Ads strategies put you at the top of searches. We handle keyword research, ad creation, and constant refinement for maximum results. Watch your business soar with precise, cost-effective advertising."
-        image={"/images/pages/services/google-ads/google-ads.webp"}
+        imageSlot={<GoogleAdsVisual />}
       />
 
       <Suspense fallback={<Loading />}>

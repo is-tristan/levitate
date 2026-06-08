@@ -1,0 +1,11 @@
+.sectionContainer {
+    &.serviceVisualSection {
+        @media (width <1024px) {
+            gap: 5.5rem;
+
+            :global(.imageCol) {
+                overflow: visible;
+            }
+        }
+    }
+}

@@ -13,15 +13,25 @@ import Content from "@/components/content/content";
 // Styles
 import styles from "@/styles/components/sections/section.module.scss";
 
-export default function Section({ heading, description, image, imageAlignment = "right" }: SectionProps) {
+export default function Section({ heading, description, image, imageSlot, imageAlignment = "right" }: SectionProps) {
+    const hasVisual = Boolean(imageSlot || image);
+    const isServiceVisual = Boolean(imageSlot);
+
+    const containerClassName = [
+        "container",
+        styles.sectionContainer,
+        hasVisual ? "dualCols" : "centered",
+        imageAlignment === "right" && "rowReverse",
+        isServiceVisual && styles.serviceVisualSection,
+    ].filter(Boolean).join(" ");
 
     return (
 
         <section className={`row ${styles.section}`}>
 
-            <div className={`container ${styles.sectionContainer} ${image ? "dualCols" : "centered"} ${imageAlignment === "right" ? "rowReverse" : null}`}>
+            <div className={containerClassName}>
 
-                {image && (
+                {imageSlot ?? (image && (
 
                     <motion.div
                         className="imageCol"
@@ -35,7 +45,7 @@ export default function Section({ heading, description, image, imageAlignment = 
 
                     </motion.div>
 
-                )}
+                ))}
 
                 <div className="contentCol">
 

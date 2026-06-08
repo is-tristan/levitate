@@ -63,6 +63,7 @@ export interface SectionProps {
     heading: string;
     description?: string | null;
     image?: string | null;
+    imageSlot?: React.ReactNode;
     imageAlignment?: "left" | "right";
 }
 

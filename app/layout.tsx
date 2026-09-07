@@ -92,21 +92,21 @@ export default function RootLayout({
 
       <body className={`${Prophet.variable} ${DmSans.variable}`}>
 
-        <main id="app" className="app">
+        <div id="app" className="app">
 
           <Topbar />
 
           <Header />
 
-          <div id="appContent" className="appContent">
+          <main id="appContent" className="appContent">
 
             {children}
 
-          </div>
+          </main>
 
           <Footer />
 
-        </main>
+        </div>
 
         <SmoothScroll />
 

@@ -51,9 +51,7 @@ export default function PortfolioCarousel({
     const shouldPlayVideoRefs = useRef<boolean[]>([]);
     const isMobile = useIsBelowBreakpoint();
     const featuredItems = useMemo(() => {
-        return items
-            .filter(item => item.featured)
-            .sort((firstItem, secondItem) => firstItem.name.localeCompare(secondItem.name));
+        return items.filter(item => item.featured);
     }, [items]);
     const carouselOptions = useMemo(() => {
         if (isMobile) {
@@ -139,6 +137,7 @@ export default function PortfolioCarousel({
                     {featuredItems.map((item, index) => (
 
                         <SplideSlide key={`${item.name}-${index}`}>
+
                             <PortfolioItem
                                 item={item}
                                 isMobile={isMobile}
@@ -168,9 +167,9 @@ export default function PortfolioCarousel({
                             <PortfolioItem
                                 item={item}
                                 isMobile={isMobile}
-                                onMouseEnter={() => {}}
-                                onMouseLeave={() => {}}
-                                videoRef={() => {}}
+                                onMouseEnter={() => { }}
+                                onMouseLeave={() => { }}
+                                videoRef={() => { }}
                             />
 
                         </article>

@@ -10,7 +10,7 @@ import type { PortfolioCarouselSectionProps, PortfolioData, PortfolioItemData } 
 // Query
 const portfolioQuery = `
  query portfolioQuery {
-        portfolioItems {
+        portfolioItems(where: {orderby: {field: MENU_ORDER, order: ASC}}) {
             nodes {
             title
                 portfolioItemFields {

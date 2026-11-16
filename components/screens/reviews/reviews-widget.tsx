@@ -9,7 +9,7 @@ export default function ReviewsWidget() {
 
         <section id="reviews" className="row">
 
-            <div className="container noPaddingBottom">
+            <div className="container noPaddingTop noPaddingBottom">
 
                 {/* Elfsight All-in-One Reviews */}
                 <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />

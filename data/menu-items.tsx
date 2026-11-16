@@ -44,6 +44,10 @@ export const menuItems = [
         url: '/portfolio',
     },
     {
+        label: 'Reviews',
+        url: '/reviews',
+    },
+    {
         label: 'Contact',
         url: '/contact',
     }

@@ -1,7 +1,6 @@
 // Components
 import Content from "@/components/content/content";
 import ReviewItems from "@/components/items/review-items";
-import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 import TestimonialsCarousel from "@/components/carousels/testimonials-carousel";
 
 // Styles
@@ -80,11 +79,11 @@ export default async function TestimonialsSection({
                     className={styles.heading}
                 />
 
-                <ViewportBreakpoint mode="desktop">
+                <div className="hidden-s">
 
                     <ReviewItems layout="inline" />
 
-                </ViewportBreakpoint>
+                </div>
 
             </div>
 

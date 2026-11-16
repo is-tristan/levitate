@@ -13,21 +13,10 @@ import Loading from "@/components/item/loading";
 import CTA from "@/components/sections/cta-section";
 import LogoSection from "@/components/sections/logo-section";
 
-// Metadata
-export const metadata: Metadata = {
-    title: "Web Design & Development",
-    description: "Elevate your online presence with bespoke web design and development from Levitate. High-performance, responsive websites that convert visitors into customers.",
-    keywords: ["web design", "web development", "bespoke websites", "responsive design", "Cardiff web design", "custom websites", "website development"],
-    openGraph: {
-        title: "Web Design & Development | Levitate",
-        description: "Elevate your online presence with bespoke web design and development from Levitate. High-performance, responsive websites that convert visitors into customers.",
-        url: "/services/web-development",
-    },
-    twitter: {
-        title: "Web Design & Development | Levitate",
-        description: "Elevate your online presence with bespoke web design and development from Levitate. High-performance, responsive websites that convert visitors into customers.",
-    },
-};
+// SEO
+import { createPageMetadata } from "@/data/seo";
+
+export const metadata: Metadata = createPageMetadata("webDevelopment");
 
 // Page
 export default function WebDevelopment() {

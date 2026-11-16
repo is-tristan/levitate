@@ -10,20 +10,10 @@ import Loading from "@/components/item/loading";
 import LogoSection from "@/components/sections/logo-section";
 import ContactSection from "@/components/sections/contact-section";
 
-// Metadata
-export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Explore Levitate's portfolio of bespoke websites, branding projects, and digital experiences crafted for ambitious brands across Cardiff and the UK.",
-  openGraph: {
-    title: "Portfolio | Levitate",
-    description: "Explore Levitate's portfolio of bespoke websites, branding projects, and digital experiences crafted for ambitious brands across Cardiff and the UK.",
-    url: "/portfolio",
-  },
-  twitter: {
-    title: "Portfolio | Levitate",
-    description: "Explore Levitate's portfolio of bespoke websites, branding projects, and digital experiences crafted for ambitious brands across Cardiff and the UK.",
-  },
-};
+// SEO
+import { createPageMetadata } from "@/data/seo";
+
+export const metadata: Metadata = createPageMetadata("portfolio");
 
 // Page
 export default function Portfolio() {

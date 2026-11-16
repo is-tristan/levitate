@@ -10,7 +10,7 @@ import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 
 // Components
 import PortfolioItem from "@/components/item/portfolio-item";
-import { useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
+import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Styles
 import styles from "@/styles/components/carousels/portfolio-carousel.module.scss";
@@ -32,7 +32,7 @@ const baseOptions = {
         left: "7.5%",
     },
     autoScroll: {
-        speed: 1,
+        speed: 0.5,
         pauseOnHover: true,
         pauseOnFocus: true,
     },
@@ -53,16 +53,6 @@ export default function PortfolioCarousel({
     const featuredItems = useMemo(() => {
         return items.filter(item => item.featured);
     }, [items]);
-    const carouselOptions = useMemo(() => {
-        if (isMobile) {
-            return {
-                ...baseOptions,
-                autoScroll: undefined,
-            };
-        }
-
-        return baseOptions;
-    }, [isMobile]);
 
     const resetVideos = useCallback(() => {
         videoRefs.current.forEach(video => {
@@ -126,12 +116,12 @@ export default function PortfolioCarousel({
 
         <div className={`container noPaddingTop ${styles.carouselContainer}`}>
 
-            <ViewportBreakpoint mode="desktop">
+            <div className="hidden-s">
 
                 <Splide
                     className={`hasArrows splideTrackNoOverflow`}
-                    options={carouselOptions}
-                    extensions={isMobile ? undefined : { AutoScroll }}
+                    options={baseOptions}
+                    extensions={{ AutoScroll }}
                 >
 
                     {featuredItems.map((item, index) => (
@@ -146,6 +136,7 @@ export default function PortfolioCarousel({
                                 videoRef={element => {
                                     videoRefs.current[index] = element;
                                 }}
+                                priority={index < 2}
                             />
 
                         </SplideSlide>
@@ -154,31 +145,28 @@ export default function PortfolioCarousel({
 
                 </Splide>
 
-            </ViewportBreakpoint>
+            </div>
 
-            <ViewportBreakpoint mode="mobile">
+            <div className={`hidden-l carouselContainerMobile ${styles.portfolioCarouselMobile}`}>
 
-                <div className={`carouselContainerMobile ${styles.portfolioCarouselMobile}`}>
+                {featuredItems.map((item, index) => (
 
-                    {featuredItems.map((item, index) => (
+                    <article className={`carouselItemMobile ${styles.portfolioCarouselItemMobile}`} key={`${item.name}-${index}`}>
 
-                        <article className={`carouselItemMobile ${styles.portfolioCarouselItemMobile}`} key={`${item.name}-${index}`}>
+                        <PortfolioItem
+                            item={item}
+                            isMobile={isMobile}
+                            onMouseEnter={() => { }}
+                            onMouseLeave={() => { }}
+                            videoRef={() => { }}
+                            priority={index < 2}
+                        />
 
-                            <PortfolioItem
-                                item={item}
-                                isMobile={isMobile}
-                                onMouseEnter={() => { }}
-                                onMouseLeave={() => { }}
-                                videoRef={() => { }}
-                            />
+                    </article>
 
-                        </article>
+                ))}
 
-                    ))}
-
-                </div>
-
-            </ViewportBreakpoint>
+            </div>
 
         </div>
 

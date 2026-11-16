@@ -13,21 +13,10 @@ import Loading from "@/components/item/loading";
 import CTA from "@/components/sections/cta-section";
 import LogoSection from "@/components/sections/logo-section";
 
-// Metadata
-export const metadata: Metadata = {
-  title: "Branding & Graphic Design",
-  description: "Transform your vision into striking visuals with Levitate's expert branding and graphic design services. Logos, identity systems, and marketing materials that capture attention.",
-  keywords: ["branding", "graphic design", "logo design", "brand identity", "Cardiff branding agency", "visual identity", "marketing materials"],
-  openGraph: {
-    title: "Branding & Graphic Design | Levitate",
-    description: "Transform your vision into striking visuals with Levitate's expert branding and graphic design services. Logos, identity systems, and marketing materials that capture attention.",
-    url: "/services/branding",
-  },
-  twitter: {
-    title: "Branding & Graphic Design | Levitate",
-    description: "Transform your vision into striking visuals with Levitate's expert branding and graphic design services. Logos, identity systems, and marketing materials that capture attention.",
-  },
-};
+// SEO
+import { createPageMetadata } from "@/data/seo";
+
+export const metadata: Metadata = createPageMetadata("branding");
 
 // Page
 export default function Branding() {

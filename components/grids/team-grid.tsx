@@ -17,7 +17,15 @@ export default function TeamGrid() {
 
                             <div className={styles.teamGridImage}>
 
-                                <Image src={member.image} alt={member.name} fill sizes="100%" style={{ objectFit: "cover" }} loading="lazy" />
+                                <Image
+                                    src={member.image}
+                                    alt={member.name}
+                                    fill
+                                    sizes="(max-width: 575px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                                    style={{ objectFit: "cover" }}
+                                    loading="lazy"
+                                    quality={85}
+                                />
 
                             </div>
 

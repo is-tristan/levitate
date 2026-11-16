@@ -10,7 +10,8 @@ import Content from "@/components/content/content";
 // Types
 import type { BannerProps } from "@/types/all-types";
 
-export default function Banner({ className, heading, description, backgroundImage }: BannerProps) {
+export default function Banner({ className, heading, description, backgroundImage, backgroundPosition = "center" }: BannerProps) {
+    const altText = heading.replace(/<[^>]*>/g, "");
 
     return (
 
@@ -34,7 +35,16 @@ export default function Banner({ className, heading, description, backgroundImag
 
                 <div className={styles.backgroundImage}>
 
-                    <Image src={backgroundImage} alt={heading} width={1512} height={851} sizes="(max-width: 1512px) 100vw, 1512px" style={{ objectFit: "cover", width: "100%", height: "100%" }} loading="lazy" />
+                    <Image
+                        src={backgroundImage}
+                        alt={altText}
+                        width={1512}
+                        height={851}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1512px"
+                        style={{ objectFit: "cover", width: "100%", height: "100%", objectPosition: backgroundPosition }}
+                        priority
+                        quality={75}
+                    />
 
                 </div>
 

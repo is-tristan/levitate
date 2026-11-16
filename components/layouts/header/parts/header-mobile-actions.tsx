@@ -1,7 +1,6 @@
 "use client";
 
 // Imports
-import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 import { useState } from "react";
 import HeaderMobileBurger from "./header-mobile-burger";
 import HeaderMobileMenu from "./header-mobile-menu";
@@ -26,7 +25,7 @@ export default function HeaderMobileActions() {
 
     return (
 
-        <ViewportBreakpoint mode="mobile">
+        <div className="hidden-l">
 
             <div className={styles.mobileActions}>
 
@@ -40,6 +39,6 @@ export default function HeaderMobileActions() {
 
             <HeaderMobileMenu handleClose={handleMenuClose} isActive={isMenuActive} />
 
-        </ViewportBreakpoint>
+        </div>
     )
 }

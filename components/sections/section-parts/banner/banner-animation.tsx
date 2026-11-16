@@ -1,6 +1,7 @@
 "use client";
 
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
+import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 import styles from "@/styles/components/sections/gradient-banner.module.scss";
 
 const shaderGradientProps = {
@@ -48,10 +49,16 @@ const shaderGradientProps = {
 };
 
 export default function BannerAnimation() {
+    const isBelowBreakpoint = useIsBelowBreakpoint();
+
+    // Skip WebGL on mobile even when the wrapper is only CSS-hidden
+    if (isBelowBreakpoint) {
+        return null;
+    }
 
     return (
 
-        <div className={styles.bannerAnimation}>
+        <div className={`hidden-s ${styles.bannerAnimation}`}>
 
             <ShaderGradientCanvas style={{ position: "absolute", inset: 0 }} fov={24} >
 

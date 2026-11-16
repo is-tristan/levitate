@@ -18,6 +18,7 @@ export default function PortfolioItem({
     onMouseEnter,
     onMouseLeave,
     videoRef,
+    priority = false,
 }: PortfolioItemProps) {
     return (
 
@@ -47,9 +48,11 @@ export default function PortfolioItem({
                     src={item.poster}
                     alt={item.name}
                     fill
-                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 90vw, 85vw"
+                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 40vw"
                     className={styles.carouselImage}
-                    loading="lazy"
+                    priority={priority}
+                    loading={priority ? undefined : "lazy"}
+                    quality={70}
                 />
 
             )}

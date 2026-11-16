@@ -65,7 +65,8 @@ export default function WebDevelopmentVisual() {
                                 fill
                                 sizes="(max-width: 768px) 220px, 320px"
                                 style={{ objectFit: "contain" }}
-                                priority
+                                loading="lazy"
+                                quality={70}
                             />
 
                         </div>

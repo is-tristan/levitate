@@ -13,21 +13,10 @@ import Loading from "@/components/item/loading";
 import CTA from "@/components/sections/cta-section";
 import LogoSection from "@/components/sections/logo-section";
 
-// Metadata
-export const metadata: Metadata = {
-  title: "Google Ads Management",
-  description: "Dominate search results with Levitate's Google Ads management. Data-driven PPC campaigns that deliver qualified leads, growth, and measurable ROI from Cardiff.",
-  keywords: ["Google Ads", "PPC", "pay per click", "Google Ads management", "Cardiff PPC agency", "search advertising", "lead generation"],
-  openGraph: {
-    title: "Google Ads Management | Levitate",
-    description: "Dominate search results with Levitate's Google Ads management. Data-driven PPC campaigns that deliver qualified leads, growth, and measurable ROI from Cardiff.",
-    url: "/services/google-ads",
-  },
-  twitter: {
-    title: "Google Ads Management | Levitate",
-    description: "Dominate search results with Levitate's Google Ads management. Data-driven PPC campaigns that deliver qualified leads, growth, and measurable ROI from Cardiff.",
-  },
-};
+// SEO
+import { createPageMetadata } from "@/data/seo";
+
+export const metadata: Metadata = createPageMetadata("googleAds");
 
 // Page
 export default function GoogleAds() {

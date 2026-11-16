@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import Banner from "@/components/sections/banner";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Read Levitate's Privacy Policy to understand how we collect, use, and protect your personal information when you use our website or contact us.",
-  robots: {
-    index: false,
-    follow: true,
-  },
-};
+// SEO
+import { createPageMetadata } from "@/data/seo";
+
+export const metadata: Metadata = createPageMetadata("privacyPolicy");
 
 export default function PrivacyPolicy() {
     return (

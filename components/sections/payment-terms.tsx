@@ -10,7 +10,7 @@ import { paymentTerms } from "@/data/payment-terms";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
 
 export default function PaymentTerms() {
-    const containerVariants = getRevealContainerVariants(0, 0.2);
+    const containerVariants = getRevealContainerVariants();
 
     return (
 
@@ -48,8 +48,11 @@ export default function PaymentTerms() {
                                 alt={paymentTerm.title}
                                 width={96}
                                 height={96}
+                                sizes="96px"
                                 loading="lazy"
-                                style={{ objectFit: "contain" }} />
+                                quality={75}
+                                style={{ objectFit: "contain" }}
+                            />
 
                             <h3>{paymentTerm.title}</h3>
 

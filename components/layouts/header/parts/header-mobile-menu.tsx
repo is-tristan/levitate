@@ -64,23 +64,42 @@ export default function MobileMenu({
 
                         item.children && item.children.length > 0 ? (
 
-                            <div key={index} className={`${styles.navItem} ${urlIsActive(item.url || '/') ? styles.currentUrl : undefined}`} data-has-children="true">
+                            <div
+                                key={index}
+                                className={`${styles.navItem} ${item.children.some((child) => urlIsActive(child.url || "/")) ? styles.currentUrl : undefined}`}
+                                data-has-children="true"
+                                data-open={activeSubmenuIndex === index ? "true" : "false"}
+                            >
 
-                                <div className={`${styles.navItemLabel}`} onClick={() => handleSubmenuToggle(index)}>
+                                <button
+                                    type="button"
+                                    className={styles.navItemLabel}
+                                    aria-expanded={activeSubmenuIndex === index}
+                                    aria-controls={`mobile-submenu-${index}`}
+                                    onClick={() => handleSubmenuToggle(index)}
+                                >
 
                                     <span>{item.label}</span>
 
-                                    <span className={styles.navItemCaret} dangerouslySetInnerHTML={{ __html: chevronDown }} />
+                                    <span className={styles.navItemCaret} aria-hidden="true" dangerouslySetInnerHTML={{ __html: chevronDown }} />
 
-                                </div>
+                                </button>
 
-                                <div className={`${styles.subMenu} ${activeSubmenuIndex === index ? styles.subMenuActive : undefined}`}>
+                                <div
+                                    id={`mobile-submenu-${index}`}
+                                    className={`${styles.subMenu} ${activeSubmenuIndex === index ? styles.subMenuActive : undefined}`}
+                                >
 
-                                    {
+                                    <div className={styles.subMenuInner}>
 
-                                        item.children.map((child: string | any, index: number) => (
+                                        {item.children.map((child, childIndex) => (
 
-                                            <Link key={index} href={child.url || "/"} className={`${styles.subMenuItem} ${urlIsActive(child.url || "/") ? styles.currentUrl : undefined}`} data-has-children="true" onClick={handleClose}>
+                                            <Link
+                                                key={childIndex}
+                                                href={child.url || "/"}
+                                                className={`${styles.subMenuItem} ${urlIsActive(child.url || "/") ? styles.currentUrl : undefined}`}
+                                                onClick={handleClose}
+                                            >
 
                                                 {child.icon && <div className={styles.subMenuItemIcon} dangerouslySetInnerHTML={{ __html: child.icon }} />}
 
@@ -94,9 +113,9 @@ export default function MobileMenu({
 
                                             </Link>
 
-                                        ))
+                                        ))}
 
-                                    }
+                                    </div>
 
                                 </div>
 

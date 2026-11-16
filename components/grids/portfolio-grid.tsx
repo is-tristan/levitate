@@ -120,7 +120,15 @@ export default async function PortfolioGrid() {
 
                             <article className={styles.portfolioGridItem} key={item.name}>
 
-                                <Image src={item.poster} alt={item.name} fill sizes="100%" style={{ objectFit: "cover" }} loading="lazy" />
+                                <Image
+                                    src={item.poster}
+                                    alt={item.name}
+                                    fill
+                                    sizes="(max-width: 575px) 100vw, (max-width: 1511px) 50vw, 33vw"
+                                    style={{ objectFit: "cover" }}
+                                    loading="lazy"
+                                    quality={70}
+                                />
 
                                 <div className={styles.portfolioGridContent}>
 

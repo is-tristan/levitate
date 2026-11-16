@@ -22,7 +22,15 @@ export default function ServicesCardiff() {
 
             <div className="imageCol fourByThree hasRadius">
 
-                <Image src={image} alt="Cardiff Office" fill sizes="100%" style={{ objectFit: "cover" }} loading="lazy" />
+                <Image
+                    src={image}
+                    alt="Cardiff Office"
+                    fill
+                    sizes="(max-width: 1023px) 100vw, 50vw"
+                    style={{ objectFit: "cover" }}
+                    loading="lazy"
+                    quality={70}
+                />
 
             </div>
 

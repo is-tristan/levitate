@@ -2,7 +2,6 @@
 import BannerAnimation from "./section-parts/banner/banner-animation";
 import Content from "@/components/content/content";
 import ReviewItems from "@/components/items/review-items";
-import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Styles
 import styles from "@/styles/components/sections/gradient-banner.module.scss";
@@ -47,11 +46,7 @@ export default function GradientBanner({
 
             </div>
 
-            <ViewportBreakpoint mode="desktop">
-
-                <BannerAnimation />
-
-            </ViewportBreakpoint>
+            <BannerAnimation />
 
         </section>
     );

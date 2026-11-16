@@ -7,7 +7,7 @@ import Content from "@/components/content/content";
 import Buttons from "@/components/handlers/buttons";
 import ServiceItemLogos from "@/components/items/service-item-logos";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
-import { useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
+import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 import styles from "@/styles/components/sections/services-section.module.scss";
 
@@ -94,9 +94,10 @@ export default function ServicesPartDevelopment({ scrollProgress }: ServicesPart
                                 src={image.image}
                                 alt={image.alt}
                                 fill
-                                sizes="(max-width: 767px) 332px, 750px"
+                                sizes="(max-width: 767px) 70vw, 28vw"
                                 style={{ objectFit: "contain" }}
-                                priority={index === 0}
+                                loading={index === 0 ? "eager" : "lazy"}
+                                quality={70}
                             />
 
                         </motion.div>

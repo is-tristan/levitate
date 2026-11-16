@@ -38,6 +38,7 @@ export interface BannerProps {
     heading: string;
     description: string;
     backgroundImage?: string;
+    backgroundPosition?: string;
 }
 
 export interface GradientBannerProps {
@@ -135,6 +136,7 @@ export interface PortfolioItemProps {
     onMouseEnter: () => void;
     onMouseLeave: () => void;
     videoRef: (element: HTMLVideoElement | null) => void;
+    priority?: boolean;
 }
 
 export interface LogoItem {
@@ -290,4 +292,11 @@ export interface HeaderMobileBurgerProps {
 export interface IconLinkProps {
     link: string;
     icon: string | undefined;
+}
+
+export interface ReviewsBannerProps {
+    className?: string;
+    heading: string;
+    description?: string;
+    backgroundImage?: string;
 }

@@ -1,0 +1,84 @@
+# Levitate
+
+> Levitate is a Cardiff-based digital agency that designs and builds bespoke websites, brand identities, SEO/AEO strategies and Google Ads campaigns for ambitious brands across the UK and internationally.
+
+Levitate Online LTD (trading as Levitate) helps businesses grow online through strategy-led creative and technical work. Since 2017, the team has delivered 600+ websites and maintains a 5.0/5.0 rating across 150+ client reviews.
+
+## What Levitate does
+
+Levitate is not a template shop. The agency designs custom digital experiences that combine creativity, performance and commercial outcomes:
+
+- Bespoke website design and development
+- Brand identity and graphic design
+- Search engine optimisation (SEO) and answer engine optimisation (AEO)
+- Google Ads / PPC management
+- Ongoing digital partnership for brands that want measurable growth
+
+Typical clients are ambitious SMEs, scale-ups and established brands that need a website or marketing system that looks premium and converts.
+
+## Services
+
+### Web Design & Development
+Custom, high-performance websites built for speed, accessibility, SEO readiness and conversion. Platforms and stacks include modern frameworks such as Next.js, plus WordPress and Shopify where they fit the brief.
+
+URL: https://levitate.digital/services/web-development
+
+### SEO & AEO
+Technical SEO, content strategy, on-page optimisation and authority building to improve organic visibility. Work also considers answer engines and AI-assisted discovery so brands remain findable as search evolves.
+
+URL: https://levitate.digital/services/search-engine-optimisation
+
+### Google Ads
+Paid search and campaign management focused on qualified leads and ROI. Strategy covers account structure, creative testing, bidding and reporting.
+
+URL: https://levitate.digital/services/google-ads
+
+### Branding & Graphic Design
+Logo design, visual identity systems and marketing creatives that make brands distinctive and consistent across digital and print touchpoints.
+
+URL: https://levitate.digital/services/branding
+
+## Location and contact
+
+- Company: Levitate Online LTD
+- Location: 4 Churchill Villas, Cardiff, Wales, United Kingdom
+- Sales: sales@levitate.digital
+- Support: support@levitate.digital
+- Website: https://levitate.digital
+- Contact page: https://levitate.digital/contact
+
+## Social proof
+
+- 150+ reviews across platforms
+- Rated 5.0 / 5.0
+- 600+ websites delivered
+- Partnered/certified with major digital platforms (including Google and other ecosystem partners)
+
+Reviews: https://levitate.digital/reviews
+Portfolio: https://levitate.digital/portfolio
+About the team: https://levitate.digital/about
+
+## Key pages
+
+- [Home](https://levitate.digital/): Agency overview and primary services
+- [About](https://levitate.digital/about): Team, culture and company story
+- [Portfolio](https://levitate.digital/portfolio): Selected client work and case studies
+- [Reviews](https://levitate.digital/reviews): Aggregated client reviews
+- [Contact](https://levitate.digital/contact): Enquiries for new projects and support
+- [Web Design in Cardiff](https://levitate.digital/web-design-in-cardiff): Local Cardiff web design landing page
+- [Web Development](https://levitate.digital/services/web-development)
+- [SEO / AEO](https://levitate.digital/services/search-engine-optimisation)
+- [Google Ads](https://levitate.digital/services/google-ads)
+- [Branding](https://levitate.digital/services/branding)
+
+## Brand voice and positioning
+
+Levitate positions itself as a results-focused creative-technical partner. Messaging emphasises craft, performance, strategy and growth rather than commodity website packages. The brand voice is confident, clear and premium without being inaccessible.
+
+## Optional
+
+- Sitemap: https://levitate.digital/sitemap.xml
+- Robots: https://levitate.digital/robots.txt
+- Privacy Policy: https://levitate.digital/legal/privacy-policy
+- Cookie Policy: https://levitate.digital/legal/cookie-policy
+- Terms: https://levitate.digital/legal/terms-and-conditions

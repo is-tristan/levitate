@@ -6,9 +6,10 @@ import { SectionProps } from "@/types/all-types";
 // Next
 import Image from "next/image";
 import { motion } from "motion/react";
-  
+
 // Components
 import Content from "@/components/content/content";
+import { revealViewport } from "@/utils/animation/reveal";
 
 // Styles
 import styles from "@/styles/components/sections/section.module.scss";
@@ -35,13 +36,22 @@ export default function Section({ heading, description, image, imageSlot, imageA
 
                     <motion.div
                         className="imageCol"
-                        initial={{ opacity: 0, x: imageAlignment === "right" ? 40 : -40 }}
+                        initial={{ opacity: 0, x: imageAlignment === "right" ? 24 : -24 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, amount: 0.35 }}
+                        viewport={revealViewport}
                         transition={{ duration: 0.45, ease: "easeOut" }}
                     >
 
-                        <Image src={image} alt={heading} width={768} height={768} sizes="(max-width: 768px) 100vw, 768px" style={{ objectFit: "contain" }} loading="lazy" />
+                        <Image
+                            src={image}
+                            alt={heading.replace(/<[^>]*>/g, "")}
+                            width={768}
+                            height={768}
+                            sizes="(max-width: 1023px) 100vw, 50vw"
+                            style={{ objectFit: "contain" }}
+                            loading="lazy"
+                            quality={70}
+                        />
 
                     </motion.div>
 

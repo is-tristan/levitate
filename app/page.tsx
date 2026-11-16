@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
 
 // Components
 import GradientBanner from "@/components/sections/gradient-banner";
@@ -9,6 +10,11 @@ import TestimonialsSection from "@/components/sections/testimonials-section";
 import Loading from "@/components/item/loading";
 import CTA from "@/components/sections/cta-section";
 import LogoSection from "@/components/sections/logo-section";
+
+// SEO
+import { createPageMetadata } from "@/data/seo";
+
+export const metadata: Metadata = createPageMetadata("home");
 
 export default function Home() {
 
@@ -22,10 +28,12 @@ export default function Home() {
       />
 
       <Suspense fallback={<Loading />}>
+
         <PortfolioCarouselSection heading="We have built over <span class='gradientAnimation'>600+ websites</span>, here are our best" />
+
       </Suspense>
 
-      <PartnersGrid />
+      <PartnersGrid containerClassName="noPaddingBottom noPaddingTop" />
 
       <ServicesSection />
 

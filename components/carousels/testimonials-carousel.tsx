@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 
 // Components
 import TestimonialItem from "@/components/item/testimonial-item";
-import { useIsBelowBreakpoint, ViewportBreakpoint } from "@/utils/helpers/device-rendering";
+import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 // Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -55,60 +55,53 @@ export default function TestimonialsCarousel({
 
     return (
         <>
-            <ViewportBreakpoint mode="desktop">
 
-                <div className={`container noPaddingTop ${styles.testimonialsContainer}`}>
+            <div className={`hidden-s container noPaddingTop ${styles.testimonialsContainer}`}>
 
-                    <Splide
-                        className={"hasArrows"}
-                        options={testimonialsOptions}
-                        onMounted={updateProgress}
-                        onMoved={updateProgress}
-                    >
+                <Splide
+                    className={"hasArrows"}
+                    options={testimonialsOptions}
+                    onMounted={updateProgress}
+                    onMoved={updateProgress}
+                >
 
-                        {testimonials.map((testimonial, index) => (
+                    {testimonials.map((testimonial, index) => (
 
-                            <SplideSlide key={index}>
+                        <SplideSlide key={index}>
 
-                                <TestimonialItem testimonial={testimonial} />
+                            <TestimonialItem testimonial={testimonial} />
 
-                            </SplideSlide>
+                        </SplideSlide>
 
-                        ))}
+                    ))}
 
-                    </Splide>
+                </Splide>
 
-                    <div className={styles.testimonialsProgress}>
+                <div className={styles.testimonialsProgress}>
 
-                        <div className={styles.testimonialsProgressBar} style={{ width: progressWidth }}></div>
-
-                    </div>
+                    <div className={styles.testimonialsProgressBar} style={{ width: progressWidth }}></div>
 
                 </div>
 
-            </ViewportBreakpoint>
+            </div>
 
-            <ViewportBreakpoint mode="mobile">
+            <div className={`hidden-l container noPaddingTop ${styles.testimonialsCarouselMobile}`}>
 
-                <div className={`container noPaddingTop ${styles.testimonialsCarouselMobile}`}>
+                <div className="carouselContainerMobile">
 
-                    <div className="carouselContainerMobile">
+                    {testimonials.map((testimonial, index) => (
 
-                        {testimonials.map((testimonial, index) => (
+                        <article className="carouselItemMobile" key={index}>
 
-                            <article className="carouselItemMobile" key={index}>
+                            <TestimonialItem testimonial={testimonial} />
 
-                                <TestimonialItem testimonial={testimonial} />
+                        </article>
 
-                            </article>
-
-                        ))}
-
-                    </div>
+                    ))}
 
                 </div>
 
-            </ViewportBreakpoint>
+            </div>
 
         </>
 

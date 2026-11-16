@@ -3,6 +3,9 @@
 // React
 import { useEffect, useState } from "react";
 
+// Next
+import Image from "next/image";
+
 // Splide
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
@@ -26,7 +29,6 @@ const options = {
     drag: false,
     fixedWidth: 128,
     fixedHeight: 64,
-    lazyLoad: "sequential",
     breakpoints: {
         1023: {
             perPage: 3,
@@ -37,7 +39,7 @@ const options = {
         },
     },
     autoScroll: {
-        speed: 0.5,
+        speed: 0.25,
         pauseOnHover: false,
         pauseOnFocus: false,
     },
@@ -84,11 +86,21 @@ export default function LogoCarousel({
                         extensions={{ AutoScroll }}
                         className={styles.splide}
                     >
+
                         {topLogos.map((logo) => (
 
-                            <SplideSlide className={styles.logoItem} key={logo.name}>
+                            <SplideSlide className={styles.logoItem} key={`top-${logo.name}`}>
 
-                                <img data-splide-lazy={logo.logo} alt={logo.name} width={128} height={64} style={{ objectFit: "contain" }} />
+                                <Image
+                                    src={logo.logo}
+                                    alt={logo.name}
+                                    width={128}
+                                    height={64}
+                                    sizes="128px"
+                                    style={{ objectFit: "contain" }}
+                                    loading="lazy"
+                                    quality={75}
+                                />
 
                             </SplideSlide>
 
@@ -104,9 +116,18 @@ export default function LogoCarousel({
 
                         {bottomLogos.map((logo) => (
 
-                            <SplideSlide className={styles.logoItem} key={logo.name}>
+                            <SplideSlide className={styles.logoItem} key={`bottom-${logo.name}`}>
 
-                                <img data-splide-lazy={logo.logo} alt={logo.name} width={128} height={64} style={{ objectFit: "contain" }} />
+                                <Image
+                                    src={logo.logo}
+                                    alt={logo.name}
+                                    width={128}
+                                    height={64}
+                                    sizes="128px"
+                                    style={{ objectFit: "contain" }}
+                                    loading="lazy"
+                                    quality={75}
+                                />
 
                             </SplideSlide>
 

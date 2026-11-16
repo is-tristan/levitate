@@ -9,9 +9,6 @@ import { quoteIcon } from "@/data/icons";
 // Styles
 import styles from "@/styles/components/carousels/testimonials-carousel.module.scss";
 
-// Helpers
-import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
-
 import type { TestimonialItemProps } from "@/types/all-types";
 
 export default function TestimonialItem({
@@ -22,23 +19,20 @@ export default function TestimonialItem({
 
         <div className={styles.testimonial}>
 
-            <ViewportBreakpoint mode="desktop">
+            <div className={`hidden-s ${styles.testimonialImage}`}>
 
-                <div className={styles.testimonialImage}>
+                <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    width={576}
+                    height={576}
+                    sizes="(max-width: 1023px) 0px, 36vw"
+                    loading="lazy"
+                    quality={70}
+                    style={{ objectFit: "cover", objectPosition: "center top" }}
+                />
 
-                    <Image
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        width={576}
-                        height={576}
-                        sizes="(max-width: 1023px) 100vw, 50vw"
-                        loading="lazy"
-                        style={{ objectFit: "cover", objectPosition: "center top" }}
-                    />
-
-                </div>
-
-            </ViewportBreakpoint>
+            </div>
 
             <div className={styles.testimonialContent}>
 
@@ -46,28 +40,22 @@ export default function TestimonialItem({
 
                 <div className={styles.testimonialMeta}>
 
-                    <ViewportBreakpoint mode="mobile">
+                    <div className={`hidden-l ${styles.testimonialImage}`}>
 
-                        <div className={styles.testimonialImage}>
+                        <Image
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            width={48}
+                            height={48}
+                            sizes="48px"
+                            loading="lazy"
+                            quality={65}
+                            style={{ objectFit: "cover", objectPosition: "center", borderRadius: "50%" }}
+                        />
 
-                            <Image
-                                src={testimonial.image}
-                                alt={testimonial.name}
-                                width={48}
-                                height={48}
-                                loading="lazy"
-                                style={{ objectFit: "cover", objectPosition: "center", borderRadius: "50%" }}
-                            />
+                    </div>
 
-                        </div>
-
-                    </ViewportBreakpoint>
-
-                    <ViewportBreakpoint mode="desktop">
-
-                        <div className={styles.testimonialMetaIcon} dangerouslySetInnerHTML={{ __html: quoteIcon }} />
-
-                    </ViewportBreakpoint>
+                    <div className={`hidden-s ${styles.testimonialMetaIcon}`} dangerouslySetInnerHTML={{ __html: quoteIcon }} />
 
                     <div className={styles.testimonialMetaContent}>
 

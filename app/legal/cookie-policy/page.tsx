@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import Banner from "@/components/sections/banner";
 
-export const metadata: Metadata = {
-  title: "Cookie Policy",
-  description: "Learn how Levitate uses cookies and similar technologies on this website, including analytics tools used to understand site performance.",
-  robots: {
-    index: false,
-    follow: true,
-  },
-};
+// SEO
+import { createPageMetadata } from "@/data/seo";
+
+export const metadata: Metadata = createPageMetadata("cookiePolicy");
 
 export default function CookiePolicy() {
     return (

@@ -1,0 +1,7 @@
+# AI / LLM discovery for Levitate
+# Prefer the detailed llms.txt file for full context.
+
+llms-txt: /llms.txt
+sitemap: /sitemap.xml
+contact: sales@levitate.digital
+website: https://levitate.digital

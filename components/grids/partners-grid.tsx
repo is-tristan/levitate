@@ -6,14 +6,15 @@ import Image from "next/image";
 import { partnerLogos } from "@/data/partner-logos";
 import { motion } from "motion/react";
 import styles from "@/styles/components/grids/partners-grid.module.scss";
-import { ViewportBreakpoint } from "@/utils/helpers/device-rendering";
 import { getRevealContainerVariants, revealItemVariants, revealViewport } from "@/utils/animation/reveal";
+import { useIsBelowBreakpoint } from "@/utils/helpers/device-rendering";
 
 import type { PartnersGridProps } from "@/types/all-types";
 
 export default function PartnersGrid({
     containerClassName,
 }: PartnersGridProps) {
+    const disableMotion = useIsBelowBreakpoint();
     const containerVariants = getRevealContainerVariants();
 
     return (
@@ -30,31 +31,30 @@ export default function PartnersGrid({
 
                 <motion.div
                     className={styles.partnersGrid}
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={revealViewport}
+                    variants={disableMotion ? undefined : containerVariants}
+                    initial={disableMotion ? undefined : "hidden"}
+                    whileInView={disableMotion ? undefined : "visible"}
+                    viewport={disableMotion ? undefined : revealViewport}
                 >
 
-                    {partnerLogos.map((partner, index) => (
+                    {partnerLogos.map((partner) => (
 
                         <motion.div
-                            variants={revealItemVariants}
+                            variants={disableMotion ? undefined : revealItemVariants}
                             className={styles.partnersGridItem}
                             key={partner.name}
                         >
 
-                            <ViewportBreakpoint mode="mobile">
-
-                                <Image src={partner.image} alt={partner.name} width={128} height={64} style={{ objectFit: "contain" }} loading="lazy" />
-
-                            </ViewportBreakpoint>
-
-                            <ViewportBreakpoint mode="desktop">
-
-                                <Image src={partner.image} alt={partner.name} width={256} height={64} style={{ objectFit: "contain" }} loading="lazy" />
-
-                            </ViewportBreakpoint>
+                            <Image
+                                src={partner.image}
+                                alt={partner.name}
+                                width={256}
+                                height={64}
+                                sizes="(max-width: 767px) 30vw, (max-width: 1023px) 20vw, 12vw"
+                                style={{ objectFit: "contain", width: "100%", height: "auto" }}
+                                loading="lazy"
+                                quality={75}
+                            />
 
                         </motion.div>
 

@@ -17,7 +17,8 @@
         background-size: cover;
 
         @media (width >=1024px) {
-            background-size: contain;
+            background-size: cover;
+            background-position: center;
         }
     }
 
@@ -29,7 +30,7 @@
         padding-top: var(--headerHeight);
         overflow: visible;
         position: relative;
-        min-height: calc(80vh - var(--headerHeight));
+        min-height: calc(66.66dvh - var(--headerHeight));
     }
 
     .bannerContainer {
@@ -76,8 +77,8 @@
         position: absolute;
         z-index: -1;
         inset: 0;
+        
         margin: auto;
-
         &::before {
             content: '';
             position: absolute;

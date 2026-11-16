@@ -13,21 +13,10 @@ import Loading from "@/components/item/loading";
 import CTA from "@/components/sections/cta-section";
 import LogoSection from "@/components/sections/logo-section";
 
-// Metadata
-export const metadata: Metadata = {
-    title: "Search Engine Optimisation (SEO)",
-    description: "Climb the search rankings with Levitate's tailored SEO strategies. Technical audits, content optimisation, and link building that drive long-term organic growth.",
-    keywords: ["SEO", "search engine optimisation", "organic search", "technical SEO", "Cardiff SEO agency", "link building", "content optimisation", "Google rankings"],
-    openGraph: {
-        title: "Search Engine Optimisation (SEO) | Levitate",
-        description: "Climb the search rankings with Levitate's tailored SEO strategies. Technical audits, content optimisation, and link building that drive long-term organic growth.",
-        url: "/services/search-engine-optimisation",
-    },
-    twitter: {
-        title: "Search Engine Optimisation (SEO) | Levitate",
-        description: "Climb the search rankings with Levitate's tailored SEO strategies. Technical audits, content optimisation, and link building that drive long-term organic growth.",
-    },
-};
+// SEO
+import { createPageMetadata } from "@/data/seo";
+
+export const metadata: Metadata = createPageMetadata("seo");
 
 // Page
 export default function SearchEngineOptimisation() {

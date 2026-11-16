@@ -113,7 +113,15 @@ export default async function ResourcesGrid({
 
                             <article className={styles.resourcesGridItem} key={item.title.toLowerCase()}>
 
-                                <Image src={item.featuredImage} alt={item.title} fill sizes="100%" style={{ objectFit: "cover" }} loading="lazy" />
+                                <Image
+                                    src={item.featuredImage}
+                                    alt={item.title}
+                                    fill
+                                    sizes="(max-width: 1023px) 90vw, 33vw"
+                                    style={{ objectFit: "cover" }}
+                                    loading="lazy"
+                                    quality={70}
+                                />
 
                                 <div className={styles.hoverContent}>
 
